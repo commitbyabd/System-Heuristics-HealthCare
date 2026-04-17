@@ -1,5 +1,10 @@
+import ProjectRoutes from "./routes/ProjectRoutes";
 function App() {
-  return <div>App</div>;
+  return (
+    <>
+      <ProjectRoutes />
+    </>
+  );
 }
 
 export default App;
