@@ -1,0 +1,21 @@
+.button {
+  background-color: #35d0b5;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+}
