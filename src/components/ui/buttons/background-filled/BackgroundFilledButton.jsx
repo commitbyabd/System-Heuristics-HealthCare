@@ -3,11 +3,12 @@ import ArrowRight from "../../icons/ArrowRight";
 
 function BackgroundFilledButton({
   text = "Book a Consultation",
-  width = "320px",
+  width = "222px",
+  height = "40px",
   Icon = ArrowRight,
 }) {
   return (
-    <button className={styles.button} style={{ width }}>
+    <button className={styles.button} style={{ width, height }}>
       <span className={styles.text}>{text}</span>
       {Icon && <Icon className={styles.icon} />}
     </button>

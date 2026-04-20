@@ -1,9 +1,11 @@
 .button {
-  background-color: #35d0b5;
+  background-color: #2fd1ab;
   color: white;
   border: none;
-  border-radius: 18px;
-  padding: 16px 24px;
+  border-radius: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  gap: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,11 +13,13 @@
 }
 
 .text {
-  font-size: 20px;
-  font-weight: 600;
+  font-family: "Quick-Sand";
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
 }
