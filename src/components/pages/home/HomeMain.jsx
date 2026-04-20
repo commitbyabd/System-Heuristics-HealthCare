@@ -1,9 +1,11 @@
 import BackgroundFilledButton from "../../ui/buttons/background-filled/BackgroundFilledButton";
-import { ArrowRight } from "lucide-react";
+import BackgroundTransparent from "../../ui/buttons/background-transparent/BackgroundTransparent";
 function HomeMain() {
   return (
     <div>
       <BackgroundFilledButton />
+      <br />
+      <BackgroundTransparent />
     </div>
   );
 }
