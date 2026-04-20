@@ -4,6 +4,7 @@ function BackgroundTransparent({
   text = "View Our Work",
   width = "147px",
   height = "40px",
+  className = "",
 }) {
   return (
     <button className={styles.button} style={{ width, height }}>

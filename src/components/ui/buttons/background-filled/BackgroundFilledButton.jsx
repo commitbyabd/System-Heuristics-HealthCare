@@ -6,6 +6,7 @@ function BackgroundFilledButton({
   width = "222px",
   height = "40px",
   Icon = ArrowRight,
+  className = "",
 }) {
   return (
     <button className={styles.button} style={{ width, height }}>
