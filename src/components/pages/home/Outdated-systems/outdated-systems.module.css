@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  padding: 24px 0 84px;
+  padding: 24px 0 0;
 }
 
 .panel {
@@ -149,7 +149,7 @@
 
 @media screen and (max-width: 992px) {
   .section {
-    padding: 20px 0 64px;
+    padding: 20px 0 0;
   }
 
   .panel {
@@ -175,7 +175,7 @@
 
 @media screen and (max-width: 576px) {
   .section {
-    padding: 16px 0 56px;
+    padding: 16px 0 0;
   }
 
   .panel {

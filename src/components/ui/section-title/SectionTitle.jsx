@@ -3,6 +3,8 @@ function SectionTitle({
   title = "Built for Healthcare Compliance & Security",
   highlightWord = 3,
   className = "",
+  color = "#FFFFFF",
+  highlightColor = "#2FD1AB",
 }) {
   const words = title.split(" ");
   return (
@@ -11,7 +13,7 @@ function SectionTitle({
         <span
           key={index}
           style={{
-            color: index + 1 === highlightWord ? "#2FD1AB" : "#FFFFFF",
+            color: index + 1 === highlightWord ? highlightColor : color,
           }}
         >
           {word}
