@@ -1,13 +1,16 @@
 import SharedGradient from "./shared-gradient/SharedGradient";
 import Hero from "./hero/Hero";
 import Compliance from "./compliance/Compliance";
+import Container from "../../ui/container/Container";
 
 function HomeMain() {
   return (
     <div>
       <SharedGradient>
-        <Hero />
-        <Compliance />
+        <Container>
+          <Hero />
+          <Compliance />
+        </Container>
       </SharedGradient>
     </div>
   );

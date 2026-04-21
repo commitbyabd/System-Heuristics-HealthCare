@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: var(--color-text);
+  color: #ffffff;
   font-size: var(--font-md-lg);
 }
 
@@ -67,7 +67,7 @@
 
 .navLinks li a {
   position: relative;
-  color: var(--color-text);
+  color: #ffffff;
   text-decoration: none;
   font-weight: var(--font-regular);
   font-size: var(--font-md);
@@ -82,11 +82,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-hover) 100%
-  );
+  background: #2fd1ab;
   transition: width 0.3s ease;
 }
 
@@ -108,11 +104,21 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-hover) 100%
-  );
+  background: #2fd1ab;
+}
+
+/* =======================
+   Book a Call Button
+   ======================= */
+.bookCallWrap {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .bookCallWrap {
+    display: none;
+  }
 }
 
 /* =======================
@@ -125,12 +131,12 @@
 
   cursor: var(--hover-cursor);
   padding: 8px;
-  color: var(--color-text);
+  color: #ffffff;
   transition: color 0.3s ease;
 }
 
 .mobileMenuButton:hover {
-  color: var(--color-primary);
+  color: #2fd1ab;
 }
 
 /* =======================
@@ -165,7 +171,7 @@
 
 /* Mobile nav link hover effect (animated underline) */
 .mobileNavLink a {
-  color: var(--color-text);
+  color: #ffffff;
   text-decoration: none;
   font-weight: var(--font-medium);
   font-size: var(--font-lg);
@@ -180,11 +186,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-hover) 100%
-  );
+  background: #2fd1ab;
   transition: width 0.3s ease;
 }
 
@@ -194,7 +196,7 @@
 }
 
 .mobileNavLink a:hover {
-  color: var(--color-primary);
+  color: #2fd1ab;
 }
 
 /* =======================

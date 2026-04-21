@@ -107,6 +107,15 @@ export const setupNavbarScroll = (navRef, setIsScrolled) => {
     // set isScrolled based on scroll threshold
     setIsScrolled(currentScroll > 100);
 
+    // show at top, hide on scroll down, show on scroll up
+    if (currentScroll <= 100) {
+      showNav();
+    } else if (scrollingDown) {
+      hideNav();
+    } else if (scrollingUp) {
+      showNav();
+    }
+
     // reduce navbar width
     if (navContainer) {
       if (currentScroll > 100) {

@@ -1,23 +1,15 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
+import { useLayoutEffect, useRef } from "react";
 import styles from "./footer.module.css";
 import { animateFooter } from "./FooterUtils";
-import { Container } from "@mui/material";
 import { FooterData } from "../../../data/components/footer/FooterData";
 import { Constants } from "../../../utils/global/Constants";
 import LazyImage from "../lazy-image/LazyImage";
-import { sendNewsletterSubscription } from "../../../utils/email/emailjs";
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-export function Footer() {
+function Footer() {
   const linksRef = useRef([]);
   const socialsRef = useRef([]);
   const bottomLinksRef = useRef([]);
   const tagLineRef = useRef(null);
-
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterLoading, setNewsletterLoading] = useState(false);
 
   const {
     tagline = "",
@@ -25,82 +17,27 @@ export function Footer() {
     servicesLinks = [],
     contactLinks = [],
     socialLinks = [],
-    bottomLinks = [],
   } = FooterData || {};
 
   useLayoutEffect(() => {
     animateFooter({ linksRef, socialsRef, tagLineRef, bottomLinksRef });
   }, []);
 
-  const handleNewsletterSubmit = async (e) => {
-    e.preventDefault();
-
-    const email = newsletterEmail.trim();
-
-    if (!email) {
-      toast.error("Please enter your email.");
-      return;
-    }
-
-    if (!EMAIL_REGEX.test(email)) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
-
-    try {
-      setNewsletterLoading(true);
-      await sendNewsletterSubscription(email);
-      toast.success("Subscribed successfully!");
-      setNewsletterEmail("");
-    } catch (error) {
-      toast.error("Subscription failed. Please try again.");
-    } finally {
-      setNewsletterLoading(false);
-    }
-  };
-
   return (
-    <Container maxWidth="xl">
-      <div className={`${styles.container} bgGlassWGlow`}>
+    <footer className={styles.footerWrap}>
+      <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.left}>
             <div className={styles.logoGroup}>
               <a href="/" className={styles.logo}>
-                <LazyImage src="/logo.svg" alt="Logo" />
-                {Constants?.company?.name}
+                <LazyImage src="/images/nav/sh-logo.svg" alt="Logo" />
+                <span>{Constants?.company?.name}</span>
               </a>
             </div>
 
             <p className={styles.tagline} ref={tagLineRef}>
               {tagline || ""}
             </p>
-
-            <form className={styles.newsletter} onSubmit={handleNewsletterSubmit}>
-              <div className={styles.newsletterHeader}>
-                <h4 className={styles.title}>Newsletter</h4>
-                <p className={styles.newsletterText}>
-                  Subscribe for product updates, AI insights, and company news.
-                </p>
-              </div>
-
-              <div className={styles.newsletterForm}>
-                <input
-                  type="email"
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className={styles.newsletterInput}
-                  aria-label="Newsletter email"
-                />
-                <button
-                  type="submit"
-                  className={styles.newsletterBtn}
-                  disabled={newsletterLoading}
-                >
-                  {newsletterLoading ? "Submitting..." : "Subscribe"}
-                </button>
-              </div>
-            </form>
 
             <div className={styles.socials}>
               {socialLinks?.map(({ Icon, href }, idx) => (
@@ -111,59 +48,55 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   ref={(el) => (socialsRef.current[idx] = el)}
-                  aria-label={`Visit us on ${Icon?.displayName || "social media"}`}
+                  aria-label="Social link"
                 >
-                  {Icon && <Icon className={styles.icon} />}
+                  {Icon && <Icon className={styles.icon} size={16} />}
                 </a>
               ))}
             </div>
           </div>
 
-          <div className={styles.links}>
-            <div
-              className={styles.linksCol}
-              ref={(el) => (linksRef.current[0] = el)}
-            >
-              <h4 className={styles.title}>Useful Links</h4>
-              <ul className={styles.list}>
-                {usefulLinks?.map((link, idx) => (
-                  <li key={idx}>
-                    <a href={link?.href}>{link?.name}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div
+            className={styles.linksCol}
+            ref={(el) => (linksRef.current[0] = el)}
+          >
+            <h4 className={styles.title}>Useful Links</h4>
+            <ul className={styles.list}>
+              {usefulLinks?.map((link, idx) => (
+                <li key={idx}>
+                  <a href={link?.href}>{link?.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div
-              className={styles.linksCol}
-              ref={(el) => (linksRef.current[1] = el)}
-            >
-              <h4 className={styles.title}>Our Services</h4>
-              <ul className={styles.list}>
-                {servicesLinks.map((link, idx) => (
-                  <li key={idx}>
-                    <a href={link?.href}>{link?.name}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div
+            className={styles.linksCol}
+            ref={(el) => (linksRef.current[1] = el)}
+          >
+            <h4 className={styles.title}>Our Services</h4>
+            <ul className={styles.list}>
+              {servicesLinks.map((link, idx) => (
+                <li key={idx}>
+                  <a href={link?.href}>{link?.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div
-              className={styles.linksCol}
-              ref={(el) => (linksRef.current[2] = el)}
-            >
-              <h4 className={styles.title}>Contact Us</h4>
-              <ul className={styles.list}>
-                {contactLinks.map(({ icon: Icon, text }, idx) => (
-                  <li className={styles.contactItem} key={idx}>
-                    {Icon && <Icon className={styles.icon} />}
-                    <span style={{ display: "flex", alignItems: "center" }}>
-                      {text || ""}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div
+            className={styles.linksCol}
+            ref={(el) => (linksRef.current[2] = el)}
+          >
+            <h4 className={styles.title}>Contact Us</h4>
+            <ul className={styles.list}>
+              {contactLinks.map(({ icon: Icon, text }, idx) => (
+                <li className={styles.contactItem} key={idx}>
+                  {Icon && <Icon className={styles.icon} size={16} />}
+                  <span>{text || ""}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -174,21 +107,10 @@ export function Footer() {
             © {new Date().getFullYear()} {Constants?.company?.name}. All rights
             reserved.
           </p>
-
-          <div className={styles.bottomLinks}>
-            {bottomLinks.map(({ name, href }, idx) => (
-              <a
-                key={idx}
-                href={href}
-                className={styles.bottomLink}
-                ref={(el) => (bottomLinksRef.current[idx] = el)}
-              >
-                {name}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
-    </Container>
+    </footer>
   );
 }
+
+export default Footer;
