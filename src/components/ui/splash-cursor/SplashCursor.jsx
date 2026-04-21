@@ -1138,12 +1138,8 @@ function SplashCursor({
     }
 
     function generateColor() {
-      const PRIMARY_HSV = RGBtoHSV(
-        ...Object.values(hexToRgb(Colors.primary())),
-      );
-      const LIGHT_HSV = RGBtoHSV(
-        ...Object.values(hexToRgb(Colors.primaryLight())),
-      );
+      const PRIMARY_HSV = RGBtoHSV(...Object.values(hexToRgb("#2FD1AB")));
+      const LIGHT_HSV = RGBtoHSV(...Object.values(hexToRgb("#2FD1AB")));
 
       let h, s, v;
       const rand = Math.random();
