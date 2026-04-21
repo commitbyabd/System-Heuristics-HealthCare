@@ -2,10 +2,11 @@ import styles from "./section-title.module.css";
 function SectionTitle({
   title = "Built for Healthcare Compliance & Security",
   highlightWord = 3,
+  className = "",
 }) {
   const words = title.split(" ");
   return (
-    <h2 className={styles.sectionTitle}>
+    <h2 className={`${styles.sectionTitle} ${className}`.trim()}>
       {words.map((word, index) => (
         <span
           key={index}
