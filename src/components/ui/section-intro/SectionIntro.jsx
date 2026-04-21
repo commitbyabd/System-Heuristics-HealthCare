@@ -1,8 +1,8 @@
 import styles from "./section-intro.module.css";
 
 function SectionIntro({
-  title = "Software That Heals",
-  description = "We engineer intelligent, HIPAA-compliant healthcare platforms from AI diagnostics to enterprise hospital systems built for the future of medicine.",
+  title = "Software That Heals How Healthcare Works",
+  description = "We engineer intelligent, HIPAA-compliant healthcare platforms from AI diagnostics to enterprise hospital systems - built for the future of medicine.",
   highlightWord = 3,
 }) {
   const words = title.split(" ");

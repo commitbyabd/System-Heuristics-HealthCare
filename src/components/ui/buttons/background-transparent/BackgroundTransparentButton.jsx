@@ -1,6 +1,6 @@
 import styles from "./background-transparent.module.css";
 
-function BackgroundTransparent({
+function BackgroundTransparentButton({
   text = "View Our Work",
   width = "147px",
   height = "40px",
@@ -13,4 +13,4 @@ function BackgroundTransparent({
   );
 }
 
-export default BackgroundTransparent;
+export default BackgroundTransparentButton;
