@@ -1,0 +1,24 @@
+import styles from "./section-title.module.css";
+function SectionTitle({
+  title = "Built for Healthcare Compliance & Security",
+  highlightWord = 3,
+}) {
+  const words = title.split(" ");
+  return (
+    <h2 className={styles.sectionTitle}>
+      {words.map((word, index) => (
+        <span
+          key={index}
+          style={{
+            color: index + 1 === highlightWord ? "#2FD1AB" : "#FFFFFF",
+          }}
+        >
+          {word}
+          {index !== words.length - 1 && " "}
+        </span>
+      ))}
+    </h2>
+  );
+}
+
+export default SectionTitle;

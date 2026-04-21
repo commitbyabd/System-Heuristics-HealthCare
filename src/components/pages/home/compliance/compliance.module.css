@@ -1,0 +1,11 @@
+.compliance {
+  background:
+    radial-gradient(
+      ellipse at 50% 10%,
+      rgba(47, 209, 171, 0.18) 0%,
+      transparent 55%
+    ),
+    linear-gradient(180deg, #0a1f2e 0%, #050d18 100%);
+  background-size: cover;
+  background-position: center;
+}
