@@ -7,7 +7,7 @@
 
 .title {
   margin: 0;
-  font-family: "Frank Ruhl Libre";
+  font-family: var(--font-family-tertiary);
   font-size: 64px;
   font-weight: 500;
   line-height: 100%;

@@ -6,6 +6,7 @@
    - Utility classes (glass backgrounds, themes)
 ======================================== */
 
+@import url("./fonts.css");
 @import url("./variables.css");
 
 /* Base reset */
