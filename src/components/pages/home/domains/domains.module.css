@@ -1,9 +1,13 @@
 .section {
   width: 100%;
-  padding: 0 0 88px;
+  padding: 80px 0 88px;
   background:
-    radial-gradient(circle at 100% 0%, rgba(47, 209, 171, 0.18), transparent 28%),
-    linear-gradient(135deg, #143245 0%, #1d5061 55%, #2c8a80 100%);
+    radial-gradient(
+      ellipse at 70% 50%,
+      rgba(47, 209, 171, 0.16),
+      transparent 55%
+    ),
+    linear-gradient(135deg, #0a1f2e 0%, #11384a 55%, #1d5f62 100%);
 }
 
 .container {
@@ -12,37 +16,55 @@
 
 .grid {
   position: relative;
-  min-height: 740px;
-  padding: 72px 0 40px;
+  width: 100%;
+  max-width: 1080px;
+  height: 560px;
+  margin: 0 auto;
 }
 
 .grid::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -40px;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 88px 64px;
-  opacity: 0.38;
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.5;
   pointer-events: none;
+  mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 0.6) 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 0.6) 60%,
+    transparent 100%
+  );
 }
 
-.domainCard,
-.centerCard,
-.connector {
+.domainCardWrap {
   position: absolute;
-  z-index: 1;
+  width: 240px;
+  z-index: 2;
 }
 
 .domainCard {
-  width: 270px;
-  height: 124px;
-  padding: 14px 18px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  width: 100%;
+  height: auto;
+  background: rgba(20, 45, 58, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 16px 16px 18px;
+  box-shadow:
+    0 8px 22px rgba(5, 20, 30, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  gap: 8px;
 }
 
 .domainCardIcon {
@@ -52,29 +74,33 @@
 }
 
 .domainCardTitle {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.2;
-  font-family: var(--font-family-tertiary);
+  font-weight: 700;
+  font-family: var(--font-family-tertiary, Georgia, serif);
+  color: #ffffff;
 }
 
 .domainCardDescription {
-  font-size: 12px;
+  font-size: 11.5px;
   line-height: 1.45;
-  color: rgba(232, 238, 238, 0.8);
+  color: rgba(200, 220, 222, 0.72);
 }
 
 .centerCard {
+  position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 2;
-  width: 360px;
-  padding: 26px 24px;
+  z-index: 3;
+  width: 380px;
+  padding: 24px 28px 26px;
   border-radius: 18px;
   background: #fffaf4;
   box-shadow:
-    0 24px 38px rgba(8, 25, 35, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 22px 44px rgba(5, 20, 30, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .centerIntro {
@@ -84,146 +110,91 @@
 }
 
 .centerTitle {
-  font-size: clamp(2rem, 3vw, 2.55rem);
-  line-height: 1.02;
-  font-weight: 600;
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .centerDescription {
   width: auto;
-  margin-top: 10px;
+  max-width: 320px;
+  margin: 10px auto 0;
   color: #6b7480;
-  font-size: 0.92rem;
+  font-size: 0.85rem;
   line-height: 1.5;
 }
 
 .cardTopLeft {
-  top: 140px;
-  left: 34px;
+  top: 80px;
+  left: 30px;
 }
 
 .cardTopCenter {
-  top: 54px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .cardTopRight {
-  top: 140px;
-  right: 34px;
+  top: 80px;
+  right: 30px;
 }
 
 .cardBottomLeft {
-  bottom: 164px;
-  left: 34px;
+  bottom: 80px;
+  left: 30px;
 }
 
 .cardBottomCenter {
-  bottom: 52px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .cardBottomRight {
-  bottom: 164px;
-  right: 34px;
+  bottom: 80px;
+  right: 30px;
 }
 
-.connector {
-  display: block;
-  width: 150px;
-  height: 1px;
-  background: rgba(86, 227, 200, 0.34);
-  transform-origin: center;
-}
-
-.connector::after {
-  content: "";
+.line {
   position: absolute;
-  top: -3px;
-  right: -1px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(86, 227, 200, 0.55);
+  height: 1.5px;
+  transform-origin: 0 50%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(47, 209, 171, 0.65) 0 5px,
+    transparent 5px 11px
+  );
+  pointer-events: none;
+  z-index: 1;
+  clip-path: inset(0 100% 0 0);
 }
 
-.connectorTopLeft {
-  top: 255px;
-  left: 236px;
-  transform: rotate(34deg);
-}
-
-.connectorTopCenter {
-  top: 196px;
-  left: 50%;
-  width: 1px;
-  height: 98px;
-  transform: translateX(-50%);
-}
-
-.connectorTopCenter::after {
-  top: auto;
-  bottom: -1px;
-  right: -3px;
-}
-
-.connectorTopRight {
-  top: 255px;
-  right: 236px;
-  transform: rotate(-34deg);
-}
-
-.connectorBottomLeft {
-  bottom: 253px;
-  left: 236px;
-  transform: rotate(-34deg);
-}
-
-.connectorBottomCenter {
-  bottom: 175px;
-  left: 50%;
-  width: 1px;
-  height: 102px;
-  transform: translateX(-50%);
-}
-
-.connectorBottomCenter::after {
-  top: -1px;
-  right: -3px;
-}
-
-.connectorBottomRight {
-  bottom: 253px;
-  right: 236px;
-  transform: rotate(34deg);
-}
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1100px) {
   .grid {
+    height: auto;
     min-height: auto;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-    padding: 56px 0;
+    gap: 18px;
+    padding: 0;
   }
 
-  .domainCard,
-  .centerCard,
-  .connector {
+  .grid::before {
+    display: none;
+  }
+
+  .domainCardWrap,
+  .centerCard {
     position: relative;
-    inset: auto;
+    top: auto;
     left: auto;
     right: auto;
-    top: auto;
     bottom: auto;
-    transform: none;
-  }
-
-  .domainCard,
-  .centerCard {
     width: 100%;
-    height: auto;
+    transform: none;
   }
 
   .centerCard {
@@ -231,27 +202,22 @@
     grid-column: 1 / -1;
   }
 
-  .connector {
+  .line {
     display: none;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 640px) {
   .section {
-    padding-bottom: 64px;
+    padding: 60px 0;
   }
 
   .grid {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 44px 0;
-  }
-
-  .centerCard {
-    padding: 22px 18px;
+    gap: 14px;
   }
 
   .centerTitle {
-    font-size: clamp(1.8rem, 8vw, 2.2rem);
+    font-size: 1.5rem;
   }
 }

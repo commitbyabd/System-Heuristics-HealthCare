@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./outdated-systems.module.css";
 import Chip from "../../../ui/chip/Chip";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import Container from "../../../ui/container/Container";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   {
@@ -47,11 +51,27 @@ function formatStat({ low, high, prefix = "", suffix = "" }, animatedValue) {
 }
 
 function OutdatedSystems() {
-  const [animatedValues, setAnimatedValues] = useState(
-    stats.map(() => 0),
-  );
+  const sectionRef = useRef(null);
+  const [animatedValues, setAnimatedValues] = useState(stats.map(() => 0));
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const trigger = ScrollTrigger.create({
+      trigger: section,
+      start: "top 75%",
+      once: true,
+      onEnter: () => setHasStarted(true),
+    });
+
+    return () => trigger.kill();
+  }, []);
 
   useEffect(() => {
+    if (!hasStarted) return;
+
     const duration = 1800;
     const targets = stats.map((item) => item.high ?? item.low);
     const startTime = performance.now();
@@ -74,10 +94,13 @@ function OutdatedSystems() {
     frameId = window.requestAnimationFrame(animate);
 
     return () => window.cancelAnimationFrame(frameId);
-  }, []);
+  }, [hasStarted]);
 
   return (
-    <section className={styles.section}>
+    <section
+      ref={sectionRef}
+      className={`${styles.section} ${hasStarted ? styles.sectionVisible : ""}`.trim()}
+    >
       <div className={styles.panel}>
         <Container className={styles.inner}>
           <div className={styles.header}>

@@ -1,83 +1,233 @@
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./domains.module.css";
 import Container from "../../../ui/container/Container";
 import FeatureCard from "../../../ui/cards/feature-card/FeatureCard";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import {
-  Activity,
-  ClipboardPlus,
-  ShieldCheck,
+  Brain,
+  FileText,
+  Lock,
   Building2,
-  HeartPulse,
+  Globe,
   BarChart3,
 } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const domainCards = [
   {
     id: "clinical",
     title: "Clinical Intelligence Systems",
     description: "AI-driven diagnostics, report analysis, and decision support",
-    Icon: Activity,
-    className: styles.cardTopLeft,
+    Icon: Brain,
+    posClass: "cardTopLeft",
+    anchor: "topLeft",
   },
   {
     id: "documentation",
     title: "Medical Documentation",
     description: "AI scribes, structured notes, and record systems",
-    Icon: ClipboardPlus,
-    className: styles.cardTopCenter,
+    Icon: FileText,
+    posClass: "cardTopCenter",
+    anchor: "topCenter",
   },
   {
     id: "security",
     title: "Compliance & Data Security",
-    description: "HIPAA-ready systems and audit-safe infrastructure",
-    Icon: ShieldCheck,
-    className: styles.cardTopRight,
+    description: "HIPAA-ready systems and audit-ready infrastructure",
+    Icon: Lock,
+    posClass: "cardTopRight",
+    anchor: "topRight",
   },
   {
     id: "operations",
     title: "Hospital & Clinic Operations",
     description: "Workflow automation, scheduling, and patient management",
     Icon: Building2,
-    className: styles.cardBottomLeft,
+    posClass: "cardBottomLeft",
+    anchor: "bottomLeft",
   },
   {
     id: "remote-care",
     title: "Telemedicine & Remote Care",
-    description: "Secure consultation platforms and remote monitoring systems",
-    Icon: HeartPulse,
-    className: styles.cardBottomCenter,
+    description: "Digital consultation platforms and monitoring systems",
+    Icon: Globe,
+    posClass: "cardBottomCenter",
+    anchor: "bottomCenter",
   },
   {
     id: "analytics",
     title: "Healthcare Analytics",
-    description: "Operational insights, better clinical and organizational decisions",
+    description: "Data-driven insights for better clinical and operational decisions",
     Icon: BarChart3,
-    className: styles.cardBottomRight,
+    posClass: "cardBottomRight",
+    anchor: "bottomRight",
   },
 ];
 
 function Domains() {
+  const sectionRef = useRef(null);
+  const gridRef = useRef(null);
+  const centerCardRef = useRef(null);
+  const cardRefs = useRef([]);
+  const lineRefs = useRef([]);
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const grid = gridRef.current;
+    const center = centerCardRef.current;
+    if (!section || !grid || !center) return;
+
+    const positionLines = () => {
+      if (window.matchMedia("(max-width: 1100px)").matches) {
+        lineRefs.current.forEach((line) => {
+          if (line) line.style.display = "none";
+        });
+        return;
+      }
+
+      const gridRect = grid.getBoundingClientRect();
+      const centerRect = center.getBoundingClientRect();
+      const c = {
+        left: centerRect.left - gridRect.left,
+        right: centerRect.right - gridRect.left,
+        top: centerRect.top - gridRect.top,
+        bottom: centerRect.bottom - gridRect.top,
+        cx: (centerRect.left + centerRect.right) / 2 - gridRect.left,
+        cy: (centerRect.top + centerRect.bottom) / 2 - gridRect.top,
+      };
+
+      domainCards.forEach((card, i) => {
+        const cardEl = cardRefs.current[i];
+        const line = lineRefs.current[i];
+        if (!cardEl || !line) return;
+
+        line.style.display = "block";
+
+        const rect = cardEl.getBoundingClientRect();
+        const r = {
+          left: rect.left - gridRect.left,
+          right: rect.right - gridRect.left,
+          top: rect.top - gridRect.top,
+          bottom: rect.bottom - gridRect.top,
+          cx: (rect.left + rect.right) / 2 - gridRect.left,
+          cy: (rect.top + rect.bottom) / 2 - gridRect.top,
+        };
+
+        let startX = 0;
+        let startY = 0;
+        let endX = 0;
+        let endY = 0;
+
+        switch (card.anchor) {
+          case "topLeft":
+            startX = c.left + 18;
+            startY = c.top + 10;
+            endX = r.right - 12;
+            endY = r.bottom - 8;
+            break;
+          case "topCenter":
+            startX = c.cx;
+            startY = c.top;
+            endX = r.cx;
+            endY = r.bottom;
+            break;
+          case "topRight":
+            startX = c.right - 18;
+            startY = c.top + 10;
+            endX = r.left + 12;
+            endY = r.bottom - 8;
+            break;
+          case "bottomLeft":
+            startX = c.left + 18;
+            startY = c.bottom - 10;
+            endX = r.right - 12;
+            endY = r.top + 8;
+            break;
+          case "bottomCenter":
+            startX = c.cx;
+            startY = c.bottom;
+            endX = r.cx;
+            endY = r.top;
+            break;
+          case "bottomRight":
+            startX = c.right - 18;
+            startY = c.bottom - 10;
+            endX = r.left + 12;
+            endY = r.top + 8;
+            break;
+          default:
+            break;
+        }
+
+        const dx = endX - startX;
+        const dy = endY - startY;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+
+        line.style.left = `${startX}px`;
+        line.style.top = `${startY}px`;
+        line.style.width = `${length}px`;
+        line.style.transform = `rotate(${angle}deg)`;
+      });
+    };
+
+    positionLines();
+    window.addEventListener("resize", positionLines);
+
+    const ctx = gsap.context(() => {
+      gsap.set(lineRefs.current, { clipPath: "inset(0 100% 0 0)" });
+
+      gsap.to(lineRefs.current, {
+        clipPath: "inset(0 0% 0 0)",
+        ease: "power2.out",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+          end: "top 25%",
+          scrub: 1,
+          onRefresh: positionLines,
+        },
+      });
+    }, section);
+
+    return () => {
+      window.removeEventListener("resize", positionLines);
+      ctx.revert();
+    };
+  }, []);
+
   return (
-    <section className={styles.section}>
+    <section ref={sectionRef} className={styles.section}>
       <Container className={styles.container}>
-        <div className={styles.grid}>
-          {domainCards.map((card) => (
-            <FeatureCard
+        <div ref={gridRef} className={styles.grid}>
+          {domainCards.map((card, i) => (
+            <div
               key={card.id}
-              Icon={card.Icon}
-              title={card.title}
-              description={card.description}
-              className={`${styles.domainCard} ${card.className}`}
-              iconClassName={styles.domainCardIcon}
-              titleClassName={styles.domainCardTitle}
-              descriptionClassName={styles.domainCardDescription}
-            />
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
+              className={`${styles.domainCardWrap} ${styles[card.posClass]}`}
+            >
+              <FeatureCard
+                Icon={card.Icon}
+                title={card.title}
+                description={card.description}
+                className={styles.domainCard}
+                iconClassName={styles.domainCardIcon}
+                titleClassName={styles.domainCardTitle}
+                descriptionClassName={styles.domainCardDescription}
+              />
+            </div>
           ))}
 
-          <div className={styles.centerCard}>
+          <div ref={centerCardRef} className={styles.centerCard}>
             <SectionIntro
               title="Healthcare Domains We Solve For"
-              description="From clinical workflows to compliance, we design solutions across the full spectrum of healthcare operations."
+              description="From clinical workflows to compliance systems, we design solutions across critical areas of healthcare."
               highlightWord={3}
               className={styles.centerIntro}
               titleClassName={styles.centerTitle}
@@ -87,12 +237,16 @@ function Domains() {
             />
           </div>
 
-          <span className={`${styles.connector} ${styles.connectorTopLeft}`} />
-          <span className={`${styles.connector} ${styles.connectorTopCenter}`} />
-          <span className={`${styles.connector} ${styles.connectorTopRight}`} />
-          <span className={`${styles.connector} ${styles.connectorBottomLeft}`} />
-          <span className={`${styles.connector} ${styles.connectorBottomCenter}`} />
-          <span className={`${styles.connector} ${styles.connectorBottomRight}`} />
+          {domainCards.map((card, i) => (
+            <span
+              key={`line-${card.id}`}
+              ref={(el) => {
+                lineRefs.current[i] = el;
+              }}
+              className={styles.line}
+              aria-hidden="true"
+            />
+          ))}
         </div>
       </Container>
     </section>

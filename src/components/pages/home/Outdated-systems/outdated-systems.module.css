@@ -91,6 +91,9 @@
   min-width: 0;
   opacity: 0;
   transform: translateY(24px);
+}
+
+.sectionVisible .statCard {
   animation: stat-rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -130,6 +133,9 @@
   color: rgba(237, 244, 242, 0.88);
   opacity: 0;
   transform: translateY(16px);
+}
+
+.sectionVisible .description {
   animation: copy-rise 0.8s ease forwards;
 }
 

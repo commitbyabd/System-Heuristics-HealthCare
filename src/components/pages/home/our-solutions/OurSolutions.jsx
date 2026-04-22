@@ -198,13 +198,13 @@ function OurSolutions() {
                     zIndex = total + 1;
                   } else if (offset > 0) {
                     const clamped = Math.min(offset, 3);
-                    transform = `translate3d(${clamped * 26}px, ${-clamped * 18}px, 0) scale(${1 - clamped * 0.045})`;
-                    opacity = Math.max(0.35, 1 - clamped * 0.22);
+                    transform = `translate3d(${clamped * 28}px, ${-clamped * 20}px, 0) scale(${1 - clamped * 0.035})`;
+                    opacity = Math.max(0.55, 1 - clamped * 0.15);
                     zIndex = total - offset;
                   } else {
                     transform = "translate3d(0, 120px, 0) scale(0.94)";
                     opacity = 0;
-                    zIndex = 0;
+                    zIndex = total + 2;
                   }
 
                   return (
