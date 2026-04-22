@@ -46,7 +46,8 @@
 
 .title {
   margin-top: 10px;
-  font-size: clamp(2.35rem, 4vw, 3.6rem);
+  font-family: var(--title-font);
+  font-size: var(--title-size);
   line-height: 1.05;
   text-align: left;
   letter-spacing: -0.01em;
@@ -56,9 +57,16 @@
 .subtitle {
   margin: 18px 0 0;
   color: #6a7484;
-  font-size: 0.98rem;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
   line-height: 1.65;
   max-width: 560px;
+}
+
+@media screen and (max-width: 992px) {
+  .title {
+    font-size: clamp(2.25rem, 6vw, 3.25rem);
+  }
 }
 
 .portfolioBtn {
@@ -121,7 +129,7 @@
 .slideTitle {
   margin: 0;
   color: #1f2940;
-  font-family: var(--font-family-tertiary, "FrankRuhlLibre"), serif;
+  font-family: var(--title-font);
   font-size: clamp(1.5rem, 2vw, 2rem);
   line-height: 1.2;
   font-weight: 400;
@@ -129,7 +137,8 @@
 
 .slideBlock {
   color: #5a6372;
-  font-size: 0.94rem;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
   line-height: 1.65;
   margin: 0;
 }

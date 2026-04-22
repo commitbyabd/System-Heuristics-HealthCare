@@ -41,6 +41,12 @@ Variables:
 
   --description: 16px;
 
+  /* Unified section typography */
+  --title-size: 64px;
+  --content-size: 16px;
+  --title-font: "Frank Ruhl Libre", serif;
+  --content-font: "Quicksand", sans-serif;
+
   /* Weights */
   --font-light: 400;
   --font-regular: 500;

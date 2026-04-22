@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./domains.module.css";
 import Container from "../../../ui/container/Container";
-import FeatureCard from "../../../ui/cards/feature-card/FeatureCard";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import {
   Brain,
@@ -123,10 +122,10 @@ function Domains() {
 
         switch (card.anchor) {
           case "topLeft":
-            startX = c.left + 18;
-            startY = c.top + 10;
-            endX = r.right - 12;
-            endY = r.bottom - 8;
+            startX = c.left + 24;
+            startY = c.top;
+            endX = r.right - 24;
+            endY = r.bottom;
             break;
           case "topCenter":
             startX = c.cx;
@@ -135,16 +134,16 @@ function Domains() {
             endY = r.bottom;
             break;
           case "topRight":
-            startX = c.right - 18;
-            startY = c.top + 10;
-            endX = r.left + 12;
-            endY = r.bottom - 8;
+            startX = c.right - 24;
+            startY = c.top;
+            endX = r.left + 24;
+            endY = r.bottom;
             break;
           case "bottomLeft":
-            startX = c.left + 18;
-            startY = c.bottom - 10;
-            endX = r.right - 12;
-            endY = r.top + 8;
+            startX = c.left + 24;
+            startY = c.bottom;
+            endX = r.right - 24;
+            endY = r.top;
             break;
           case "bottomCenter":
             startX = c.cx;
@@ -153,10 +152,10 @@ function Domains() {
             endY = r.top;
             break;
           case "bottomRight":
-            startX = c.right - 18;
-            startY = c.bottom - 10;
-            endX = r.left + 12;
-            endY = r.top + 8;
+            startX = c.right - 24;
+            startY = c.bottom;
+            endX = r.left + 24;
+            endY = r.top;
             break;
           default:
             break;
@@ -179,19 +178,38 @@ function Domains() {
 
     const ctx = gsap.context(() => {
       gsap.set(lineRefs.current, { clipPath: "inset(0 100% 0 0)" });
+      gsap.set(cardRefs.current, { opacity: 0 });
 
-      gsap.to(lineRefs.current, {
-        clipPath: "inset(0 0% 0 0)",
-        ease: "power2.out",
-        stagger: 0.08,
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top 70%",
-          end: "top 25%",
-          scrub: 1,
-          onRefresh: positionLines,
+          start: "top 75%",
+          once: true,
+          onEnter: positionLines,
         },
       });
+
+      tl.to(
+        cardRefs.current,
+        {
+          opacity: 1,
+          ease: "power2.out",
+          duration: 0.9,
+          stagger: 0.12,
+        },
+        0,
+      );
+
+      tl.to(
+        lineRefs.current,
+        {
+          clipPath: "inset(0 0% 0 0)",
+          ease: "power2.inOut",
+          duration: 1.6,
+          stagger: 0.12,
+        },
+        0.25,
+      );
     }, section);
 
     return () => {
@@ -204,25 +222,26 @@ function Domains() {
     <section ref={sectionRef} className={styles.section}>
       <Container className={styles.container}>
         <div ref={gridRef} className={styles.grid}>
-          {domainCards.map((card, i) => (
-            <div
-              key={card.id}
-              ref={(el) => {
-                cardRefs.current[i] = el;
-              }}
-              className={`${styles.domainCardWrap} ${styles[card.posClass]}`}
-            >
-              <FeatureCard
-                Icon={card.Icon}
-                title={card.title}
-                description={card.description}
-                className={styles.domainCard}
-                iconClassName={styles.domainCardIcon}
-                titleClassName={styles.domainCardTitle}
-                descriptionClassName={styles.domainCardDescription}
-              />
-            </div>
-          ))}
+          {domainCards.map((card, i) => {
+            const IconComp = card.Icon;
+            return (
+              <div
+                key={card.id}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                className={`${styles.domainCard} ${styles[card.posClass]}`}
+              >
+                <span className={styles.domainCardIconWrap}>
+                  <IconComp className={styles.domainCardIcon} />
+                </span>
+                <h3 className={styles.domainCardTitle}>{card.title}</h3>
+                <p className={styles.domainCardDescription}>
+                  {card.description}
+                </p>
+              </div>
+            );
+          })}
 
           <div ref={centerCardRef} className={styles.centerCard}>
             <SectionIntro

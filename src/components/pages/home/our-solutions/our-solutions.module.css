@@ -42,9 +42,9 @@
   width: auto;
   max-width: 100%;
   white-space: nowrap;
-  font-family: var(--font-family-secondary);
-  font-size: 64px;
-  line-height: 100%;
+  font-family: var(--title-font);
+  font-size: var(--title-size);
+  line-height: 1.05;
   font-weight: 600;
 }
 
@@ -52,7 +52,8 @@
   margin: 16px auto 0;
   max-width: 620px;
   color: #6a7484;
-  font-size: 0.98rem;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
   line-height: 1.65;
 }
 
@@ -168,7 +169,7 @@
 .solutionTitle {
   margin: 0;
   color: #243246;
-  font-family: var(--font-family-tertiary);
+  font-family: var(--title-font);
   font-size: clamp(2rem, 2.6vw, 2.8rem);
   line-height: 1.14;
   transition:
@@ -180,7 +181,8 @@
   margin: 14px 0 0;
   max-width: 320px;
   color: #6d7481;
-  font-size: 0.98rem;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
   line-height: 1.7;
 }
 
@@ -190,7 +192,8 @@
   align-items: center;
   gap: 10px;
   color: #2fcfaf;
-  font-size: 0.96rem;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
   font-weight: 600;
   text-decoration: none;
 }

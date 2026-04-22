@@ -46,7 +46,8 @@ description {
   margin: 0;
 }
 .description {
-  font-size: var(--font-md-lg);
+  font-family: var(--content-font);
+  font-size: var(--content-size);
 }
 
 /* =========================
