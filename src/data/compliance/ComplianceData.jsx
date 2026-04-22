@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./compliance-data.module.css";
 
 const cardsData = [
@@ -83,10 +84,10 @@ function ComplianceData() {
 
               <p className={styles.description}>{card.description}</p>
 
-              <button className={styles.cardButton}>
+              <Link to="/" className={styles.cardButton}>
                 <span>{card.buttonText}</span>
                 <span className={styles.arrow}>→</span>
-              </button>
+              </Link>
             </article>
           );
         })}

@@ -71,6 +71,14 @@
   font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cardButton:hover {
+  background: rgba(47, 209, 171, 0.08);
 }
 
 .arrow {
