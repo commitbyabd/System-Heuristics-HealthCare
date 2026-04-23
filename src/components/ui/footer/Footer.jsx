@@ -4,6 +4,7 @@ import { animateFooter } from "./FooterUtils";
 import { FooterData } from "../../../data/components/footer/FooterData";
 import { Constants } from "../../../utils/global/Constants";
 import LazyImage from "../lazy-image/LazyImage";
+import Container from "../container/Container";
 
 function Footer() {
   const linksRef = useRef([]);
@@ -25,7 +26,7 @@ function Footer() {
 
   return (
     <footer className={styles.footerWrap}>
-      <div className={styles.container}>
+      <Container className={styles.container}>
         <div className={styles.top}>
           <div className={styles.left}>
             <div className={styles.logoGroup}>
@@ -108,7 +109,7 @@ function Footer() {
             reserved.
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

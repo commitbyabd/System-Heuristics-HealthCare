@@ -28,11 +28,7 @@
 .container {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
   padding: 56px 48px 20px;
-  box-sizing: border-box;
 }
 
 /* ===================== Top Section ===================== */

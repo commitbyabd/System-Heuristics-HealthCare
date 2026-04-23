@@ -26,6 +26,7 @@ import Menu from "../icons/Menu";
 import X from "../icons/X";
 import BackgroundFilledButton from "../buttons/background-filled/BackgroundFilledButton";
 import Phone from "../icons/Phone";
+import Container from "../container/Container";
 
 const Nav = () => {
   const navRef = useRef(null);
@@ -114,7 +115,7 @@ const Nav = () => {
         ref={navRef}
         className={`${styles.navbar} ${isScrolled ? styles.scrolled : styles.atTop}`}
       >
-        <div className={`${styles.navContainer} bgGlassWGlow`}>
+        <Container className={`${styles.navContainer} bgGlassWGlow`}>
           <p className={styles.logo}>
             <a href="/">
               <LazyImage src="/images/nav/sh-logo.svg" alt="Logo" />
@@ -142,7 +143,7 @@ const Nav = () => {
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
-        </div>
+        </Container>
       </nav>
 
       <div ref={mobileMenuRef} className={`${styles.mobileMenu} bgGlassWGlow`}>
