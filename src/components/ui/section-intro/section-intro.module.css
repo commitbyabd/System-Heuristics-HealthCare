@@ -5,6 +5,10 @@
   max-width: 760px;
 }
 
+.animWrapper {
+  display: contents;
+}
+
 .title {
   margin: 0;
   font-family: var(--title-font);

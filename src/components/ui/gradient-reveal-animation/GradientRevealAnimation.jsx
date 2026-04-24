@@ -10,6 +10,9 @@ export default function GradientRevealAnimation({
   colorInitial = Colors.secondaryLight(),
   colorAccent = Colors.primary(),
   colorFinal = Colors.text(),
+  charDuration = 0.1,
+  charStagger = 0.005,
+  finalDuration = 0.05,
   className = "",
 }) {
   const containerRef = useRef(null);
@@ -50,13 +53,13 @@ export default function GradientRevealAnimation({
 
     allChars.forEach((char, index) => {
       gsap.to(char, {
-        duration: 0.1,
+        duration: charDuration,
         ease: "none",
         color: colorAccent,
-        delay: index * 0.005,
+        delay: index * charStagger,
         onComplete: () => {
           gsap.to(char, {
-            duration: 0.05,
+            duration: finalDuration,
             ease: "none",
             color: colorFinal,
           });
@@ -71,7 +74,7 @@ export default function GradientRevealAnimation({
       });
       gsap.killTweensOf(allChars);
     };
-  }, [colorInitial, colorAccent, colorFinal]);
+  }, [colorInitial, colorAccent, colorFinal, charDuration, charStagger, finalDuration]);
 
   // Always wrap children in a container div
   return (

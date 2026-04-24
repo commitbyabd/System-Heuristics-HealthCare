@@ -1,4 +1,5 @@
 import styles from "./section-intro.module.css";
+import GradientRevealAnimation from "../gradient-reveal-animation/GradientRevealAnimation";
 
 function SectionIntro({
   title = "Software That Heals How Healthcare Works",
@@ -9,28 +10,56 @@ function SectionIntro({
   descriptionClassName = "",
   color = "#FFFFFF",
   highlightColor = "#2FD1AB",
+  animateTitle = false,
+  animateInitialColor = "#737e8a",
+  animateAccentColor = "#2FD1AB",
+  animateFinalColor = "#FFFFFF",
 }) {
   const words = title.split(" ");
 
+  const titleEl = (
+    <h1 className={`${styles.title} ${titleClassName}`.trim()}>
+      {words.map((word, index) => (
+        <span
+          key={index}
+          style={{
+            color: index + 1 === highlightWord ? highlightColor : color,
+          }}
+        >
+          {word}
+          {index !== words.length - 1 && " "}
+        </span>
+      ))}
+    </h1>
+  );
+
+  const descriptionEl = (
+    <p className={`${styles.description} ${descriptionClassName}`.trim()}>
+      {description}
+    </p>
+  );
+
   return (
     <div className={`${styles.heroText} ${className}`.trim()}>
-      <h1 className={`${styles.title} ${titleClassName}`.trim()}>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            style={{
-              color: index + 1 === highlightWord ? highlightColor : color,
-            }}
-          >
-            {word}
-            {index !== words.length - 1 && " "}
-          </span>
-        ))}
-      </h1>
-
-      <p className={`${styles.description} ${descriptionClassName}`.trim()}>
-        {description}
-      </p>
+      {animateTitle ? (
+        <GradientRevealAnimation
+          className={styles.animWrapper}
+          colorInitial={animateInitialColor}
+          colorAccent={animateAccentColor}
+          colorFinal={animateFinalColor}
+          charDuration={0.5}
+          charStagger={0.035}
+          finalDuration={0.3}
+        >
+          {titleEl}
+          {descriptionEl}
+        </GradientRevealAnimation>
+      ) : (
+        <>
+          {titleEl}
+          {descriptionEl}
+        </>
+      )}
     </div>
   );
 }

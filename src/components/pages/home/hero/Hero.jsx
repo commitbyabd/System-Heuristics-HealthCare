@@ -7,7 +7,7 @@ function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
-        <SectionIntro />
+        <SectionIntro animateTitle />
 
         <div className={styles.actions}>
           <BackgroundFilledButton />
