@@ -19,7 +19,11 @@ function SuccessStory() {
         <div className={styles.cta}>
           <BackgroundFilledButton
             text="Book a Free Strategy Call"
-            width="240px"
+            width="277px"
+            height="46px"
+            className={styles.ctaButton}
+            textClassName={styles.ctaButtonText}
+            iconClassName={styles.ctaButtonIcon}
           />
         </div>
       </div>

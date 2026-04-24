@@ -7,11 +7,16 @@ function BackgroundFilledButton({
   height = "40px",
   Icon = ArrowRight,
   className = "",
+  textClassName = "",
+  iconClassName = "",
 }) {
   return (
-    <button className={styles.button} style={{ width, height }}>
-      <span className={styles.text}>{text}</span>
-      {Icon && <Icon className={styles.icon} />}
+    <button
+      className={`${styles.button} ${className}`.trim()}
+      style={{ width, height }}
+    >
+      <span className={`${styles.text} ${textClassName}`.trim()}>{text}</span>
+      {Icon && <Icon className={`${styles.icon} ${iconClassName}`.trim()} />}
     </button>
   );
 }

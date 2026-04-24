@@ -7,9 +7,9 @@
 .inner {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1120px;
   margin-inline: auto;
-  padding: 44px 24px 48px;
+  padding: 76px 24px 60px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -19,47 +19,80 @@
 
 .title {
   margin: 0;
-  max-width: 720px;
+  max-width: 840px;
   font-family: var(--title-font);
-  font-size: 2.25rem;
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1;
   text-align: center;
-  letter-spacing: -0.01em;
-  color: #1f2940;
+  letter-spacing: 0;
+  color: #0a1428;
+  text-wrap: balance;
 }
 
 .subtitle {
-  margin: 10px auto 0;
-  color: #6a7484;
+  margin: 16px auto 0;
+  color: #6f7b8f;
   font-family: var(--content-font);
-  font-size: 0.875rem;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.45;
-  max-width: 640px;
+  letter-spacing: 0;
+  max-width: 760px;
+  text-wrap: balance;
 }
 
 .cta {
-  margin-top: 18px;
-  transform: scale(0.92);
+  margin-top: 26px;
+}
+
+.ctaButton {
+  border-radius: 10px;
+  padding-inline: 18px;
+  gap: 12px;
+  box-shadow: none;
+}
+
+.ctaButtonText {
+  font-family: var(--title-font);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.ctaButtonIcon {
+  width: 22px;
+  height: 22px;
 }
 
 @media screen and (max-width: 768px) {
   .inner {
-    padding: 36px 20px 40px;
+    padding: 56px 20px 48px;
   }
 
   .title {
-    font-size: clamp(1.6rem, 5vw, 2rem);
+    max-width: 680px;
+    font-size: clamp(2.25rem, 5.5vw, 3rem);
   }
 
   .subtitle {
-    font-size: 0.85rem;
+    max-width: 620px;
+    font-size: 15px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .title {
-    font-size: 1.45rem;
-    line-height: 1.2;
+    font-size: clamp(1.9rem, 8vw, 2.35rem);
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .ctaButton {
+    width: 100% !important;
+    max-width: 277px;
   }
 }

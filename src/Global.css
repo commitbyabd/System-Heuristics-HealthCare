@@ -10,11 +10,6 @@
 @import url("./variables.css");
 
 /* Base reset */
-* {
-  font-family: var(--font-family-primary);
-  font-optical-sizing: auto;
-}
-
 *,
 *::before,
 *::after {
@@ -23,6 +18,8 @@
 body {
   margin: 0;
   background-color: var(--color-light);
+  font-family: var(--font-family-primary);
+  font-optical-sizing: auto;
   cursor: var(--cursor);
 }
 button:hover,

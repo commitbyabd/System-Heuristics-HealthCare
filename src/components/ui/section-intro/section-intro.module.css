@@ -15,6 +15,10 @@
   color: #ffffff;
 }
 
+.title span {
+  font: inherit;
+}
+
 .description {
   margin: 1.5rem 0 0 0;
   max-width: 462px;
