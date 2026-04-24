@@ -109,6 +109,10 @@ function OutdatedSystems() {
               title="The Hidden Cost of Outdated Healthcare Systems"
               highlightWord={5}
               className={styles.title}
+              animateTitle
+              animateInitialColor="#737e8a"
+              animateAccentColor="#2FD1AB"
+              triggerOnScroll
             />
           </div>
 

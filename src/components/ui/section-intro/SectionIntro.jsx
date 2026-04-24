@@ -14,6 +14,8 @@ function SectionIntro({
   animateInitialColor = "#737e8a",
   animateAccentColor = "#2FD1AB",
   animateFinalColor = "#FFFFFF",
+  triggerOnScroll = false,
+  scrollStart = "top 85%",
 }) {
   const words = title.split(" ");
 
@@ -50,6 +52,8 @@ function SectionIntro({
           charDuration={0.5}
           charStagger={0.035}
           finalDuration={0.3}
+          triggerOnScroll={triggerOnScroll}
+          scrollStart={scrollStart}
         >
           {titleEl}
           {descriptionEl}

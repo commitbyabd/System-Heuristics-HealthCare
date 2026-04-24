@@ -58,7 +58,13 @@ function Compliance() {
           <Chip />
         </div>
         <div ref={titleRef}>
-          <SectionTitle className={styles.title} />
+          <SectionTitle
+            className={styles.title}
+            animateTitle
+            animateInitialColor="#737e8a"
+            animateAccentColor="#2FD1AB"
+            triggerOnScroll
+          />
         </div>
       </div>
       <ComplianceData />

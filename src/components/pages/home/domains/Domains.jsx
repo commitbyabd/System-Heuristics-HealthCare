@@ -253,6 +253,11 @@ function Domains() {
               descriptionClassName={styles.centerDescription}
               color="#243246"
               highlightColor="#2FD1AB"
+              animateTitle
+              animateInitialColor="#737e8a"
+              animateAccentColor="#2FD1AB"
+              animateFinalColor="#243246"
+              triggerOnScroll
             />
           </div>
 

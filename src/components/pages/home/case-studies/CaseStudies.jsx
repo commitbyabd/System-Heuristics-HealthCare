@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./case-studies.module.css";
 import BackgroundFilledButton from "../../../ui/buttons/background-filled/BackgroundFilledButton";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
+import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
 import caseStudies from "../../../../data/case-study/CaseStudyData";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -94,12 +95,27 @@ function CaseStudies() {
               className={styles.title}
               color="#1f2940"
               highlightColor="#2FD1AB"
+              animateTitle
+              animateInitialColor="#737e8a"
+              animateAccentColor="#2FD1AB"
+              animateFinalColor="#1f2940"
+              triggerOnScroll
             />
-            <p className={styles.subtitle}>
-              Explore how we help healthcare organizations solve operational,
-              clinical, and patient-experience challenges through tailored
-              digital solutions.
-            </p>
+            <GradientRevealAnimation
+              triggerOnScroll
+              colorInitial="#737e8a"
+              colorAccent="#2FD1AB"
+              colorFinal="#6a7484"
+              charDuration={0.5}
+              charStagger={0.035}
+              finalDuration={0.3}
+            >
+              <p className={styles.subtitle}>
+                Explore how we help healthcare organizations solve operational,
+                clinical, and patient-experience challenges through tailored
+                digital solutions.
+              </p>
+            </GradientRevealAnimation>
             <div className={styles.portfolioBtn}>
               <BackgroundFilledButton
                 text="Checkout our Portfolio"
