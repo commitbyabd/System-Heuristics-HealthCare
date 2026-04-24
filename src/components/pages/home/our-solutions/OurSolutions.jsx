@@ -5,6 +5,7 @@ import styles from "./our-solutions.module.css";
 import Chip from "../../../ui/chip/Chip";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import Container from "../../../ui/container/Container";
+import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
 import FileText from "../../../ui/icons/FileText";
 import Cpu from "../../../ui/icons/Cpu";
 import Users from "../../../ui/icons/Users";
@@ -126,12 +127,27 @@ function OurSolutions() {
               className={styles.title}
               color="#1f2940"
               highlightColor="#2FD1AB"
+              animateTitle
+              animateInitialColor="#737e8a"
+              animateAccentColor="#2FD1AB"
+              animateFinalColor="#1f2940"
+              triggerOnScroll
             />
-            <p className={styles.subtitle}>
-              Explore our key solutions designed to enhance patient care,
-              streamline operations, and drive smarter healthcare decisions
-              through technology.
-            </p>
+            <GradientRevealAnimation
+              triggerOnScroll
+              colorInitial="#737e8a"
+              colorAccent="#2FD1AB"
+              colorFinal="#6a7484"
+              charDuration={0.5}
+              charStagger={0.035}
+              finalDuration={0.3}
+            >
+              <p className={styles.subtitle}>
+                Explore our key solutions designed to enhance patient care,
+                streamline operations, and drive smarter healthcare decisions
+                through technology.
+              </p>
+            </GradientRevealAnimation>
           </div>
 
           <div className={styles.content}>

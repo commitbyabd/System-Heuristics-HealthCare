@@ -17,7 +17,6 @@ export default function GradientRevealAnimation({
   className = "",
   triggerOnScroll = false,
   scrollStart = "top 85%",
-  scrollEnd = "top 45%",
 }) {
   const containerRef = useRef(null);
   const splitRefs = useRef([]);
@@ -49,9 +48,13 @@ export default function GradientRevealAnimation({
       ({ charSplit }) => charSplit.chars,
     );
 
-    gsap.set(allChars, { color: colorInitial });
+    const resetChars = () => {
+      gsap.killTweensOf(allChars);
+      gsap.set(allChars, { color: colorInitial });
+    };
 
     const animateChars = () => {
+      resetChars();
       allChars.forEach((char, index) => {
         gsap.to(char, {
           duration: charDuration,
@@ -69,40 +72,24 @@ export default function GradientRevealAnimation({
       });
     };
 
-    let timeline;
+    gsap.set(allChars, { color: colorInitial });
+
     let scrollTrigger;
 
     if (triggerOnScroll) {
-      timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: scrollStart,
-          end: scrollEnd,
-          scrub: true,
-        },
+      scrollTrigger = ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: scrollStart,
+        onEnter: animateChars,
+        onEnterBack: animateChars,
+        onLeave: resetChars,
+        onLeaveBack: resetChars,
       });
-
-      timeline
-        .to(allChars, {
-          duration: charDuration,
-          ease: "none",
-          color: colorAccent,
-          stagger: charStagger,
-        })
-        .to(allChars, {
-          duration: finalDuration,
-          ease: "none",
-          color: colorFinal,
-          stagger: charStagger,
-        });
-
-      scrollTrigger = timeline.scrollTrigger;
     } else {
       animateChars();
     }
 
     return () => {
-      timeline?.kill();
       scrollTrigger?.kill();
       splitRefs.current.forEach(({ wordSplit, charSplit }) => {
         wordSplit.revert?.();
@@ -119,7 +106,6 @@ export default function GradientRevealAnimation({
     finalDuration,
     triggerOnScroll,
     scrollStart,
-    scrollEnd,
   ]);
 
   // Always wrap children in a container div
