@@ -9,6 +9,8 @@
 }
 
 .card {
+  width: 100%;
+  max-width: 298px;
   background-color: #f5f3ee;
   border-radius: 0.75rem;
   padding: 1rem 0.875rem 1.1rem;
