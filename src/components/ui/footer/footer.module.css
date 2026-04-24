@@ -1,23 +1,9 @@
 /* ===================== Wrapper ===================== */
 .footerWrap {
-  --bg-grid-line: rgba(255, 255, 255, 0.045);
   width: 100%;
-  background-color: #0c2029;
   color: #c9cfd4;
   position: relative;
   overflow: hidden;
-}
-
-.footerWrap::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 50% 0%,
-    rgba(47, 209, 171, 0.08) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
 }
 
 /*  Container  */

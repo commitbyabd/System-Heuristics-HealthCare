@@ -101,8 +101,7 @@ function OutdatedSystems() {
       ref={sectionRef}
       className={`${styles.section} ${hasStarted ? styles.sectionVisible : ""}`.trim()}
     >
-      <div className={styles.panel}>
-        <div className={`${styles.gridOverlay} bgGrid`} aria-hidden="true" />
+      <div className={`${styles.panel} bgGrid`}>
         <Container className={styles.inner}>
           <div className={styles.header}>
             <Chip text="Industry Research" className={styles.chip} />

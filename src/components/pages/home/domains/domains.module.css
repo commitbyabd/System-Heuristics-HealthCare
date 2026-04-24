@@ -1,13 +1,6 @@
 .section {
   width: 100%;
   padding: 80px 0 88px;
-  background:
-    radial-gradient(
-      ellipse at 70% 50%,
-      rgba(47, 209, 171, 0.16),
-      transparent 55%
-    ),
-    linear-gradient(135deg, #0a1f2e 0%, #11384a 55%, #1d5f62 100%);
 }
 
 .container {
@@ -20,26 +13,6 @@
   max-width: 1160px;
   height: 660px;
   margin: 0 auto;
-}
-
-.gridOverlay {
-  --bg-grid-line: rgba(255, 255, 255, 0.06);
-  position: absolute;
-  inset: -40px;
-  opacity: 0.5;
-  pointer-events: none;
-  mask-image: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 1) 20%,
-    rgba(0, 0, 0, 0.6) 60%,
-    transparent 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 1) 20%,
-    rgba(0, 0, 0, 0.6) 60%,
-    transparent 100%
-  );
 }
 
 .domainCard {
@@ -188,10 +161,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
     padding: 0;
-  }
-
-  .gridOverlay {
-    display: none;
   }
 
   .domainCard,

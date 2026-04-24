@@ -219,10 +219,9 @@ function Domains() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section}>
+    <section ref={sectionRef} className={`${styles.section} bgGrid`}>
       <Container className={styles.container}>
         <div ref={gridRef} className={styles.grid}>
-          <div className={`${styles.gridOverlay} bgGrid`} aria-hidden="true" />
           {domainCards.map((card, i) => {
             const IconComp = card.Icon;
             return (
