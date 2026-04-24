@@ -22,14 +22,10 @@
   margin: 0 auto;
 }
 
-.grid::before {
-  content: "";
+.gridOverlay {
+  --bg-grid-line: rgba(255, 255, 255, 0.06);
   position: absolute;
   inset: -40px;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 80px 80px;
   opacity: 0.5;
   pointer-events: none;
   mask-image: radial-gradient(
@@ -194,7 +190,7 @@
     padding: 0;
   }
 
-  .grid::before {
+  .gridOverlay {
     display: none;
   }
 

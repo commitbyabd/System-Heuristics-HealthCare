@@ -102,6 +102,7 @@ function OutdatedSystems() {
       className={`${styles.section} ${hasStarted ? styles.sectionVisible : ""}`.trim()}
     >
       <div className={styles.panel}>
+        <div className={`${styles.gridOverlay} bgGrid`} aria-hidden="true" />
         <Container className={styles.inner}>
           <div className={styles.header}>
             <Chip text="Industry Research" className={styles.chip} />

@@ -25,23 +25,19 @@
     0 20px 50px rgba(5, 20, 30, 0.22);
 }
 
-.panel::before,
+.gridOverlay {
+  --bg-grid-line: rgba(255, 255, 255, 0.08);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
 .panel::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-}
-
-.panel::before {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 88px 56px;
-  opacity: 0.35;
-}
-
-.panel::after {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.08) 0%,

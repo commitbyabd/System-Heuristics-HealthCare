@@ -181,3 +181,19 @@ h6 {
   background-color: rgba(255, 255, 255, 0.096);
   border: 1px solid rgb(255, 255, 255);
 }
+
+/* =========================
+   Utility: Grid Pattern Background
+   Override defaults via CSS vars:
+     --bg-grid-line   → line color (rgba recommended)
+     --bg-grid-size   → cell size, e.g. 56px 56px or 88px 56px
+========================= */
+.bgGrid {
+  --bg-grid-line: #ffffff;
+  --bg-grid-size: 220px 130px;
+  background-image:
+    linear-gradient(var(--bg-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px);
+  background-size: var(--bg-grid-size);
+  background-position: -1px -1px;
+}

@@ -1,12 +1,8 @@
 /* ===================== Wrapper ===================== */
 .footerWrap {
+  --bg-grid-line: rgba(255, 255, 255, 0.045);
   width: 100%;
   background-color: #0c2029;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 56px 56px;
-  background-position: -1px -1px;
   color: #c9cfd4;
   position: relative;
   overflow: hidden;

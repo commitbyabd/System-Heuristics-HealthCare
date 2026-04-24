@@ -25,7 +25,7 @@ function Footer() {
   }, []);
 
   return (
-    <footer className={styles.footerWrap}>
+    <footer className={`${styles.footerWrap} bgGrid`}>
       <Container className={styles.container}>
         <div className={styles.top}>
           <div className={styles.left}>
