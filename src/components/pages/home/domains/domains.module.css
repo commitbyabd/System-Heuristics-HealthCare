@@ -17,19 +17,21 @@
 
 .domainCard {
   position: absolute;
-  width: 260px;
-  min-height: 158px;
-  padding: 14px 16px 16px;
+  width: 300px;
+  min-height: 152px;
+  padding: 16px;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 6px;
+  gap: 11px;
   text-align: center;
   border-radius: 10px;
-  background: rgba(16, 42, 56, 0.62);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.17);
+  border: 2px solid rgba(255, 255, 255, 0.17);
+  backdrop-filter: blur(36.6px);
+  -webkit-backdrop-filter: blur(36.6px);
   box-shadow:
     0 8px 22px rgba(5, 20, 30, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);

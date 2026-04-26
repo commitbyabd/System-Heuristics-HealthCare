@@ -82,8 +82,6 @@ export default function GradientRevealAnimation({
         start: scrollStart,
         onEnter: animateChars,
         onEnterBack: animateChars,
-        onLeave: resetChars,
-        onLeaveBack: resetChars,
       });
     } else {
       animateChars();

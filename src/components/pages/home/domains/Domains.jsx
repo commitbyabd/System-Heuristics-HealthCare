@@ -122,9 +122,9 @@ function Domains() {
 
         switch (card.anchor) {
           case "topLeft":
-            startX = c.left + 24;
+            startX = c.left;
             startY = c.top;
-            endX = r.right - 24;
+            endX = r.right;
             endY = r.bottom;
             break;
           case "topCenter":
@@ -134,15 +134,15 @@ function Domains() {
             endY = r.bottom;
             break;
           case "topRight":
-            startX = c.right - 24;
+            startX = c.right;
             startY = c.top;
-            endX = r.left + 24;
+            endX = r.left;
             endY = r.bottom;
             break;
           case "bottomLeft":
-            startX = c.left + 24;
+            startX = c.left;
             startY = c.bottom;
-            endX = r.right - 24;
+            endX = r.right;
             endY = r.top;
             break;
           case "bottomCenter":
@@ -152,9 +152,9 @@ function Domains() {
             endY = r.top;
             break;
           case "bottomRight":
-            startX = c.right - 24;
+            startX = c.right;
             startY = c.bottom;
-            endX = r.left + 24;
+            endX = r.left;
             endY = r.top;
             break;
           default:
