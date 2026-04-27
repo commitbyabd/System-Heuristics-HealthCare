@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./compliance.module.css";
+import Container from "../../../ui/container/Container";
 import Chip from "../../../ui/chip/Chip";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import ComplianceData from "../../../../data/compliance/ComplianceData";
@@ -53,21 +54,23 @@ function Compliance() {
 
   return (
     <section ref={sectionRef} className={styles.compliance}>
-      <div className={styles.header}>
-        <div ref={chipRef}>
-          <Chip />
+      <Container>
+        <div className={styles.header}>
+          <div ref={chipRef}>
+            <Chip />
+          </div>
+          <div ref={titleRef}>
+            <SectionTitle
+              className={styles.title}
+              animateTitle
+              animateInitialColor="#737e8a"
+              animateAccentColor="#2FD1AB"
+              triggerOnScroll
+            />
+          </div>
         </div>
-        <div ref={titleRef}>
-          <SectionTitle
-            className={styles.title}
-            animateTitle
-            animateInitialColor="#737e8a"
-            animateAccentColor="#2FD1AB"
-            triggerOnScroll
-          />
-        </div>
-      </div>
-      <ComplianceData />
+        <ComplianceData />
+      </Container>
     </section>
   );
 }

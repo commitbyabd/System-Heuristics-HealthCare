@@ -6,22 +6,19 @@ import OurSolutions from "./our-solutions/OurSolutions";
 import Domains from "./domains/Domains";
 import CaseStudies from "./case-studies/CaseStudies";
 import SuccessStory from "./success-story/SuccessStory";
-import Container from "../../ui/container/Container";
 
 function HomeMain() {
   return (
     <div>
       <SharedGradient>
-        <Container>
-          <Hero />
-          <Compliance />
-        </Container>
-        <OutdatedSystems />
-        <OurSolutions />
-        <Domains />
-        <CaseStudies />
-        <SuccessStory />
+        <Hero />
+        <Compliance />
       </SharedGradient>
+      <OutdatedSystems />
+      <OurSolutions />
+      <Domains />
+      <CaseStudies />
+      <SuccessStory />
     </div>
   );
 }
