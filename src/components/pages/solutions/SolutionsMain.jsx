@@ -1,7 +1,8 @@
+import Hero from "./hero/Hero";
 function SolutionsMain() {
   return (
     <section>
-      <h1>Solutions</h1>
+      <Hero />
     </section>
   );
 }
