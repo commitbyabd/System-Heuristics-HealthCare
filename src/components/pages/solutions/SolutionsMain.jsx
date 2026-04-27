@@ -1,11 +1,11 @@
 import Hero from "./hero/Hero";
-import Container from "../../ui/container/Container";
-import Faq from "./faq/Faq";
+import SolutionsEcosystem from "./solutions-ecosystem/Solutions-ecosystem";
+
 function SolutionsMain() {
   return (
     <section>
       <Hero />
-      <Faq />
+      <SolutionsEcosystem />
     </section>
   );
 }

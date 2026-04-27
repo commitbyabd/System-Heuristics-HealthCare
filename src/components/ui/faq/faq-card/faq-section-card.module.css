@@ -8,7 +8,7 @@
 .cardBox {
   position: relative;
   width: 100%;
-  border-radius: var(--radius);
+
   padding: var(--padding-card);
   overflow: hidden;
   transition:
@@ -52,7 +52,6 @@
 }
 
 .cardBox.open {
-  border-color: var(--color-teal);
   box-shadow: var(--box-shadow);
 }
 

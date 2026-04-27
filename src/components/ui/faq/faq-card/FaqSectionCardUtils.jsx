@@ -19,9 +19,9 @@ export function animateLineOnScroll(boxRef, lineRef) {
       transformOrigin: "left center",
       scrollTrigger: {
         trigger: boxRef.current,
-        start: "top 90%",
-        end: "top 60%",
-        scrub: true,
+        start: "top bottom",
+        end: "bottom 30%",
+        scrub: 1.2,
       },
     },
   );
