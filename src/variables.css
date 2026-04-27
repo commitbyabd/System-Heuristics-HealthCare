@@ -75,6 +75,10 @@ Variables:
   --color-light: #daedff;
   --color-dark: #001830;
 
+  /* Teal accent (brand) */
+  --color-teal: #2fd1ab;
+  --color-teal-hover: #25b594;
+
   /* Borders and Shadows */
   --radius: 8px;
   --rounded: 100px;
