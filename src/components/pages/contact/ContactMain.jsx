@@ -1,7 +1,8 @@
+import Hero from "./hero/Hero";
 function ContactMain() {
   return (
     <section>
-      <h1>Contact</h1>
+      <Hero />
     </section>
   );
 }
