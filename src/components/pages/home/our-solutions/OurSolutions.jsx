@@ -69,7 +69,7 @@ function OurSolutions() {
       const trigger = ScrollTrigger.create({
         trigger: pin,
         pin,
-        start: "top top",
+        start: "center center",
         end: () => `+=${window.innerHeight * (total - 1)}`,
         scrub: 1,
         anticipatePin: 1,
