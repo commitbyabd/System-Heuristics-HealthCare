@@ -179,15 +179,45 @@ function HealthcareEnvironment() {
                     <div className={styles.copyBlock}>
                       <div className={styles.copyRow}>
                         <h3 className={styles.copyHeading}>Pain Point:</h3>
-                        <p className={styles.copyText}>{step.painPoint}</p>
+                        <GradientRevealAnimation
+                          key={`${step.id}-pain-${index === activeIndex ? "active" : "idle"}`}
+                          colorInitial="#5b6b78"
+                          colorAccent="#2FD1AB"
+                          colorFinal="#c5cdd4"
+                          charDuration={0.4}
+                          charStagger={0.02}
+                          finalDuration={0.2}
+                        >
+                          <p className={styles.copyText}>{step.painPoint}</p>
+                        </GradientRevealAnimation>
                       </div>
                       <div className={styles.copyRow}>
                         <h3 className={styles.copyHeading}>Solution:</h3>
-                        <p className={styles.copyText}>{step.solution}</p>
+                        <GradientRevealAnimation
+                          key={`${step.id}-solution-${index === activeIndex ? "active" : "idle"}`}
+                          colorInitial="#5b6b78"
+                          colorAccent="#2FD1AB"
+                          colorFinal="#c5cdd4"
+                          charDuration={0.4}
+                          charStagger={0.02}
+                          finalDuration={0.2}
+                        >
+                          <p className={styles.copyText}>{step.solution}</p>
+                        </GradientRevealAnimation>
                       </div>
                       <div className={styles.copyRow}>
                         <h3 className={styles.copyHeading}>Result:</h3>
-                        <p className={styles.copyText}>{step.result}</p>
+                        <GradientRevealAnimation
+                          key={`${step.id}-result-${index === activeIndex ? "active" : "idle"}`}
+                          colorInitial="#5b6b78"
+                          colorAccent="#2FD1AB"
+                          colorFinal="#c5cdd4"
+                          charDuration={0.4}
+                          charStagger={0.02}
+                          finalDuration={0.2}
+                        >
+                          <p className={styles.copyText}>{step.result}</p>
+                        </GradientRevealAnimation>
                       </div>
                     </div>
                   </article>
