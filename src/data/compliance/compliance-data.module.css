@@ -1,5 +1,6 @@
 .complianceSection {
   width: 100%;
+  overflow: clip;
 }
 
 .cardsGrid {
@@ -18,6 +19,7 @@
   min-height: 17rem;
   display: flex;
   flex-direction: column;
+  will-change: transform, opacity;
 }
 
 .tag {

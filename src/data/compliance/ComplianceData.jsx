@@ -58,7 +58,11 @@ function ComplianceData() {
           const words = card.title.split(" ");
 
           return (
-            <article key={card.id} className={styles.card}>
+            <article
+              key={card.id}
+              className={styles.card}
+              data-compliance-card
+            >
               <p className={styles.tag}>{card.tag}</p>
 
               <div className={styles.titleRow}>
@@ -86,7 +90,7 @@ function ComplianceData() {
 
               <Link to="/" className={styles.cardButton}>
                 <span>{card.buttonText}</span>
-                <span className={styles.arrow}>→</span>
+                <span className={styles.arrow}>&rarr;</span>
               </Link>
             </article>
           );
