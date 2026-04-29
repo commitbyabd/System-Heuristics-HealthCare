@@ -1,17 +1,25 @@
 .button {
-  background-color: #2fd1ab;
-  color: white;
-  border: none;
+  height: 40px;
   border-radius: 8px;
   padding-left: 16px;
   padding-right: 16px;
   gap: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.filled {
+  background-color: var(--color-teal);
+  border: none;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid var(--color-teal);
 }
 
 .text {
@@ -20,11 +28,12 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
-  color: #ffffff;
+  color: var(--color-light);
   white-space: nowrap;
 }
 
 .icon {
   width: 24px;
   height: 24px;
+  color: var(--color-light);
 }

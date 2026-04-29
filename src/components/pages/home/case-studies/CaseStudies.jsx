@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./case-studies.module.css";
-import BackgroundFilledButton from "../../../ui/buttons/background-filled/BackgroundFilledButton";
+import BackgroundFilledButton from "../../../ui/button/background-filled/BackgroundFilledButton";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
 import caseStudies from "../../../../data/case-study/CaseStudyData";
@@ -53,10 +53,7 @@ function CaseStudies() {
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
-            const idx = Math.min(
-              Math.floor(self.progress * total),
-              total - 1,
-            );
+            const idx = Math.min(Math.floor(self.progress * total), total - 1);
             setActiveIndex(idx);
           },
         },

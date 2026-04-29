@@ -24,7 +24,7 @@ import { Constants } from "../../../utils/global/Constants";
 import LazyImage from "../lazy-image/LazyImage";
 import Menu from "../icons/Menu";
 import X from "../icons/X";
-import BackgroundFilledButton from "../buttons/background-filled/BackgroundFilledButton";
+import Button from "../button/Button";
 import Phone from "../icons/Phone";
 import Container from "../container/Container";
 
@@ -126,7 +126,12 @@ const Nav = () => {
           <ul className={styles.navLinks}>{renderNavLinks()}</ul>
 
           <div className={styles.bookCallWrap}>
-            <BackgroundFilledButton text="Book a call" width="150px" Icon={Phone} />
+            <Button
+              text="Book a call"
+              variant="filled"
+              Icon={Phone}
+              width="150px"
+            />
           </div>
 
           <button
