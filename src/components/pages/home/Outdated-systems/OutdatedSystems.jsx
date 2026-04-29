@@ -22,8 +22,7 @@ const stats = [
     low: 10,
     high: 30,
     suffix: "%",
-    description:
-      "of staff time consumed by manual documentation and workflows",
+    description: "of staff time consumed by manual documentation and workflows",
     hasAccentLine: true,
   },
   {
@@ -32,8 +31,7 @@ const stats = [
     high: null,
     prefix: "$",
     suffix: "k+",
-    description:
-      "annual losses due to compliance gaps and system failures",
+    description: "annual losses due to compliance gaps and system failures",
   },
 ];
 

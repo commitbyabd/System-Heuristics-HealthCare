@@ -1,0 +1,142 @@
+.section {
+  padding: 0 0 96px;
+  background: #ffffff;
+}
+
+.intro {
+  align-items: flex-start;
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.introTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.introDescription {
+  margin-top: 12px;
+  max-width: 620px;
+  color: #7f8b96;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.group {
+  background: #f6f6f1;
+  border: 1px solid #ece9df;
+  border-radius: 18px;
+  padding: 18px 24px;
+}
+
+.groupOpen {
+  padding: 22px 24px 24px;
+}
+
+.groupToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #22313f;
+  text-align: left;
+  cursor: var(--hover-cursor);
+}
+
+.groupLabel,
+.groupHeading {
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #22313f;
+}
+
+.groupIcon {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.groupIconOpen {
+  transform: rotate(180deg);
+}
+
+.groupBody {
+  display: grid;
+  grid-template-columns: minmax(180px, 250px) 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-top: 18px;
+}
+
+.groupSidebar {
+  padding-top: 8px;
+}
+
+.groupContent {
+  min-width: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .section {
+    padding-bottom: 72px;
+  }
+
+  .group {
+    padding: 18px 20px;
+  }
+
+  .groupOpen {
+    padding: 20px;
+  }
+
+  .groupBody {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .groupSidebar {
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .section {
+    padding-bottom: 56px;
+  }
+
+  .intro {
+    margin-bottom: 22px;
+  }
+
+  .introDescription {
+    font-size: 13px;
+  }
+
+  .group {
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .groupOpen {
+    padding: 16px;
+  }
+
+  .groupLabel,
+  .groupHeading {
+    font-size: 1.35rem;
+  }
+}
