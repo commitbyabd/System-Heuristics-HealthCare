@@ -29,7 +29,7 @@ function Hero() {
 
         <img
           className={styles.image}
-          src="/images/home/hero-doc.svg"
+          src="/images/home/hero-doc.png"
           alt="hero-doc"
         />
       </Container>
