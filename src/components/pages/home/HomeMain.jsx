@@ -17,8 +17,8 @@ function HomeMain() {
       <OutdatedSystems />
       <OurSolutions />
       <Domains />
-      {/* <CaseStudies /> */}
-      {/* <SuccessStory /> */}
+      <CaseStudies />
+      <SuccessStory />
     </div>
   );
 }
