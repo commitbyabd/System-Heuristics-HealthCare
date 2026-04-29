@@ -1,10 +1,5 @@
-import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./compliance-data.module.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const cardsData = [
   {
@@ -56,52 +51,14 @@ const cardsData = [
 const defaultHighlightColor = "#2FD1AB";
 
 function ComplianceData() {
-  const gridRef = useRef(null);
-  const cardRefs = useRef([]);
-
-  useLayoutEffect(() => {
-    const grid = gridRef.current;
-    const cards = cardRefs.current.filter(Boolean);
-    if (!grid || cards.length === 0) return;
-
-    const ctx = gsap.context(() => {
-      gsap.set(cards, { opacity: 0, x: -80 });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: grid,
-          start: "top 90%",
-          end: "top 25%",
-          scrub: 1.2,
-        },
-      });
-
-      tl.to(cards, {
-        opacity: 1,
-        x: 0,
-        ease: "power3.out",
-        duration: 1,
-        stagger: 0.6,
-      });
-    }, grid);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section className={styles.complianceSection}>
-      <div ref={gridRef} className={styles.cardsGrid}>
-        {cardsData.map((card, index) => {
+      <div className={styles.cardsGrid}>
+        {cardsData.map((card) => {
           const words = card.title.split(" ");
 
           return (
-            <article
-              key={card.id}
-              ref={(el) => {
-                cardRefs.current[index] = el;
-              }}
-              className={styles.card}
-            >
+            <article key={card.id} className={styles.card}>
               <p className={styles.tag}>{card.tag}</p>
 
               <div className={styles.titleRow}>
