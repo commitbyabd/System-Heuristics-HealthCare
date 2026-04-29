@@ -7,12 +7,6 @@ import ArrowRight from "../../../ui/icons/ArrowRight";
 function Hero() {
   return (
     <section className={styles.hero}>
-      <img
-        className={styles.heroBg}
-        src="/images/home/hero-bg.png"
-        alt=""
-        aria-hidden="true"
-      />
       <Container className={styles.layout}>
         <div className={styles.content}>
           <SectionIntro animateTitle />

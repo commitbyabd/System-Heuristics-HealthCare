@@ -3,11 +3,11 @@
   overflow: hidden;
   background:
     radial-gradient(
-      ellipse at 50% 5%,
-      rgba(47, 209, 171, 0.18) 0%,
-      transparent 40%
+      ellipse at 55% 50%,
+      rgba(255, 255, 255, 0.12) 0%,
+      transparent 55%
     ),
-    linear-gradient(180deg, #0a1f2e 0%, #050d18 100%);
+    linear-gradient(90deg, #0a1f2e 0%, #1f6b59 100%);
 }
 
 .inner {
