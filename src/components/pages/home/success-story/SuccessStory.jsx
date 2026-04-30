@@ -1,6 +1,6 @@
 import styles from "./success-story.module.css";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
-import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
+import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import Button from "../../../ui/button/Button";
 function SuccessStory() {
   return (
@@ -16,20 +16,16 @@ function SuccessStory() {
           animateAccentColor="#2FD1AB"
           animateFinalColor="#1f2940"
         />
-        <GradientRevealAnimation
-          triggerOnScroll
+        <GradientScrollAnimation
           colorInitial="#737e8a"
           colorAccent="#2FD1AB"
           colorFinal="#6f7b8f"
-          charDuration={0.5}
-          charStagger={0.035}
-          finalDuration={0.3}
         >
           <p className={styles.subtitle}>
             We turn proven healthcare strategies into practical digital
             solutions built for your goals, workflows, and patients.
           </p>
-        </GradientRevealAnimation>
+        </GradientScrollAnimation>
         <div className={styles.cta}>
           <Button text="Book a Consultation" variant="filled" width="222px" />
         </div>

@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./case-studies.module.css";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
-import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
+import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import caseStudies from "../../../../data/case-study/CaseStudyData";
 import Button from "../../../ui/button/Button";
 gsap.registerPlugin(ScrollTrigger);
@@ -96,21 +96,17 @@ function CaseStudies() {
               animateAccentColor="#2FD1AB"
               animateFinalColor="#1f2940"
             />
-            <GradientRevealAnimation
-              triggerOnScroll
+            <GradientScrollAnimation
               colorInitial="#737e8a"
               colorAccent="#2FD1AB"
               colorFinal="#6a7484"
-              charDuration={0.5}
-              charStagger={0.035}
-              finalDuration={0.3}
             >
               <p className={styles.subtitle}>
                 Explore how we help healthcare organizations solve operational,
                 clinical, and patient-experience challenges through tailored
                 digital solutions.
               </p>
-            </GradientRevealAnimation>
+            </GradientScrollAnimation>
             <div className={styles.portfolioBtn}>
               <Button
                 text="Book a Consultation"
