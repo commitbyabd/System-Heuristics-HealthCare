@@ -2,11 +2,10 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./case-studies.module.css";
-import BackgroundFilledButton from "../../../ui/buttons/background-filled/BackgroundFilledButton";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
 import caseStudies from "../../../../data/case-study/CaseStudyData";
-
+import Button from "../../../ui/button/Button";
 gsap.registerPlugin(ScrollTrigger);
 
 function PlayIcon(props) {
@@ -113,8 +112,9 @@ function CaseStudies() {
               </p>
             </GradientRevealAnimation>
             <div className={styles.portfolioBtn}>
-              <BackgroundFilledButton
-                text="Checkout our Portfolio"
+              <Button
+                text="Book a Consultation"
+                variant="filled"
                 width="222px"
               />
             </div>
@@ -153,9 +153,10 @@ function CaseStudies() {
                       </p>
                       <div className={styles.slideActions}>
                         <a href={study.liveDemo}>
-                          <BackgroundFilledButton
-                            text="Live Demo"
-                            width="132px"
+                          <Button
+                            text="Book a Consultation"
+                            variant="filled"
+                            width="222px"
                           />
                         </a>
                         <a
