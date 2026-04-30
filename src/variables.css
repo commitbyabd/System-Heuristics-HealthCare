@@ -25,6 +25,7 @@ Variables:
   --font-md: 16px;
   --font-md-lg: 18px;
   --font-standard: 20px;
+  --font-md-xl: 22px;
   --font-lg: 24px;
   --font-xl: 28px;
   --font-2xl: 32px;
@@ -56,6 +57,7 @@ Variables:
   /* Layout */
   --padding-card: 16px 24px;
   --padding-layout: 32px 64px;
+  --gap-card: 20px;
 
   /* Colors */
   --color-primary: #00b3ff;
@@ -63,7 +65,7 @@ Variables:
   --color-primary-light: #daedff;
   --color-primary-light-hover: #b3d9ff;
 
-  --color-text: #00213a;
+  --color-text: #636360;
   --color-secondary: #8f9eae;
   --color-secondary-light: #737e8a;
 

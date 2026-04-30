@@ -6,6 +6,7 @@
   justify-content: center; /* Vertically center */
   min-height: 100vh; /* Ensure the section takes up full viewport height */
   width: auto;
+  overflow-x: clip;
 }
 
 .header {

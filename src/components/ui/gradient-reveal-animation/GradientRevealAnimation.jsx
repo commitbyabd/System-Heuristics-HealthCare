@@ -17,6 +17,7 @@ export default function GradientRevealAnimation({
   className = "",
   triggerOnScroll = false,
   scrollStart = "top 85%",
+  highlightWords = [],
 }) {
   const containerRef = useRef(null);
   const splitRefs = useRef([]);
@@ -30,7 +31,9 @@ export default function GradientRevealAnimation({
       ? Array.from(containerRef.current.children)
       : [containerRef.current];
 
-    elements.forEach((element) => {
+    const highlightedChars = new Set();
+
+    elements.forEach((element, elementIndex) => {
       const wordSplit = SplitText.create(element, {
         type: "words",
         wordsClass: "word",
@@ -39,6 +42,15 @@ export default function GradientRevealAnimation({
       const charSplit = SplitText.create(wordSplit.words, {
         type: "chars",
         charsClass: "char",
+      });
+
+      highlightWords.forEach((target) => {
+        if (target.elementIndex !== elementIndex) return;
+        const wordEl = wordSplit.words[target.wordIndex];
+        if (!wordEl) return;
+        charSplit.chars.forEach((char) => {
+          if (wordEl.contains(char)) highlightedChars.add(char);
+        });
       });
 
       splitRefs.current.push({ wordSplit, charSplit });
@@ -56,12 +68,14 @@ export default function GradientRevealAnimation({
     const animateChars = () => {
       resetChars();
       allChars.forEach((char, index) => {
+        const keepAccent = highlightedChars.has(char);
         gsap.to(char, {
           duration: charDuration,
           ease: "none",
           color: colorAccent,
           delay: index * charStagger,
           onComplete: () => {
+            if (keepAccent) return;
             gsap.to(char, {
               duration: finalDuration,
               ease: "none",
@@ -95,6 +109,7 @@ export default function GradientRevealAnimation({
       });
       gsap.killTweensOf(allChars);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     colorInitial,
     colorAccent,
@@ -104,6 +119,7 @@ export default function GradientRevealAnimation({
     finalDuration,
     triggerOnScroll,
     scrollStart,
+    JSON.stringify(highlightWords),
   ]);
 
   // Always wrap children in a container div

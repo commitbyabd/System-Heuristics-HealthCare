@@ -1,8 +1,7 @@
 import styles from "./hero.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
-import BackgroundFilledButton from "../../../ui/buttons/background-filled/BackgroundFilledButton";
-import BackgroundTransparentButton from "../../../ui/buttons/background-transparent/BackgroundTransparentButton";
+import Button from "../../../ui/button/Button";
 
 function Hero() {
   return (
@@ -12,12 +11,14 @@ function Hero() {
           <SectionIntro animateTitle />
 
           <div className={styles.actions}>
-            <BackgroundFilledButton
+            <Button
               text="Book a Consultation"
+              variant="filled"
               width="222px"
             />
-            <BackgroundTransparentButton
+            <Button
               text="View Our Work"
+              variant="transparent"
               width="147px"
             />
           </div>

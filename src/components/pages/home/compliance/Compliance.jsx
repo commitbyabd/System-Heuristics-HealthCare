@@ -17,58 +17,48 @@ function Compliance() {
     if (!section) return;
 
     const mm = gsap.matchMedia();
-    const ctx = gsap.context(() => {
-      mm.add("(min-width: 769px)", () => {
-        const cards = gsap.utils.toArray("[data-compliance-card]");
-        if (!cards.length) return undefined;
-        const scrollDistance = Math.max(
-          window.innerHeight * cards.length,
-          cards.length * 320,
-        );
 
-        gsap.set(cards, {
-          x: (index) => window.innerWidth * 0.5 + index * 36,
-          opacity: 0,
-        });
+    mm.add("(min-width: 769px)", () => {
+      const cards = gsap.utils.toArray(
+        section.querySelectorAll("[data-compliance-card]"),
+      );
+      if (!cards.length) return undefined;
 
-        const timeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            pin: true,
-            start: "top top",
-            end: () => `+=${scrollDistance}`,
-            scrub: 1.2,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        cards.forEach((card) => {
-          timeline.to(card, {
-            x: 0,
-            opacity: 1,
-            ease: "none",
-            duration: 1,
-          });
-        });
-
-        return () => {
-          timeline.scrollTrigger?.kill();
-          timeline.kill();
-          gsap.set(cards, { clearProps: "transform,opacity" });
-        };
+      gsap.set(cards, {
+        x: () => window.innerWidth,
+        opacity: 0,
       });
 
-      mm.add("(max-width: 768px)", () => {
-        const cards = gsap.utils.toArray("[data-compliance-card]");
+      const tween = gsap.to(cards, {
+        x: 0,
+        opacity: 1,
+        ease: "power3.out",
+        duration: 0.9,
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          once: true,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
         gsap.set(cards, { clearProps: "transform,opacity" });
-      });
-    }, section);
+      };
+    });
+
+    mm.add("(max-width: 768px)", () => {
+      const cards = gsap.utils.toArray(
+        section.querySelectorAll("[data-compliance-card]"),
+      );
+      gsap.set(cards, { clearProps: "transform,opacity" });
+    });
 
     return () => {
-      ctx.revert();
       mm.revert();
-      ScrollTrigger.refresh();
     };
   }, []);
 
@@ -78,7 +68,7 @@ function Compliance() {
         <div className={styles.header}>
           <Chip />
 
-          <SectionTitle className={styles.title} />
+          <SectionTitle className={styles.title} animateTitle />
         </div>
 
         <ComplianceData />

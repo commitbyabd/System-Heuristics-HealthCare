@@ -1,5 +1,5 @@
 import styles from "./section-title.module.css";
-import GradientRevealAnimation from "../gradient-reveal-animation/GradientRevealAnimation";
+import GradientScrollAnimation from "../gradient-scroll-animation/GradientScrollAnimation";
 
 function SectionTitle({
   title = "Built for Healthcare Compliance & Security",
@@ -11,8 +11,6 @@ function SectionTitle({
   animateInitialColor = "#737e8a",
   animateAccentColor = "#2FD1AB",
   animateFinalColor = "#FFFFFF",
-  triggerOnScroll = false,
-  scrollStart = "top 85%",
 }) {
   const words = title.split(" ");
 
@@ -33,18 +31,13 @@ function SectionTitle({
   );
 
   return animateTitle ? (
-    <GradientRevealAnimation
+    <GradientScrollAnimation
       colorInitial={animateInitialColor}
       colorAccent={animateAccentColor}
       colorFinal={animateFinalColor}
-      charDuration={0.5}
-      charStagger={0.035}
-      finalDuration={0.3}
-      triggerOnScroll={triggerOnScroll}
-      scrollStart={scrollStart}
     >
       {titleEl}
-    </GradientRevealAnimation>
+    </GradientScrollAnimation>
   ) : (
     titleEl
   );

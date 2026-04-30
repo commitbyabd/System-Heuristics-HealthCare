@@ -49,11 +49,16 @@ function SectionIntro({
           colorInitial={animateInitialColor}
           colorAccent={animateAccentColor}
           colorFinal={animateFinalColor}
-          charDuration={0.5}
-          charStagger={0.035}
-          finalDuration={0.3}
+          charDuration={0.25}
+          charStagger={0.018}
+          finalDuration={0.15}
           triggerOnScroll={triggerOnScroll}
           scrollStart={scrollStart}
+          highlightWords={
+            highlightWord
+              ? [{ elementIndex: 0, wordIndex: highlightWord - 1 }]
+              : []
+          }
         >
           {titleEl}
           {descriptionEl}
