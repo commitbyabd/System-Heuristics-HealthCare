@@ -23,6 +23,7 @@ const domainCards = [
     Icon: Brain,
     posClass: "cardTopLeft",
     anchor: "topLeft",
+    entryRotate: -7,
   },
   {
     id: "documentation",
@@ -31,6 +32,7 @@ const domainCards = [
     Icon: FileText,
     posClass: "cardTopCenter",
     anchor: "topCenter",
+    entryRotate: -2,
   },
   {
     id: "security",
@@ -39,6 +41,7 @@ const domainCards = [
     Icon: Lock,
     posClass: "cardTopRight",
     anchor: "topRight",
+    entryRotate: 7,
   },
   {
     id: "operations",
@@ -47,6 +50,7 @@ const domainCards = [
     Icon: Building2,
     posClass: "cardBottomLeft",
     anchor: "bottomLeft",
+    entryRotate: 7,
   },
   {
     id: "remote-care",
@@ -55,14 +59,17 @@ const domainCards = [
     Icon: Globe,
     posClass: "cardBottomCenter",
     anchor: "bottomCenter",
+    entryRotate: 2,
   },
   {
     id: "analytics",
     title: "Healthcare Analytics",
-    description: "Data-driven insights for better clinical and operational decisions",
+    description:
+      "Data-driven insights for better clinical and operational decisions",
     Icon: BarChart3,
     posClass: "cardBottomRight",
     anchor: "bottomRight",
+    entryRotate: -7,
   },
 ];
 
@@ -70,6 +77,7 @@ function Domains() {
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
   const centerCardRef = useRef(null);
+  const hubAuraRef = useRef(null);
   const cardRefs = useRef([]);
   const lineRefs = useRef([]);
 
@@ -77,7 +85,8 @@ function Domains() {
     const section = sectionRef.current;
     const grid = gridRef.current;
     const center = centerCardRef.current;
-    if (!section || !grid || !center) return;
+    const hubAura = hubAuraRef.current;
+    if (!section || !grid || !center || !hubAura) return undefined;
 
     const positionLines = () => {
       if (window.matchMedia("(max-width: 1100px)").matches) {
@@ -98,12 +107,17 @@ function Domains() {
         cy: (centerRect.top + centerRect.bottom) / 2 - gridRect.top,
       };
 
-      domainCards.forEach((card, i) => {
-        const cardEl = cardRefs.current[i];
-        const line = lineRefs.current[i];
-        if (!cardEl || !line) return;
+      domainCards.forEach((card, index) => {
+        const cardEl = cardRefs.current[index];
+        const lineEl = lineRefs.current[index];
+        if (!cardEl || !lineEl) return;
+        const connectionOverlap = 22;
+        const topHubCornerInsetX = 18;
+        const topHubCornerInsetY = 14;
+        const topCardCornerInsetX = 16;
+        const topCardCornerInsetY = 12;
 
-        line.style.display = "block";
+        lineEl.style.display = "block";
 
         const rect = cardEl.getBoundingClientRect();
         const r = {
@@ -122,10 +136,10 @@ function Domains() {
 
         switch (card.anchor) {
           case "topLeft":
-            startX = c.left;
-            startY = c.top;
-            endX = r.right;
-            endY = r.bottom;
+            startX = c.left + topHubCornerInsetX;
+            startY = c.top + topHubCornerInsetY;
+            endX = r.right - topCardCornerInsetX;
+            endY = r.bottom - topCardCornerInsetY;
             break;
           case "topCenter":
             startX = c.cx;
@@ -134,10 +148,10 @@ function Domains() {
             endY = r.bottom;
             break;
           case "topRight":
-            startX = c.right;
-            startY = c.top;
-            endX = r.left;
-            endY = r.bottom;
+            startX = c.right - topHubCornerInsetX;
+            startY = c.top + topHubCornerInsetY;
+            endX = r.left + topCardCornerInsetX;
+            endY = r.bottom - topCardCornerInsetY;
             break;
           case "bottomLeft":
             startX = c.left;
@@ -164,71 +178,229 @@ function Domains() {
         const dx = endX - startX;
         const dy = endY - startY;
         const length = Math.sqrt(dx * dx + dy * dy);
-        const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+        const unitX = length === 0 ? 0 : dx / length;
+        const unitY = length === 0 ? 0 : dy / length;
+        const adjustedStartX = startX - unitX * connectionOverlap;
+        const adjustedStartY = startY - unitY * connectionOverlap;
+        const adjustedEndX = endX + unitX * connectionOverlap;
+        const adjustedEndY = endY + unitY * connectionOverlap;
+        const adjustedDx = adjustedEndX - adjustedStartX;
+        const adjustedDy = adjustedEndY - adjustedStartY;
+        const adjustedLength = Math.sqrt(
+          adjustedDx * adjustedDx + adjustedDy * adjustedDy,
+        );
+        const angle = (Math.atan2(adjustedDy, adjustedDx) * 180) / Math.PI;
 
-        line.style.left = `${startX}px`;
-        line.style.top = `${startY}px`;
-        line.style.width = `${length}px`;
-        line.style.transform = `rotate(${angle}deg)`;
+        lineEl.style.left = `${adjustedStartX}px`;
+        lineEl.style.top = `${adjustedStartY}px`;
+        lineEl.style.width = `${adjustedLength}px`;
+        lineEl.style.transform = `rotate(${angle}deg)`;
       });
     };
 
-    positionLines();
-    window.addEventListener("resize", positionLines);
+    const resizeObserver =
+      typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(() => positionLines())
+        : null;
 
-    const ctx = gsap.context(() => {
-      gsap.set(lineRefs.current, { clipPath: "inset(0 100% 0 0)" });
-      gsap.set(cardRefs.current, { opacity: 0 });
+    resizeObserver?.observe(grid);
+    resizeObserver?.observe(center);
+    cardRefs.current.forEach((cardEl) => {
+      if (cardEl) resizeObserver?.observe(cardEl);
+    });
+
+    positionLines();
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1101px)", () => {
+      const pulse = gsap.to(hubAura, {
+        scale: 1.08,
+        autoAlpha: 0.28,
+        duration: 2.2,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        paused: true,
+      });
+
+      gsap.set(center, {
+        autoAlpha: 0,
+        y: 20,
+        scale: 0.96,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.set(hubAura, {
+        autoAlpha: 0.14,
+        scale: 0.92,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.set(cardRefs.current, {
+        autoAlpha: 0,
+        y: 24,
+        scale: 0.88,
+        rotate: (index) => domainCards[index].entryRotate,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.set(lineRefs.current, {
+        autoAlpha: 1,
+        clipPath: "inset(0 100% 0 0)",
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top 75%",
-          once: true,
-          onEnter: positionLines,
+          start: "top 74%",
+          toggleActions: "play none none reset",
+          onEnter: () => {
+            positionLines();
+            pulse.pause(0);
+          },
+          onEnterBack: () => {
+            positionLines();
+            pulse.pause(0);
+          },
+          onLeaveBack: () => {
+            pulse.pause(0);
+            gsap.set(hubAura, { autoAlpha: 0.14, scale: 0.92 });
+          },
         },
       });
 
-      tl.to(
-        cardRefs.current,
-        {
-          opacity: 1,
-          ease: "power2.out",
-          duration: 0.9,
-          stagger: 0.12,
-        },
-        0,
-      );
+      tl.to(center, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.78,
+        ease: "back.out(1.45)",
+      })
+        .to(
+          lineRefs.current,
+          {
+            clipPath: "inset(0 0% 0 0)",
+            duration: 0.55,
+            ease: "power2.out",
+            stagger: 0.08,
+          },
+          "-=0.2",
+        )
+        .to(
+          cardRefs.current,
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            rotate: 0,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+            stagger: 0.08,
+          },
+          "-=0.34",
+        )
+        .call(() => pulse.play(), null, ">-0.12");
 
-      tl.to(
-        lineRefs.current,
-        {
-          clipPath: "inset(0 0% 0 0)",
-          ease: "power2.inOut",
-          duration: 1.6,
-          stagger: 0.12,
+      return () => {
+        pulse.kill();
+      };
+    });
+
+    mm.add("(max-width: 1100px)", () => {
+      lineRefs.current.forEach((line) => {
+        if (line) line.style.display = "none";
+      });
+
+      gsap.set(center, {
+        autoAlpha: 0,
+        y: 24,
+        scale: 0.97,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.set(hubAura, {
+        autoAlpha: 0.14,
+        scale: 0.92,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.set(cardRefs.current, {
+        autoAlpha: 0,
+        y: 18,
+        scale: 0.9,
+        rotate: (index) => domainCards[index].entryRotate * 0.7,
+        transformOrigin: "50% 50%",
+      });
+
+      const pulse = gsap.to(hubAura, {
+        scale: 1.08,
+        autoAlpha: 0.26,
+        duration: 2.2,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        paused: true,
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 78%",
+          toggleActions: "play none none reset",
+          onEnter: () => pulse.pause(0),
+          onEnterBack: () => pulse.pause(0),
+          onLeaveBack: () => {
+            pulse.pause(0);
+            gsap.set(hubAura, { autoAlpha: 0.14, scale: 0.92 });
+          },
         },
-        0.25,
-      );
-    }, section);
+      });
+
+      tl.to(center, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.72,
+        ease: "back.out(1.4)",
+      })
+        .to(
+          cardRefs.current,
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            rotate: 0,
+            duration: 0.72,
+            ease: "back.out(1.6)",
+            stagger: 0.08,
+          },
+          "-=0.2",
+        )
+        .call(() => pulse.play(), null, ">-0.1");
+
+      return () => {
+        pulse.kill();
+      };
+    });
 
     return () => {
-      window.removeEventListener("resize", positionLines);
-      ctx.revert();
+      resizeObserver?.disconnect();
+      mm.revert();
     };
   }, []);
 
   return (
     <section ref={sectionRef} className={`${styles.section} bgGrid`}>
-      <Container className={styles.container}>
+      <Container className={styles.container} maxWidth={1480}>
         <div ref={gridRef} className={styles.grid}>
-          {domainCards.map((card, i) => {
+          {domainCards.map((card, index) => {
             const IconComp = card.Icon;
             return (
               <div
                 key={card.id}
                 ref={(el) => {
-                  cardRefs.current[i] = el;
+                  cardRefs.current[index] = el;
                 }}
                 className={`${styles.domainCard} ${styles[card.posClass]}`}
               >
@@ -243,29 +415,31 @@ function Domains() {
             );
           })}
 
-          <div ref={centerCardRef} className={styles.centerCard}>
-            <SectionIntro
-              title="Healthcare Domains We Solve For"
-              description="From clinical workflows to compliance systems, we design solutions across critical areas of healthcare."
-              highlightWord={3}
-              className={styles.centerIntro}
-              titleClassName={styles.centerTitle}
-              descriptionClassName={styles.centerDescription}
-              color="#243246"
-              highlightColor="#2FD1AB"
-              animateTitle
-              animateInitialColor="#737e8a"
-              animateAccentColor="#2FD1AB"
-              animateFinalColor="#243246"
-              triggerOnScroll
-            />
+          <div className={styles.centerWrap}>
+            <div ref={centerCardRef} className={styles.centerCard}>
+              <span
+                ref={hubAuraRef}
+                className={styles.hubAura}
+                aria-hidden="true"
+              />
+              <SectionIntro
+                title="Healthcare Domains We Solve For"
+                description="From clinical workflows to compliance systems, we design solutions across critical areas of healthcare."
+                highlightWord={3}
+                className={styles.centerIntro}
+                titleClassName={styles.centerTitle}
+                descriptionClassName={styles.centerDescription}
+                color="#243246"
+                highlightColor="#2FD1AB"
+              />
+            </div>
           </div>
 
-          {domainCards.map((card, i) => (
+          {domainCards.map((card, index) => (
             <span
               key={`line-${card.id}`}
               ref={(el) => {
-                lineRefs.current[i] = el;
+                lineRefs.current[index] = el;
               }}
               className={styles.line}
               aria-hidden="true"

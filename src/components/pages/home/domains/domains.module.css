@@ -1,17 +1,19 @@
 .section {
   width: 100%;
-  padding: 80px 0 88px;
+  padding: 88px 0 96px;
+  overflow: hidden;
 }
 
 .container {
   width: 100%;
+  overflow: visible;
 }
 
 .grid {
   position: relative;
   width: 100%;
-  max-width: 1160px;
-  height: 660px;
+  max-width: 1380px;
+  height: 720px;
   margin: 0 auto;
 }
 
@@ -27,14 +29,19 @@
   justify-content: flex-start;
   gap: 11px;
   text-align: center;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.17);
-  border: 2px solid rgba(255, 255, 255, 0.17);
-  backdrop-filter: blur(36.6px);
-  -webkit-backdrop-filter: blur(36.6px);
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.09) 100%
+    );
+  border: 1px solid rgba(214, 247, 241, 0.18);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
   box-shadow:
-    0 8px 22px rgba(5, 20, 30, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 18px 34px rgba(4, 17, 28, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .domainCardIconWrap {
@@ -64,26 +71,51 @@
   font-family: var(--content-font);
   font-size: 0.8125rem;
   line-height: 1.4;
-  color: rgba(200, 220, 222, 0.78);
+  color: rgba(206, 226, 228, 0.8);
 }
 
-.centerCard {
+.centerWrap {
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 3;
-  width: 420px;
-  padding: 24px 28px 26px;
-  border-radius: 16px;
-  background: #fffaf4;
-  box-shadow:
-    0 22px 44px rgba(5, 20, 30, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transform: translate(-50%, -50%);
+}
+
+.centerCard {
+  position: relative;
+  width: 480px;
+  padding: 28px 32px 30px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 245, 0.98) 0%, #fffaf4 100%);
+  box-shadow:
+    0 28px 60px rgba(4, 17, 28, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.72),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
   text-align: center;
+  overflow: visible;
+  transform-origin: 50% 50%;
+}
+
+.hubAura {
+  position: absolute;
+  inset: -22px;
+  z-index: -1;
+  border-radius: 34px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(92, 255, 220, 0.22) 0%,
+      rgba(92, 255, 220, 0.08) 42%,
+      transparent 78%
+    );
+  filter: blur(14px);
+  pointer-events: none;
 }
 
 .centerIntro {
+  position: relative;
   max-width: none;
   align-items: center;
   text-align: center;
@@ -109,50 +141,62 @@
 }
 
 .cardTopLeft {
-  top: 60px;
-  left: 20px;
+  top: 74px;
+  left: 28px;
 }
 
 .cardTopCenter {
-  top: 0;
+  top: 18px;
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -150px;
 }
 
 .cardTopRight {
-  top: 60px;
-  right: 20px;
+  top: 74px;
+  right: 28px;
 }
 
 .cardBottomLeft {
-  bottom: 60px;
-  left: 20px;
+  bottom: 74px;
+  left: 28px;
 }
 
 .cardBottomCenter {
-  bottom: 0;
+  bottom: 18px;
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -150px;
 }
 
 .cardBottomRight {
-  bottom: 60px;
-  right: 20px;
+  bottom: 74px;
+  right: 28px;
 }
-
 
 .line {
   position: absolute;
-  height: 1.5px;
+  height: 2px;
   transform-origin: 0 50%;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(47, 209, 171, 0.7) 0 5px,
-    transparent 5px 11px
-  );
+  border-radius: 999px;
+  background: rgba(47, 209, 171, 0.78);
+  box-shadow: 0 0 0 rgba(47, 209, 171, 0.18);
   pointer-events: none;
   z-index: 1;
   clip-path: inset(0 100% 0 0);
+  animation: linePulse 2.2s ease-in-out infinite;
+  will-change: transform, clip-path, opacity, box-shadow;
+}
+
+@keyframes linePulse {
+  0%,
+  100% {
+    opacity: 0.58;
+    box-shadow: 0 0 0 rgba(47, 209, 171, 0.16);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(47, 209, 171, 0.34);
+  }
 }
 
 @media screen and (max-width: 1100px) {
@@ -166,6 +210,7 @@
   }
 
   .domainCard,
+  .centerWrap,
   .centerCard {
     position: relative;
     top: auto;
@@ -174,12 +219,17 @@
     bottom: auto;
     width: 100%;
     height: auto;
+    margin-left: 0;
     transform: none;
   }
 
-  .centerCard {
+  .centerWrap {
     order: -1;
     grid-column: 1 / -1;
+  }
+
+  .hubAura {
+    inset: -12px;
   }
 
   .line {
@@ -189,12 +239,17 @@
 
 @media screen and (max-width: 640px) {
   .section {
-    padding: 60px 0;
+    padding: 64px 0;
   }
 
   .grid {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .centerCard {
+    padding: 24px 20px 26px;
+    border-radius: 18px;
   }
 
   .centerTitle {
