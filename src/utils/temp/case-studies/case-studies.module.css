@@ -1,0 +1,279 @@
+.section {
+  position: relative;
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(47, 209, 171, 0.06),
+      transparent 32%
+    ),
+    #f7f8f6;
+}
+
+.stickyFrame {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin-inline: auto;
+  padding: 64px 32px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #2fcfaf;
+  font-weight: 600;
+}
+
+.eyebrowDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #7fe8d0, #2fd1ab);
+}
+
+.title {
+  margin-top: 10px;
+  font-family: var(--title-font);
+  font-size: var(--title-size);
+  line-height: 1.05;
+  text-align: left;
+  letter-spacing: -0.01em;
+  max-width: 720px;
+}
+
+.subtitle {
+  margin: 18px 0 0;
+  color: #6a7484;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+@media screen and (max-width: 992px) {
+  .title {
+    font-size: clamp(2.25rem, 6vw, 3.25rem);
+  }
+}
+
+.portfolioBtn {
+  margin-top: 16px;
+}
+
+.stage {
+  position: relative;
+  margin-top: 16px;
+  background: #eef1ec;
+  border-radius: 24px;
+  padding: 32px 56px 52px;
+}
+
+.viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: calc(100% * var(--total, 4));
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 calc(100% / var(--total, 4));
+  width: calc(100% / var(--total, 4));
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  min-height: 340px;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.slideMediaWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideImage {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 24px 40px rgba(31, 41, 55, 0.12));
+}
+
+.slideBody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.slideTitle {
+  margin: 0;
+  color: #1f2940;
+  font-family: var(--title-font);
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.slideBlock {
+  color: #5a6372;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.slideBlockHeading {
+  display: block;
+  color: #2fd1ab;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.slideActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.slideActions a {
+  display: inline-flex;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+.videoDemoBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 132px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: transparent;
+  color: #2fd1ab;
+  border: 1.5px solid #2fd1ab;
+  font-family: "Quick-Sand", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.videoDemoBtn:hover {
+  background: rgba(47, 209, 171, 0.08);
+}
+
+.videoDemoIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.dots {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c6ccc5;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.dotActive {
+  background: #2fd1ab;
+  transform: scale(1.25);
+}
+
+@media screen and (max-width: 1100px) {
+  .stage {
+    padding: 40px 40px 56px;
+  }
+
+  .slide {
+    gap: 32px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    padding: 72px 24px 56px;
+  }
+
+  .stickyFrame {
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .stage {
+    padding: 36px 24px 52px;
+  }
+
+  .viewport {
+    overflow: visible;
+  }
+
+  .track {
+    flex-direction: column;
+    width: 100%;
+    gap: 40px;
+  }
+
+  .slide {
+    flex: 0 0 auto;
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0;
+  }
+
+  .slideImage {
+    max-height: 240px;
+  }
+
+  .dots {
+    display: none;
+  }
+}
