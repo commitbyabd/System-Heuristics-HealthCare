@@ -1,6 +1,6 @@
 import styles from "./success-story.module.css";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
-import BackgroundFilledButton from "../../../ui/button/background-filled/BackgroundFilledButton";
+import BackgroundFilledButton from "../../../ui/buttons/background-filled/BackgroundFilledButton";
 import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
 
 function SuccessStory() {
