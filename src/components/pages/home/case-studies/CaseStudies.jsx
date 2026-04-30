@@ -109,7 +109,7 @@ function CaseStudies() {
             </GradientScrollAnimation>
             <div className={styles.portfolioBtn}>
               <Button
-                text="Book a Consultation"
+                text="Checkout Our Portfolio"
                 variant="filled"
                 width="222px"
               />

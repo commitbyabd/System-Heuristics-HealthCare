@@ -2,6 +2,7 @@ import styles from "./success-story.module.css";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import Button from "../../../ui/button/Button";
+
 function SuccessStory() {
   return (
     <section className={styles.section}>
@@ -27,7 +28,11 @@ function SuccessStory() {
           </p>
         </GradientScrollAnimation>
         <div className={styles.cta}>
-          <Button text="Book a Consultation" variant="filled" width="222px" />
+          <Button
+            text="Book a Free Strategy Call"
+            variant="filled"
+            width="222px"
+          />
         </div>
       </div>
     </section>
