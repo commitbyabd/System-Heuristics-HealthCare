@@ -35,6 +35,10 @@ function SectionTitle({
       colorInitial={animateInitialColor}
       colorAccent={animateAccentColor}
       colorFinal={animateFinalColor}
+      highlightFinalColor={highlightColor}
+      highlightWords={
+        highlightWord ? [{ elementIndex: 0, wordIndex: highlightWord - 1 }] : []
+      }
     >
       {titleEl}
     </GradientScrollAnimation>

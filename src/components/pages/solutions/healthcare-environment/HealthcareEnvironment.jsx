@@ -110,7 +110,6 @@ function HealthcareEnvironment() {
               animateInitialColor="#5b6b78"
               animateAccentColor="#2FD1AB"
               animateFinalColor="#ffffff"
-              triggerOnScroll
             />
             <GradientRevealAnimation
               triggerOnScroll

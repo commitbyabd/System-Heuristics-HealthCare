@@ -1,8 +1,7 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import "./gradient-scroll-animation.css";
 import { Colors } from "../../../utils/global/Colors";
 
@@ -13,6 +12,8 @@ export default function GradientScrollAnimation({
   colorInitial = Colors.secondaryLight(),
   colorAccent = Colors.primary(),
   colorFinal = Colors.text(),
+  highlightWords = [],
+  highlightFinalColor = colorAccent,
   className = "",
 }) {
   const containerRef = useRef(null);
@@ -21,12 +22,13 @@ export default function GradientScrollAnimation({
   const colorTransitionTimers = useRef(new Map());
   const completedChars = useRef(new Set());
 
-  useGSAP(
-    () => {
-      if (!containerRef.current) return;
+  useLayoutEffect(() => {
+    if (!containerRef.current) return undefined;
 
+    const ctx = gsap.context(() => {
       splitRefs.current = [];
       lastScrollProgress.current = 0;
+      colorTransitionTimers.current.forEach((timer) => clearTimeout(timer));
       colorTransitionTimers.current.clear();
       completedChars.current.clear();
 
@@ -48,6 +50,20 @@ export default function GradientScrollAnimation({
         splitRefs.current.push({ wordSplit, charSplit });
       });
 
+      const highlightedChars = new Set();
+
+      splitRefs.current.forEach(({ wordSplit, charSplit }, elementIndex) => {
+        highlightWords.forEach((target) => {
+          if (target.elementIndex !== elementIndex) return;
+          const wordEl = wordSplit.words[target.wordIndex];
+          if (!wordEl) return;
+
+          charSplit.chars.forEach((char) => {
+            if (wordEl.contains(char)) highlightedChars.add(char);
+          });
+        });
+      });
+
       const allChars = splitRefs.current.flatMap(
         ({ charSplit }) => charSplit.chars,
       );
@@ -64,7 +80,9 @@ export default function GradientScrollAnimation({
             gsap.to(char, {
               duration: 0.1,
               ease: "none",
-              color: colorFinal,
+              color: highlightedChars.has(char)
+                ? highlightFinalColor
+                : colorFinal,
               onComplete: () => {
                 completedChars.current.add(index);
               },
@@ -114,14 +132,27 @@ export default function GradientScrollAnimation({
           lastScrollProgress.current = progress;
         },
       });
-    },
-    {
-      scope: containerRef,
-      dependencies: [colorInitial, colorAccent, colorFinal],
-    },
-  );
+    }, containerRef);
 
-  // ✅ Always wrap children in a div with ref
+    return () => {
+      colorTransitionTimers.current.forEach((timer) => clearTimeout(timer));
+      colorTransitionTimers.current.clear();
+      completedChars.current.clear();
+      splitRefs.current.forEach(({ wordSplit, charSplit }) => {
+        charSplit.revert();
+        wordSplit.revert();
+      });
+      splitRefs.current = [];
+      ctx.revert();
+    };
+  }, [
+    colorInitial,
+    colorAccent,
+    colorFinal,
+    highlightFinalColor,
+    JSON.stringify(highlightWords),
+  ]);
+
   return (
     <div ref={containerRef} data-copy-wrapper="true" className={className}>
       {children}

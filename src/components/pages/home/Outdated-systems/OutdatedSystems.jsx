@@ -110,7 +110,6 @@ function OutdatedSystems() {
               animateTitle
               animateInitialColor="#737e8a"
               animateAccentColor="#2FD1AB"
-              triggerOnScroll
             />
           </div>
 

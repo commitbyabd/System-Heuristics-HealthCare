@@ -104,7 +104,10 @@
   background: #ffffff;
   box-shadow: 0 10px 22px rgba(31, 41, 55, 0.12);
   z-index: 0;
-  will-change: transform;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+  will-change: transform, opacity;
 }
 
 .railCell {
@@ -115,8 +118,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
   color: rgba(255, 255, 255, 0.92);
-  transition: color 0.35s ease;
+  cursor: pointer;
+  transition:
+    color 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.railCell:focus-visible,
+.monitorNode:focus-visible {
+  outline: 2px solid #1f2940;
+  outline-offset: 3px;
 }
 
 .railCellActive {
@@ -140,6 +156,7 @@
   align-items: center;
   justify-content: center;
   color: rgba(120, 132, 140, 0.75);
+  cursor: pointer;
   transition:
     background-color 0.35s ease,
     border-color 0.35s ease,

@@ -1,17 +1,13 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import styles from "./our-solutions.module.css";
 import Chip from "../../../ui/chip/Chip";
-import SectionTitle from "../../../ui/section-title/SectionTitle";
 import Container from "../../../ui/container/Container";
+import SectionTitle from "../../../ui/section-title/SectionTitle";
 import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
 import FileText from "../../../ui/icons/FileText";
 import Cpu from "../../../ui/icons/Cpu";
 import Users from "../../../ui/icons/Users";
 import Monitor from "../../../ui/icons/Monitor";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -50,74 +46,55 @@ const steps = [
 
 function OurSolutions() {
   const sectionRef = useRef(null);
-  const pinRef = useRef(null);
-  const indicatorRef = useRef(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [isInView, setIsInView] = useState(false);
   const total = steps.length;
   const pillCount = total - 1;
-  const RAIL_CELL = 56;
   const MonitorIcon = steps[total - 1].Icon;
   const isMonitorActive = activeStep === total - 1;
+  const indicatorStyle =
+    activeStep < pillCount
+      ? {
+          transform: `translateY(${activeStep * 56}px)`,
+          opacity: 1,
+        }
+      : {
+          transform: `translateY(${(pillCount - 1) * 56}px)`,
+          opacity: 0,
+        };
 
-  useLayoutEffect(() => {
-    const pin = pinRef.current;
-    if (!pin) return;
+  useEffect(() => {
+    if (!sectionRef.current) return undefined;
 
-    const mm = gsap.matchMedia();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.45,
+      },
+    );
 
-    mm.add("(min-width: 769px)", () => {
-      const trigger = ScrollTrigger.create({
-        trigger: pin,
-        pin,
-        start: "center center",
-        end: () => `+=${window.innerHeight * (total - 1)}`,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          const p = self.progress;
+    observer.observe(sectionRef.current);
 
-          if (indicatorRef.current) {
-            const continuous = p * (total - 1);
-            const pillP = Math.min(continuous, pillCount - 1);
-            const fadeStart = pillCount - 0.5;
-            const opacity =
-              continuous <= fadeStart
-                ? 1
-                : Math.max(0, 1 - (continuous - fadeStart) * 2);
-            gsap.set(indicatorRef.current, {
-              y: pillP * RAIL_CELL,
-              opacity,
-            });
-          }
+    return () => observer.disconnect();
+  }, []);
 
-          const idx = Math.min(Math.round(p * (total - 1)), total - 1);
-          setActiveStep(idx);
-        },
-      });
+  useEffect(() => {
+    if (!isInView) return undefined;
 
-      return () => {
-        trigger.kill();
-        if (indicatorRef.current) gsap.set(indicatorRef.current, { y: 0 });
-      };
-    });
+    const intervalId = window.setInterval(() => {
+      setActiveStep((current) => (current + 1) % total);
+    }, 2000);
 
-    mm.add("(max-width: 768px)", () => {
-      setActiveStep(0);
-      if (indicatorRef.current) gsap.set(indicatorRef.current, { y: 0 });
-    });
-
-    return () => {
-      mm.revert();
-      ScrollTrigger.refresh();
-    };
-  }, [total]);
+    return () => window.clearInterval(intervalId);
+  }, [isInView, total]);
 
   const active = steps[activeStep];
 
   return (
     <section ref={sectionRef} className={styles.section}>
-      <div ref={pinRef} className={styles.stickyFrame}>
+      <div className={styles.stickyFrame}>
         <Container className={styles.container}>
           <div className={styles.header}>
             <Chip text="Our Services" className={styles.chip} />
@@ -131,7 +108,6 @@ function OurSolutions() {
               animateInitialColor="#737e8a"
               animateAccentColor="#2FD1AB"
               animateFinalColor="#1f2940"
-              triggerOnScroll
             />
             <GradientRevealAnimation
               triggerOnScroll
@@ -153,39 +129,46 @@ function OurSolutions() {
           <div className={styles.content}>
             <div className={styles.leftColumn}>
               <div className={styles.railWrap}>
-                <div className={styles.rail}>
+                <div className={styles.rail} role="tablist" aria-label="Solutions">
                   <span
-                    ref={indicatorRef}
                     className={styles.railIndicator}
+                    style={indicatorStyle}
                     aria-hidden="true"
                   />
                   {steps.slice(0, pillCount).map((step, index) => {
                     const isActive = activeStep === index;
                     const IconComp = step.Icon;
+
                     return (
-                      <div
+                      <button
                         key={step.id}
-                        className={`${styles.railCell} ${isActive ? styles.railCellActive : ""}`.trim()}
+                        type="button"
+                        role="tab"
+                        aria-selected={isActive}
                         aria-label={step.title}
+                        className={`${styles.railCell} ${isActive ? styles.railCellActive : ""}`.trim()}
+                        onClick={() => setActiveStep(index)}
                       >
                         <IconComp
                           className={styles.railIcon}
                           color={isActive ? "#49bea9" : "#ffffff"}
                         />
-                      </div>
+                      </button>
                     );
                   })}
                 </div>
 
-                <div
+                <button
+                  type="button"
+                  aria-label={steps[total - 1].title}
                   className={`${styles.monitorNode} ${isMonitorActive ? styles.monitorNodeActive : ""}`.trim()}
-                  aria-hidden="true"
+                  onClick={() => setActiveStep(total - 1)}
                 >
                   <MonitorIcon
                     className={styles.monitorIcon}
                     color={isMonitorActive ? "#49bea9" : "rgba(120, 132, 140, 0.75)"}
                   />
-                </div>
+                </button>
               </div>
 
               <div className={styles.copyBlock}>
@@ -195,7 +178,7 @@ function OurSolutions() {
                 </p>
                 <a href="/" className={styles.learnMore}>
                   Learn More
-                  <span className={styles.learnArrow}>→</span>
+                  <span className={styles.learnArrow}>&rarr;</span>
                 </a>
               </div>
             </div>

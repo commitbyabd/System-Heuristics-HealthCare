@@ -16,7 +16,6 @@ function SuccessStory() {
           animateInitialColor="#737e8a"
           animateAccentColor="#2FD1AB"
           animateFinalColor="#1f2940"
-          triggerOnScroll
         />
         <GradientRevealAnimation
           triggerOnScroll
