@@ -96,6 +96,12 @@ function Domains() {
         return;
       }
 
+      const animatedEls = [center, ...cardRefs.current.filter(Boolean)];
+      const savedTransforms = animatedEls.map((el) => el.style.transform);
+      animatedEls.forEach((el) => {
+        el.style.transform = "none";
+      });
+
       const gridRect = grid.getBoundingClientRect();
       const centerRect = center.getBoundingClientRect();
       const c = {
@@ -107,28 +113,39 @@ function Domains() {
         cy: (centerRect.top + centerRect.bottom) / 2 - gridRect.top,
       };
 
-      domainCards.forEach((card, index) => {
+      const measurements = domainCards.map((card, index) => {
         const cardEl = cardRefs.current[index];
+        if (!cardEl) return null;
+        const rect = cardEl.getBoundingClientRect();
+        return {
+          card,
+          r: {
+            left: rect.left - gridRect.left,
+            right: rect.right - gridRect.left,
+            top: rect.top - gridRect.top,
+            bottom: rect.bottom - gridRect.top,
+            cx: (rect.left + rect.right) / 2 - gridRect.left,
+            cy: (rect.top + rect.bottom) / 2 - gridRect.top,
+          },
+        };
+      });
+
+      animatedEls.forEach((el, i) => {
+        el.style.transform = savedTransforms[i] || "";
+      });
+
+      measurements.forEach((m, index) => {
+        if (!m) return;
+        const { card, r } = m;
         const lineEl = lineRefs.current[index];
-        if (!cardEl || !lineEl) return;
-        const connectionOverlap = 22;
-        const topHubCornerInsetX = 18;
-        // bnbjvhbjkb
-        const topHubCornerInsetY = 14;
-        const topCardCornerInsetX = 16;
-        const topCardCornerInsetY = 12;
+        if (!lineEl) return;
+        const connectionOverlap = 10;
 
         lineEl.style.display = "block";
 
-        const rect = cardEl.getBoundingClientRect();
-        const r = {
-          left: rect.left - gridRect.left,
-          right: rect.right - gridRect.left,
-          top: rect.top - gridRect.top,
-          bottom: rect.bottom - gridRect.top,
-          cx: (rect.left + rect.right) / 2 - gridRect.left,
-          cy: (rect.top + rect.bottom) / 2 - gridRect.top,
-        };
+        const dxCenters = r.cx - c.cx;
+        const dyCenters = r.cy - c.cy;
+        const slope = dxCenters === 0 ? 0 : dyCenters / dxCenters;
 
         let startX = 0;
         let startY = 0;
@@ -137,10 +154,11 @@ function Domains() {
 
         switch (card.anchor) {
           case "topLeft":
-            startX = c.left + topHubCornerInsetX;
-            startY = c.top + topHubCornerInsetY;
-            endX = r.right - topCardCornerInsetX;
-            endY = r.bottom - topCardCornerInsetY;
+          case "bottomLeft":
+            startX = c.left;
+            startY = c.cy + slope * (c.left - c.cx);
+            endX = r.right;
+            endY = r.cy + slope * (r.right - r.cx);
             break;
           case "topCenter":
             startX = c.cx;
@@ -149,27 +167,16 @@ function Domains() {
             endY = r.bottom;
             break;
           case "topRight":
-            startX = c.right - topHubCornerInsetX;
-            startY = c.top + topHubCornerInsetY;
-            endX = r.left + topCardCornerInsetX;
-            endY = r.bottom - topCardCornerInsetY;
-            break;
-          case "bottomLeft":
-            startX = c.left;
-            startY = c.bottom;
-            endX = r.right;
-            endY = r.top;
+          case "bottomRight":
+            startX = c.right;
+            startY = c.cy + slope * (c.right - c.cx);
+            endX = r.left;
+            endY = r.cy + slope * (r.left - r.cx);
             break;
           case "bottomCenter":
             startX = c.cx;
             startY = c.bottom;
             endX = r.cx;
-            endY = r.top;
-            break;
-          case "bottomRight":
-            startX = c.right;
-            startY = c.bottom;
-            endX = r.left;
             endY = r.top;
             break;
           default:

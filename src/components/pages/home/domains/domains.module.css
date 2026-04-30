@@ -177,25 +177,64 @@
   height: 2px;
   transform-origin: 0 50%;
   border-radius: 999px;
-  background: rgba(47, 209, 171, 0.78);
-  box-shadow: 0 0 0 rgba(47, 209, 171, 0.18);
+  background: rgba(47, 209, 171, 0.45);
+  box-shadow: 0 0 6px rgba(47, 209, 171, 0.3);
   pointer-events: none;
   z-index: 1;
   clip-path: inset(0 100% 0 0);
-  animation: linePulse 2.2s ease-in-out infinite;
-  will-change: transform, clip-path, opacity, box-shadow;
+  will-change: clip-path;
 }
 
-@keyframes linePulse {
-  0%,
-  100% {
-    opacity: 0.58;
-    box-shadow: 0 0 0 rgba(47, 209, 171, 0.16);
+.line::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(225, 255, 246, 1) 0%,
+    rgba(120, 255, 230, 1) 30%,
+    rgba(47, 209, 171, 0.7) 65%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 10px rgba(180, 255, 230, 0.95),
+    0 0 22px rgba(92, 255, 220, 0.7),
+    0 0 38px rgba(47, 209, 171, 0.4);
+  transform: translate(-50%, -50%);
+  animation: dotTravel 3.6s ease-in-out infinite;
+  pointer-events: none;
+  will-change: left, opacity, transform;
+}
+
+.line:nth-child(even)::before {
+  animation-delay: -1.8s;
+}
+
+@keyframes dotTravel {
+  0% {
+    left: 0%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
   }
 
-  50% {
+  10% {
     opacity: 1;
-    box-shadow: 0 0 12px rgba(47, 209, 171, 0.34);
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
   }
 }
 
