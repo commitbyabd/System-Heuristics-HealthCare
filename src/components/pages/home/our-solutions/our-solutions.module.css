@@ -1,4 +1,5 @@
 .section {
+  --solutions-rail-step: 56px;
   position: relative;
   background:
     radial-gradient(
@@ -6,7 +7,7 @@
       rgba(47, 209, 171, 0.08),
       transparent 28%
     ),
-    #f7f8f6;
+    var(--color-surface-soft);
 }
 
 .stickyFrame {
@@ -51,7 +52,7 @@
 .subtitle {
   margin: 16px auto 0;
   max-width: 620px;
-  color: #6a7484;
+  color: var(--color-text);
   font-family: var(--content-font);
   font-size: var(--content-size);
   line-height: 1.65;
@@ -63,17 +64,18 @@
   grid-template-columns: minmax(360px, 480px) minmax(0, 1fr);
   gap: 48px;
   align-items: center;
+  color: var(--color-text);
 }
 
 .leftColumn {
   display: grid;
   grid-template-columns: 72px 1fr;
   gap: 28px;
+  color: var(--color-text);
   align-items: center;
 }
 
 .railWrap {
-  --rail-cell: 56px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,8 +103,8 @@
   height: 44px;
   margin-left: -22px;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 10px 22px rgba(31, 41, 55, 0.12);
+  background: var(--color-light);
+  box-shadow: var(--shadow-soft);
   z-index: 0;
   transition:
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -131,7 +133,7 @@
 
 .railCell:focus-visible,
 .monitorNode:focus-visible {
-  outline: 2px solid #1f2940;
+  outline: 2px solid var(--color-text-strong);
   outline-offset: 3px;
 }
 
@@ -150,7 +152,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 2px solid rgba(120, 132, 140, 0.35);
+  border: 2px solid var(--color-border-soft);
   background: transparent;
   display: inline-flex;
   align-items: center;
@@ -165,9 +167,9 @@
 }
 
 .monitorNodeActive {
-  background: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 0 10px 22px rgba(31, 41, 55, 0.12);
+  background: var(--color-light);
+  border-color: var(--color-light);
+  box-shadow: var(--shadow-soft);
   color: #49bea9;
 }
 
@@ -185,7 +187,7 @@
 
 .solutionTitle {
   margin: 0;
-  color: #243246;
+  color: var(--color-text-strong);
   font-family: var(--title-font);
   font-size: clamp(2rem, 2.6vw, 2.8rem);
   line-height: 1.14;
@@ -197,7 +199,7 @@
 .solutionDescription {
   margin: 14px 0 0;
   max-width: 320px;
-  color: #6d7481;
+  color: var(--color-text-body);
   font-family: var(--content-font);
   font-size: var(--content-size);
   line-height: 1.7;
@@ -239,9 +241,9 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  background: #ffffff;
+  background: var(--color-light);
   transform-origin: center center;
   filter: drop-shadow(0 24px 34px rgba(31, 41, 55, 0.12));
   transition:
@@ -303,6 +305,7 @@
   }
 
   .railWrap {
+    --solutions-rail-step: 0px;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;

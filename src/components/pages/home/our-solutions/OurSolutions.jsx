@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useMemo } from "react";
 import styles from "./our-solutions.module.css";
 import Chip from "../../../ui/chip/Chip";
 import Container from "../../../ui/container/Container";
@@ -8,6 +8,7 @@ import FileText from "../../../ui/icons/FileText";
 import Cpu from "../../../ui/icons/Cpu";
 import Users from "../../../ui/icons/Users";
 import Monitor from "../../../ui/icons/Monitor";
+import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
 
 const steps = [
   {
@@ -45,52 +46,33 @@ const steps = [
 ];
 
 function OurSolutions() {
-  const sectionRef = useRef(null);
-  const [activeStep, setActiveStep] = useState(0);
-  const [isInView, setIsInView] = useState(false);
   const total = steps.length;
+  const {
+    sectionRef,
+    activeIndex: activeStep,
+    goToSlide,
+  } = useAutoplaySlider({
+    totalSlides: total,
+    delay: 2000,
+    threshold: 0.45,
+  });
   const pillCount = total - 1;
+  const active = steps[activeStep];
   const MonitorIcon = steps[total - 1].Icon;
   const isMonitorActive = activeStep === total - 1;
-  const indicatorStyle =
-    activeStep < pillCount
-      ? {
-          transform: `translateY(${activeStep * 56}px)`,
-          opacity: 1,
-        }
-      : {
-          transform: `translateY(${(pillCount - 1) * 56}px)`,
-          opacity: 0,
-        };
-
-  useEffect(() => {
-    if (!sectionRef.current) return undefined;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.45,
-      },
-    );
-
-    observer.observe(sectionRef.current);
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isInView) return undefined;
-
-    const intervalId = window.setInterval(() => {
-      setActiveStep((current) => (current + 1) % total);
-    }, 2000);
-
-    return () => window.clearInterval(intervalId);
-  }, [isInView, total]);
-
-  const active = steps[activeStep];
+  const indicatorStyle = useMemo(
+    () =>
+      activeStep < pillCount
+        ? {
+            transform: `translateY(calc(${activeStep} * var(--solutions-rail-step)))`,
+            opacity: 1,
+          }
+        : {
+            transform: `translateY(calc(${pillCount - 1} * var(--solutions-rail-step)))`,
+            opacity: 0,
+          },
+    [activeStep, pillCount],
+  );
 
   return (
     <section ref={sectionRef} className={styles.section}>
@@ -147,7 +129,7 @@ function OurSolutions() {
                         aria-selected={isActive}
                         aria-label={step.title}
                         className={`${styles.railCell} ${isActive ? styles.railCellActive : ""}`.trim()}
-                        onClick={() => setActiveStep(index)}
+                        onClick={() => goToSlide(index, { stop: true })}
                       >
                         <IconComp
                           className={styles.railIcon}
@@ -162,7 +144,7 @@ function OurSolutions() {
                   type="button"
                   aria-label={steps[total - 1].title}
                   className={`${styles.monitorNode} ${isMonitorActive ? styles.monitorNodeActive : ""}`.trim()}
-                  onClick={() => setActiveStep(total - 1)}
+                  onClick={() => goToSlide(total - 1, { stop: true })}
                 >
                   <MonitorIcon
                     className={styles.monitorIcon}

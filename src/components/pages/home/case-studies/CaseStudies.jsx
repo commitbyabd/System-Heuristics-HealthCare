@@ -1,12 +1,10 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 import styles from "./case-studies.module.css";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import caseStudies from "../../../../data/case-study/CaseStudyData";
 import Button from "../../../ui/button/Button";
-gsap.registerPlugin(ScrollTrigger);
+import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
 
 function PlayIcon(props) {
   return (
@@ -21,64 +19,48 @@ function PlayIcon(props) {
   );
 }
 
+function ArrowIcon(props) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  );
+}
+
 function CaseStudies() {
-  const sectionRef = useRef(null);
-  const pinRef = useRef(null);
-  const trackRef = useRef(null);
-  const viewportRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
   const total = caseStudies.length;
+  const [hoverSide, setHoverSide] = useState(null);
+  const {
+    sectionRef,
+    activeIndex,
+    goToNext,
+    goToPrevious,
+  } = useAutoplaySlider({
+    totalSlides: total,
+    delay: 2600,
+    threshold: 0.35,
+  });
 
-  useLayoutEffect(() => {
-    const pin = pinRef.current;
-    const track = trackRef.current;
-    const viewport = viewportRef.current;
-    if (!pin || !track || !viewport) return;
+  const handleStagePointerMove = (event) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const pointerX = event.clientX - bounds.left;
+    const centerX = bounds.width / 2;
 
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 901px)", () => {
-      const xPercent = -(100 / total) * (total - 1);
-
-      const tween = gsap.to(track, {
-        xPercent,
-        ease: "none",
-        scrollTrigger: {
-          trigger: pin,
-          pin,
-          start: "top top",
-          end: () => `+=${viewport.clientWidth * (total - 1)}`,
-          scrub: 1,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const idx = Math.min(Math.floor(self.progress * total), total - 1);
-            setActiveIndex(idx);
-          },
-        },
-      });
-
-      return () => {
-        tween.scrollTrigger?.kill();
-        tween.kill();
-        gsap.set(track, { xPercent: 0, x: 0, clearProps: "transform" });
-      };
-    });
-
-    mm.add("(max-width: 900px)", () => {
-      gsap.set(track, { xPercent: 0, x: 0, clearProps: "transform" });
-      setActiveIndex(0);
-    });
-
-    return () => {
-      mm.revert();
-      ScrollTrigger.refresh();
-    };
-  }, [total]);
+    setHoverSide(pointerX > centerX ? "right" : "left");
+  };
 
   return (
     <section ref={sectionRef} className={styles.section}>
-      <div ref={pinRef} className={styles.stickyFrame}>
+      <div className={styles.stickyFrame}>
         <div className={styles.container}>
           <div className={styles.header}>
             <span className={styles.eyebrow}>
@@ -116,13 +98,36 @@ function CaseStudies() {
             </div>
           </div>
 
-          <div className={styles.stage}>
-            <div
-              ref={viewportRef}
-              className={styles.viewport}
-              style={{ "--total": total }}
+          <div
+            className={styles.stage}
+            onPointerMove={handleStagePointerMove}
+            onPointerLeave={() => setHoverSide(null)}
+          >
+            <button
+              type="button"
+              aria-label="Previous case study"
+              className={`${styles.navButton} ${styles.navButtonLeft} ${hoverSide === "left" ? styles.navButtonVisible : ""}`.trim()}
+              onClick={() => goToPrevious({ stop: true })}
             >
-              <div ref={trackRef} className={styles.track}>
+              <ArrowIcon className={styles.navIcon} />
+            </button>
+            <button
+              type="button"
+              aria-label="Next case study"
+              className={`${styles.navButton} ${styles.navButtonRight} ${hoverSide === "right" ? styles.navButtonVisible : ""}`.trim()}
+              onClick={() => goToNext({ stop: true })}
+            >
+              <ArrowIcon className={styles.navIcon} />
+            </button>
+
+            <div
+              className={styles.viewport}
+              style={{
+                "--total": total,
+                "--active-index": activeIndex,
+              }}
+            >
+              <div className={styles.track}>
                 {caseStudies.map((study) => (
                   <article key={study.id} className={styles.slide}>
                     <div className={styles.slideMediaWrap}>
@@ -150,9 +155,9 @@ function CaseStudies() {
                       <div className={styles.slideActions}>
                         <a href={study.liveDemo}>
                           <Button
-                            text="Book a Consultation"
+                            text="Live Demo"
                             variant="filled"
-                            width="222px"
+                            width="152px"
                           />
                         </a>
                         <a
@@ -179,6 +184,7 @@ function CaseStudies() {
                   key={study.id}
                   role="tab"
                   aria-selected={index === activeIndex}
+                  aria-label={`Go to ${study.title}`}
                   className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ""}`.trim()}
                 />
               ))}

@@ -80,11 +80,21 @@ Variables:
   /* Teal accent (brand) */
   --color-teal: #2fd1ab;
   --color-teal-hover: #25b594;
+  --color-surface-soft: #f7f8f6;
+  --color-surface-muted: #eef1ec;
+  --color-text-strong: #1f2940;
+  --color-text-body: #6a7484;
+  --color-text-muted: #78848c;
+  --color-border-soft: rgba(120, 132, 140, 0.35);
 
   /* Borders and Shadows */
   --radius: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 24px;
   --rounded: 100px;
   --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-soft: 0 10px 22px rgba(31, 41, 55, 0.12);
+  --shadow-card: 0 24px 40px rgba(31, 41, 55, 0.12);
 
   --cursor: url("/images/pages/cursor/cursor.png") 8 8, auto;
   --hover-cursor: url("/images/pages/cursor/cursor-hover.png") 8 8, auto;

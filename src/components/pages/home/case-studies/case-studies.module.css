@@ -1,8 +1,12 @@
 .section {
+  --case-stage-padding-x: 56px;
+  --case-stage-padding-y: 32px;
+  --case-nav-size: 56px;
+  --case-nav-shift: 24px;
   position: relative;
   background:
     radial-gradient(circle at top center, rgba(47, 209, 171, 0.06), transparent 32%),
-    #f7f8f6;
+    var(--color-surface-soft);
 }
 
 .stickyFrame {
@@ -33,7 +37,7 @@
   align-items: center;
   gap: 8px;
   font-size: 0.95rem;
-  color: #2fcfaf;
+  color: var(--color-teal);
   font-weight: 600;
 }
 
@@ -56,7 +60,7 @@
 
 .subtitle {
   margin: 18px 0 0;
-  color: #6a7484;
+  color: var(--color-text-body);
   font-family: var(--content-font);
   font-size: var(--content-size);
   line-height: 1.65;
@@ -76,9 +80,9 @@
 .stage {
   position: relative;
   margin-top: 16px;
-  background: #eef1ec;
-  border-radius: 24px;
-  padding: 32px 56px 52px;
+  background: var(--color-surface-muted);
+  border-radius: var(--radius-xl);
+  padding: var(--case-stage-padding-y) var(--case-stage-padding-x) 52px;
 }
 
 .viewport {
@@ -90,7 +94,64 @@
 .track {
   display: flex;
   width: calc(100% * var(--total, 4));
+  transform: translate3d(calc(var(--active-index, 0) * -100% / var(--total, 4)), 0, 0);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  width: var(--case-nav-size);
+  height: var(--case-nav-size);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-teal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+  z-index: 3;
+}
+
+.navButtonVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navButtonLeft {
+  left: 0;
+  transform: translate3d(calc(-1 * var(--case-nav-shift)), -50%, 0) rotate(180deg);
+}
+
+.navButtonRight {
+  right: 0;
+  transform: translate3d(var(--case-nav-shift), -50%, 0);
+}
+
+.navButtonLeft.navButtonVisible {
+  transform: translate3d(-8px, -50%, 0) rotate(180deg);
+}
+
+.navButtonRight.navButtonVisible {
+  transform: translate3d(8px, -50%, 0);
+}
+
+.navButton:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  outline: 2px solid var(--color-text-strong);
+  outline-offset: 4px;
+}
+
+.navIcon {
+  width: 32px;
+  height: 32px;
 }
 
 .slide {
@@ -117,7 +178,7 @@
   max-height: 360px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 24px 40px rgba(31, 41, 55, 0.12));
+  filter: drop-shadow(var(--shadow-card));
 }
 
 .slideBody {
@@ -128,7 +189,7 @@
 
 .slideTitle {
   margin: 0;
-  color: #1f2940;
+  color: var(--color-text-strong);
   font-family: var(--title-font);
   font-size: clamp(1.5rem, 2vw, 2rem);
   line-height: 1.2;
@@ -136,7 +197,7 @@
 }
 
 .slideBlock {
-  color: #5a6372;
+  color: var(--color-text-muted);
   font-family: var(--content-font);
   font-size: var(--content-size);
   line-height: 1.65;
@@ -145,7 +206,7 @@
 
 .slideBlockHeading {
   display: block;
-  color: #2fd1ab;
+  color: var(--color-teal);
   font-weight: 700;
   margin-bottom: 2px;
 }
@@ -173,11 +234,11 @@
   width: 132px;
   height: 40px;
   padding: 0 16px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: transparent;
-  color: #2fd1ab;
-  border: 1.5px solid #2fd1ab;
-  font-family: "Quick-Sand", sans-serif;
+  color: var(--color-teal);
+  border: 1.5px solid var(--color-teal);
+  font-family: var(--content-font);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -225,7 +286,8 @@
 
 @media screen and (max-width: 1100px) {
   .stage {
-    padding: 40px 40px 56px;
+    --case-stage-padding-x: 40px;
+    padding-bottom: 56px;
   }
 
   .slide {
@@ -244,22 +306,14 @@
   }
 
   .stage {
-    padding: 36px 24px 52px;
-  }
-
-  .viewport {
-    overflow: visible;
-  }
-
-  .track {
-    flex-direction: column;
-    width: 100%;
-    gap: 40px;
+    --case-stage-padding-x: 24px;
+    --case-stage-padding-y: 36px;
+    --case-nav-size: 48px;
+    padding-bottom: 52px;
   }
 
   .slide {
-    flex: 0 0 auto;
-    width: 100%;
+    min-height: auto;
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 0;
@@ -269,7 +323,22 @@
     max-height: 240px;
   }
 
+  .navButton {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navButtonLeft,
+  .navButtonLeft.navButtonVisible {
+    transform: translate3d(-2px, -50%, 0) rotate(180deg);
+  }
+
+  .navButtonRight,
+  .navButtonRight.navButtonVisible {
+    transform: translate3d(2px, -50%, 0);
+  }
+
   .dots {
-    display: none;
+    bottom: 16px;
   }
 }
