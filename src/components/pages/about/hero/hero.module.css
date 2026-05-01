@@ -1,0 +1,64 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 48px;
+  margin-top: 65px;
+  padding-right: 0;
+}
+
+.content {
+  max-width: 650px;
+  width: 100%;
+  height: auto;
+  padding-top: 46px;
+  padding-bottom: 46px;
+}
+
+.actions {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.image {
+  width: 100%;
+  max-width: 431px;
+  height: 532px;
+  display: block;
+  justify-self: end;
+  animation: slideInFromRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media screen and (max-width: 450px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .image {
+    justify-self: center;
+    max-width: 100%;
+    height: auto;
+  }
+}
