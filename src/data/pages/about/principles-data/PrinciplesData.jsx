@@ -14,6 +14,19 @@ const PrinciplesData = () => {
             data-direction={item.animationFrom}
           >
             <GradientRevealAnimation
+              triggerOnScroll
+              scrollStart="top 88%"
+              charDuration={0.12}
+              charStagger={0.005}
+              finalDuration={0.08}
+              colorInitial="var(--color-initial)"
+              colorAccent="var(--color-teal)"
+              colorFinal="var(--color-text-strong)"
+            >
+              <h3 className={styles.title}>{item.title}</h3>
+            </GradientRevealAnimation>
+
+            <GradientRevealAnimation
               className={styles.copyReveal}
               triggerOnScroll
               scrollStart="top 88%"
@@ -24,8 +37,6 @@ const PrinciplesData = () => {
               colorAccent="var(--color-teal)"
               colorFinal="var(--color-text)"
             >
-              <h3 className={styles.title}>{item.title}</h3>
-
               <p className={styles.description}>{item.description}</p>
             </GradientRevealAnimation>
           </article>

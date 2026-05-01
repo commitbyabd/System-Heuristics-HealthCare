@@ -213,3 +213,22 @@ h6 {
     0 0;
   background-repeat: repeat, repeat, no-repeat;
 }
+
+/* =========================
+   Utility: Shared Side Gradient
+========================= */
+.bgGradientSide {
+  position: relative;
+  overflow: hidden;
+  background-color: #0a1428;
+  background-image:
+    radial-gradient(
+      ellipse at 55% 50%,
+      rgba(255, 255, 255, 0.12) 0%,
+      transparent 55%
+    ),
+    linear-gradient(90deg, #0a1428 0%, #329788 100%);
+  background-repeat: no-repeat;
+  background-size: auto, cover;
+  background-position: center, center;
+}

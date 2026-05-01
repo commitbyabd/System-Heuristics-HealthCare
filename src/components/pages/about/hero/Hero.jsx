@@ -2,11 +2,10 @@ import styles from "./hero.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import Button from "../../../ui/button/Button";
-import SharedGradient from "../../home/shared-gradient/SharedGradient";
 
 function Hero() {
   return (
-    <SharedGradient className={styles.hero}>
+    <section className={styles.hero}>
       <Container className={styles.layout}>
         <div className={styles.content}>
           <SectionIntro
@@ -37,7 +36,7 @@ function Hero() {
           alt="hero-doc"
         />
       </Container>
-    </SharedGradient>
+    </section>
   );
 }
 
