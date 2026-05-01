@@ -12,8 +12,9 @@ function Hero() {
           <SectionIntro
             title="About Us"
             description="Whether you're exploring A1 solutions, improving workflows,
-or scaling your healthcare platform — our team is here to
-help."
+            or scaling your healthcare platform — our team is here to
+            help."
+            highlightWord={2}
             className={styles.intro}
             titleClassName={styles.introTitle}
             descriptionClassName={styles.introDescription}
