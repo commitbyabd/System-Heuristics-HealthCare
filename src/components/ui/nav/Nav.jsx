@@ -16,7 +16,7 @@
 //    - setupNavbarScroll: animates navbar based on scroll and resize
 
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styles from "./nav.module.css";
 import { toggleMobileMenuGsap, setupNavbarScroll } from "./NavUtils";
 import { NavData } from "../../../data/components/nav/NavData";
@@ -31,6 +31,7 @@ import Container from "../container/Container";
 const Nav = () => {
   const navRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const { pathname } = useLocation();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -72,12 +73,9 @@ const Nav = () => {
   const renderNavLinks = () => {
     return navItems?.map(({ label, href }) => (
       <li key={label}>
-        <NavLink
-          to={href}
-          className={({ isActive }) => (isActive ? styles.activeLink : "")}
-        >
+        <a href={href} className={pathname === href ? styles.activeLink : ""}>
           {label}
-        </NavLink>
+        </a>
       </li>
     ));
   };
@@ -85,9 +83,9 @@ const Nav = () => {
   const renderMobileNavLinks = () => {
     return navItems?.map(({ label, href }) => (
       <li key={label} className={styles.mobileNavLink}>
-        <NavLink
-          to={href}
-          className={({ isActive }) => (isActive ? styles.activeLink : "")}
+        <a
+          href={href}
+          className={pathname === href ? styles.activeLink : ""}
           onClick={() =>
             toggleMobileMenuGsap(
               mobileMenuRef,
@@ -98,7 +96,7 @@ const Nav = () => {
           }
         >
           {label}
-        </NavLink>
+        </a>
       </li>
     ));
   };
@@ -111,10 +109,10 @@ const Nav = () => {
       >
         <Container className={`${styles.navContainer} bgGlassWGlow`}>
           <p className={styles.logo}>
-            <Link to="/">
+            <a href="/">
               <LazyImage src="/images/nav/sh-logo.svg" alt="Logo" />
               {Constants?.company?.name}
-            </Link>
+            </a>
           </p>
 
           <ul className={styles.navLinks}>{renderNavLinks()}</ul>
