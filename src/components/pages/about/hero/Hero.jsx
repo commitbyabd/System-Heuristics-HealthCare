@@ -9,11 +9,24 @@ function Hero() {
     <SharedGradient className={styles.hero}>
       <Container className={styles.layout}>
         <div className={styles.content}>
-          <SectionIntro animateTitle />
+          <SectionIntro
+            title="About Us"
+            description="Whether you're exploring A1 solutions, improving workflows,
+or scaling your healthcare platform — our team is here to
+help."
+            className={styles.intro}
+            titleClassName={styles.introTitle}
+            descriptionClassName={styles.introDescription}
+            animateTitle
+          />
 
           <div className={styles.actions}>
-            <Button text="Book a Consultation" variant="filled" width="222px" />
-            <Button text="View Our Work" variant="transparent" width="147px" />
+            <Button text="Book a Demo" variant="filled" width="222px" />
+            <Button
+              text="Talk to an Expert"
+              variant="transparent"
+              width="147px"
+            />
           </div>
         </div>
 
