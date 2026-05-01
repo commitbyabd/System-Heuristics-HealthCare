@@ -1,0 +1,88 @@
+.principlesSection {
+  width: 100%;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.cardsWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.card {
+  min-height: 450px;
+  padding: 38px 34px 32px;
+  border-radius: 18px;
+  background: #f4f4ef;
+  overflow: hidden;
+}
+
+.title {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  line-height: 1;
+  font-weight: 700;
+  color: #07142b;
+  letter-spacing: -1px;
+}
+
+.description {
+  margin: 0;
+  font-size: 1.32rem;
+  line-height: 1.28;
+  font-weight: 400;
+  color: #777772;
+  text-align: justify;
+  text-align-last: left;
+  word-spacing: 8px;
+
+  /*
+    This creates the soft fade effect visible near the bottom
+    of your screenshot.
+  */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 55%,
+    rgba(0, 0, 0, 0.45) 78%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 55%,
+    rgba(0, 0, 0, 0.45) 78%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+}
+
+@media (max-width: 1100px) {
+  .cardsWrapper {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+
+  .card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .principlesSection {
+    padding: 40px 16px;
+  }
+
+  .card {
+    padding: 32px 24px;
+    border-radius: 16px;
+  }
+
+  .description {
+    font-size: 1.05rem;
+    word-spacing: 4px;
+  }
+}
