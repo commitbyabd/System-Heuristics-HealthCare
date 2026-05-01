@@ -5,7 +5,7 @@ import styles from "./compliance.module.css";
 import Container from "../../../ui/container/Container";
 import Chip from "../../../ui/chip/Chip";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
-import ComplianceData from "../../../../data/compliance/ComplianceData";
+import ComplianceData from "../../../../data/pages/home/compliance/ComplianceData";
 
 gsap.registerPlugin(ScrollTrigger);
 

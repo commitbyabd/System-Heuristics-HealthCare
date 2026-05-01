@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./case-studies.module.css";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
-import caseStudies from "../../../../data/case-study/CaseStudyData";
+import caseStudies from "../../../../data/pages/home/case-study/CaseStudyData";
 import Button from "../../../ui/button/Button";
 import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
 
@@ -39,16 +39,13 @@ function ArrowIcon(props) {
 function CaseStudies() {
   const total = caseStudies.length;
   const [hoverSide, setHoverSide] = useState(null);
-  const {
-    sectionRef,
-    activeIndex,
-    goToNext,
-    goToPrevious,
-  } = useAutoplaySlider({
-    totalSlides: total,
-    delay: 2600,
-    threshold: 0.35,
-  });
+  const { sectionRef, activeIndex, goToNext, goToPrevious } = useAutoplaySlider(
+    {
+      totalSlides: total,
+      delay: 2600,
+      threshold: 0.35,
+    },
+  );
 
   const handleStagePointerMove = (event) => {
     const bounds = event.currentTarget.getBoundingClientRect();
