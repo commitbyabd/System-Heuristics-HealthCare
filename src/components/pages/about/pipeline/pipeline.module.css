@@ -1,0 +1,251 @@
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) minmax(0, 1fr);
+  gap: 38px;
+  align-items: center;
+  min-height: 0;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.intro {
+  max-width: 390px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: clamp(2.65rem, 4.1vw, 3.8rem);
+  line-height: 0.92;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: #123629;
+}
+
+.description {
+  margin: 14px 0 0;
+  max-width: 320px;
+  color: #7d8791;
+  font-family: var(--content-font);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.logoWall {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  height: 560px;
+  align-items: stretch;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 14%,
+    rgba(0, 0, 0, 1) 86%,
+    transparent 100%
+  );
+}
+
+.columnViewport {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.columnTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  will-change: transform;
+  animation-duration: 14s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+.columnDown {
+  animation-name: marqueeDown;
+}
+
+.columnUp {
+  animation-name: marqueeUp;
+}
+
+.logoCard {
+  width: 76px;
+  height: 77px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 22px rgba(31, 41, 64, 0.06);
+}
+
+.logoImage {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+:global([data-animations-active="true"]) .columnTrack {
+  animation-play-state: running;
+}
+
+@keyframes marqueeUp {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-50% - 9px));
+  }
+}
+
+@keyframes marqueeDown {
+  from {
+    transform: translateY(calc(-50% - 9px));
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    min-height: auto;
+  }
+
+  .content {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .intro {
+    max-width: 560px;
+  }
+
+  .description {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  .logoWall {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    min-height: auto;
+    padding: 56px 0;
+  }
+
+  .layout {
+    gap: 24px;
+  }
+
+  .intro {
+    max-width: 330px;
+  }
+
+  .title {
+    font-size: clamp(2.3rem, 8.8vw, 3rem);
+    line-height: 0.94;
+  }
+
+  .description {
+    max-width: 286px;
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .logoWall {
+    width: min(100%, 320px);
+    margin: 0 auto;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    height: 420px;
+    gap: 10px;
+  }
+
+  .columnTrack {
+    gap: 10px;
+  }
+
+  .logoCard {
+    width: 54px;
+    height: 55px;
+    border-radius: 12px;
+  }
+
+  .logoImage {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .layout {
+    gap: 20px;
+  }
+
+  .intro {
+    max-width: 300px;
+  }
+
+  .title {
+    font-size: clamp(2.1rem, 11vw, 2.7rem);
+  }
+
+  .description {
+    max-width: 270px;
+    font-size: 0.72rem;
+    line-height: 1.32;
+  }
+
+  .logoWall {
+    width: min(100%, 288px);
+    height: 388px;
+    gap: 8px;
+  }
+
+  .logoCard {
+    width: 48px;
+    height: 49px;
+    border-radius: 10px;
+  }
+
+  .columnTrack {
+    gap: 8px;
+  }
+
+  .logoImage {
+    width: 24px;
+    height: 24px;
+  }
+}

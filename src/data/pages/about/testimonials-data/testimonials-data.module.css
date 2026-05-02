@@ -1,0 +1,111 @@
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+}
+
+.card {
+  min-height: 272px;
+  padding: 22px 20px 18px;
+  border-radius: 18px;
+  color: #ffffff;
+}
+
+.profileRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.identity {
+  min-width: 0;
+}
+
+.name {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--title-font);
+  font-size: clamp(1.1rem, 1.35vw, 1.35rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.role {
+  margin: 5px 0 0;
+  color: rgba(226, 235, 244, 0.72);
+  font-family: var(--content-font);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #ffb11b;
+}
+
+.star {
+  width: 15px;
+  height: 15px;
+  display: block;
+  fill: currentColor;
+}
+
+.ratingValue {
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--content-font);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.quote {
+  margin: 18px 0 0;
+  color: rgba(235, 242, 248, 0.8);
+  font-family: var(--content-font);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 1100px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    padding: 18px 16px 16px;
+    border-radius: 16px;
+  }
+}
