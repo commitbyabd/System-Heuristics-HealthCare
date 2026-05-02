@@ -3,6 +3,7 @@ import Principles from "./principles/Principles";
 import ExpertiseShowcase from "./expertise-showcase/ExpertiseShowcase";
 import ChooseUs from "./choose-us/ChooseUs";
 import Pipeline from "./pipeline/Pipeline";
+import Testimonials from "./testimonials/Testimonials";
 function AboutMain() {
   return (
     <div>
@@ -11,6 +12,7 @@ function AboutMain() {
       <ExpertiseShowcase />
       <ChooseUs />
       <Pipeline />
+      <Testimonials />
     </div>
   );
 }

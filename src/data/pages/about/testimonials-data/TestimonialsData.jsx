@@ -1,24 +1,23 @@
+import Star from "../../../../components/ui/icons/Star";
 import styles from "./testimonials-data.module.css";
 import { testimonialsData } from "./testimonials-data";
 
-function StarIcon() {
-  return (
-    <svg
-      className={styles.star}
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path d="M12 2.75l2.76 5.59 6.17.9-4.46 4.35 1.05 6.14L12 16.84 6.48 19.73l1.05-6.14-4.46-4.35 6.17-.9L12 2.75z" />
-    </svg>
-  );
-}
+function TestimonialsData({
+  items = testimonialsData,
+  activeId = null,
+  className = "",
+}) {
+  const slotClasses = [styles.cardLeft, styles.cardCenter, styles.cardRight];
 
-function TestimonialsData() {
   return (
-    <div className={styles.cardsGrid}>
-      {testimonialsData.map((item) => (
-        <article key={item.id} className={`bgDarkBlur ${styles.card}`.trim()}>
+    <div className={`${styles.cardsGrid} ${className}`.trim()}>
+      {items.map((item, index) => (
+        <article
+          key={item.id}
+          className={`bgDarkBlur ${styles.card} ${
+            activeId === item.id ? styles.cardActive : styles.cardSide
+          } ${slotClasses[index] || ""}`.trim()}
+        >
           <div className={styles.profileRow}>
             <img className={styles.avatar} src={item.avatar} alt={item.name} />
 
@@ -31,7 +30,12 @@ function TestimonialsData() {
           <div className={styles.ratingRow}>
             <div className={styles.stars} aria-label={`${item.rating} out of 5`}>
               {Array.from({ length: item.rating }, (_, index) => (
-                <StarIcon key={`${item.id}-star-${index + 1}`} />
+                <Star
+                  key={`${item.id}-star-${index + 1}`}
+                  className={styles.star}
+                  size={15}
+                  color="#ffae00"
+                />
               ))}
             </div>
 
