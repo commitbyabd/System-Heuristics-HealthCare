@@ -7,8 +7,6 @@
   padding: 40px 0 32px;
   color: #ffffff;
   isolation: isolate;
-  --bg-grid-size: 144px 108px;
-  --bg-grid-line: rgba(255, 255, 255, 0.08);
 }
 
 .section::before {
@@ -74,7 +72,6 @@
 @media (max-width: 576px) {
   .section {
     padding: 72px 0 80px;
-    --bg-grid-size: 92px 92px;
   }
 
   .title {

@@ -43,6 +43,7 @@
     0 0 24px rgba(47, 209, 171, 0.45),
     0 0 42px rgba(47, 209, 171, 0.22);
   animation: railGlow 1.8s ease-in-out infinite alternate;
+  animation-play-state: paused;
 }
 
 .railPulse {
@@ -63,6 +64,7 @@
   filter: blur(2px);
   opacity: 0.9;
   animation: railPulseTravel 2.4s linear infinite;
+  animation-play-state: paused;
 }
 
 .marker {
@@ -85,6 +87,7 @@
   opacity: 0;
   transform: scale(0.75);
   animation: markerPulseGlow 3.2s ease-in-out infinite;
+  animation-play-state: paused;
 }
 
 .markerCore {
@@ -103,6 +106,14 @@
     0 0 0 4px rgba(47, 209, 171, 0.14),
     0 0 16px rgba(47, 209, 171, 0.25);
   animation: markerCoreGlow 3.2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+:global([data-animations-active="true"]) .railFill,
+:global([data-animations-active="true"]) .railPulse,
+:global([data-animations-active="true"]) .markerPulse,
+:global([data-animations-active="true"]) .markerCore {
+  animation-play-state: running;
 }
 
 /* railTrack is the first child, so markers start from child 2 */

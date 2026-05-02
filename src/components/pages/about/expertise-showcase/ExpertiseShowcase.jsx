@@ -16,9 +16,18 @@ function ExpertiseShowcase() {
     if (!section) return undefined;
 
     const ctx = gsap.context(() => {
+      const setSectionAnimationState = (isActive) => {
+        section.setAttribute(
+          "data-animations-active",
+          isActive ? "true" : "false",
+        );
+      };
+
       const cards = gsap.utils.toArray("[data-expertise-card]", section);
       const lineFill = section.querySelector("[data-timeline-fill]");
       const markers = gsap.utils.toArray("[data-timeline-marker]", section);
+
+      setSectionAnimationState(false);
 
       if (cards.length) {
         gsap.set(cards, {
@@ -81,6 +90,16 @@ function ExpertiseShowcase() {
             once: true,
           },
         });
+      });
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 80%",
+        end: "bottom 20%",
+        onEnter: () => setSectionAnimationState(true),
+        onEnterBack: () => setSectionAnimationState(true),
+        onLeave: () => setSectionAnimationState(false),
+        onLeaveBack: () => setSectionAnimationState(false),
       });
     }, section);
 

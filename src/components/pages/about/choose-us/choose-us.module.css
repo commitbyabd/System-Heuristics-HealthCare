@@ -1,0 +1,145 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+  color: #ffffff;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 48%;
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(47, 209, 171, 0.32) 0%,
+    rgba(47, 209, 171, 0.16) 34%,
+    rgba(47, 209, 171, 0) 76%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.surface {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  align-content: center;
+  overflow: visible;
+}
+
+.intro {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 392px);
+  gap: 18px 40px;
+  align-items: start;
+  width: 100%;
+  max-width: none;
+}
+
+.title {
+  max-width: 360px;
+  font-size: clamp(2.8rem, 5.4vw, 4rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.description {
+  margin: 4px 0 0;
+  max-width: 392px;
+  justify-self: end;
+  color: rgba(232, 239, 246, 0.84);
+  font-size: 0.96rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.lineWrap {
+  position: relative;
+  z-index: 1;
+  margin: 10px 0 14px;
+}
+
+.lineSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.linePath {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.95);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 8px 18px rgba(255, 255, 255, 0.08));
+}
+
+.orbGlow {
+  fill: rgba(47, 209, 171, 0.42);
+  filter: blur(6px);
+}
+
+.orbCore {
+  fill: #2fd1ab;
+  filter: drop-shadow(0 0 10px rgba(47, 209, 171, 0.95));
+}
+
+@media (max-width: 992px) {
+  .section {
+    min-height: auto;
+    padding: 88px 0 96px;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .description {
+    justify-self: start;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .title {
+    max-width: 280px;
+  }
+
+  .lineWrap {
+    margin: 8px 0 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 76px 0 84px;
+  }
+
+  .title {
+    font-size: clamp(2.45rem, 12vw, 3.4rem);
+  }
+
+  .description {
+    font-size: 0.94rem;
+  }
+}

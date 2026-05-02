@@ -1,9 +1,12 @@
+import { createElement } from "react";
 import styles from "./section-intro.module.css";
 import GradientRevealAnimation from "../gradient-reveal-animation/GradientRevealAnimation";
+import GradientScrollAnimation from "../gradient-scroll-animation/GradientScrollAnimation";
 
 function SectionIntro({
   title = "Software That Heals How Healthcare Works",
   description = "We engineer intelligent, HIPAA-compliant healthcare platforms from AI diagnostics to enterprise hospital systems - built for the future of medicine.",
+  titleAs = "h1",
   highlightWord = 3,
   className = "",
   titleClassName = "",
@@ -16,11 +19,16 @@ function SectionIntro({
   animateFinalColor = "#FFFFFF",
   triggerOnScroll = false,
   scrollStart = "top 85%",
+  animateMode = "reveal",
 }) {
   const words = title.split(" ");
 
-  const titleEl = (
-    <h1 className={`${styles.title} ${titleClassName}`.trim()}>
+  const titleEl = createElement(
+    titleAs,
+    {
+      className: `${styles.title} ${titleClassName}`.trim(),
+    },
+    <>
       {words.map((word, index) => (
         <span
           key={index}
@@ -32,7 +40,7 @@ function SectionIntro({
           {index !== words.length - 1 && " "}
         </span>
       ))}
-    </h1>
+    </>,
   );
 
   const descriptionEl = (
@@ -43,7 +51,23 @@ function SectionIntro({
 
   return (
     <div className={`${styles.heroText} ${className}`.trim()}>
-      {animateTitle ? (
+      {animateTitle && animateMode === "scroll" ? (
+        <GradientScrollAnimation
+          className={styles.animWrapper}
+          colorInitial={animateInitialColor}
+          colorAccent={animateAccentColor}
+          colorFinal={animateFinalColor}
+          highlightFinalColor={highlightColor}
+          highlightWords={
+            highlightWord
+              ? [{ elementIndex: 0, wordIndex: highlightWord - 1 }]
+              : []
+          }
+        >
+          {titleEl}
+          {descriptionEl}
+        </GradientScrollAnimation>
+      ) : animateTitle ? (
         <GradientRevealAnimation
           className={styles.animWrapper}
           colorInitial={animateInitialColor}
