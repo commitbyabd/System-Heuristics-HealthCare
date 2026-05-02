@@ -1,6 +1,6 @@
 import Hero from "../about/hero/Hero";
-import ExpertiseShowcase from "./expertise-showcase/ExpertiseShowcase";
 import Principles from "./principles/Principles";
+import ExpertiseShowcase from "./expertise-showcase/ExpertiseShowcase";
 function AboutMain() {
   return (
     <div>
