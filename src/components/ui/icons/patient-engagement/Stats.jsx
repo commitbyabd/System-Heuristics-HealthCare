@@ -1,4 +1,4 @@
-export default function ArrowRight({
+export default function Stats({
   size = 24,
   color = "currentColor",
   ...props
@@ -6,15 +6,15 @@ export default function ArrowRight({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-chart-column-decreasing-icon lucide-chart-column-decreasing"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
     >
       <path d="M13 17V9" />
       <path d="M18 17v-3" />
