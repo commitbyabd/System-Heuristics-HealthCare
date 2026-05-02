@@ -1,0 +1,45 @@
+.section {
+  padding: 56px 0 64px;
+  background: #ffffff;
+}
+
+.intro {
+  align-items: flex-start;
+  max-width: 760px;
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.description {
+  margin-top: 10px;
+  max-width: 520px;
+  color: #7b8390;
+  font-size: 0.9rem;
+  line-height: 1.42;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 0;
+  }
+
+  .intro {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 44px 0;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}
