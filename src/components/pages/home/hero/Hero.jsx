@@ -11,16 +11,8 @@ function Hero() {
           <SectionIntro animateTitle />
 
           <div className={styles.actions}>
-            <Button
-              text="Book a Consultation"
-              variant="filled"
-              width="222px"
-            />
-            <Button
-              text="View Our Work"
-              variant="transparent"
-              width="147px"
-            />
+            <Button text="Book a Consultation" variant="filled" width="222px" />
+            <Button text="View Our Work" variant="transparent" width="147px" />
           </div>
         </div>
 
