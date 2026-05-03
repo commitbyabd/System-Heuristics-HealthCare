@@ -14,7 +14,12 @@ function SolutionsEcosystem() {
           <SectionTitle
             title={["Built for Healthcare", "Compliance & Security"]}
             highlightWord={3}
-            color="var(--color-text-strong)"
+            color="#1f2940"
+            highlightColor="#2FD1AB"
+            animateTitle
+            animateInitialColor="#737e8a"
+            animateAccentColor="#2FD1AB"
+            animateFinalColor="#1f2940"
           />
         </div>
 
