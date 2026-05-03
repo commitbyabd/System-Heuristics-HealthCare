@@ -11,7 +11,7 @@
 }
 
 .stickyFrame {
-  min-height: calc(100vh - var(--nav-height));
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,8 +20,8 @@
 
 .container {
   width: 100%;
-  padding-top: 72px;
-  padding-bottom: 72px;
+  padding-top: 48px;
+  padding-bottom: 48px;
   box-sizing: border-box;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .content {
-  margin-top: 24px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: minmax(360px, 480px) minmax(0, 1fr);
   gap: 48px;
@@ -180,7 +180,7 @@
 }
 
 .copyBlock {
-  min-height: 220px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,7 +227,7 @@
 
 .previewWrap {
   position: relative;
-  min-height: 520px;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;

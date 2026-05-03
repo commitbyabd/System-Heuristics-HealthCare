@@ -1,6 +1,9 @@
 .section {
   width: 100%;
-  padding: 88px 0 96px;
+  min-height: 100vh;
+  padding: 48px 0;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -13,7 +16,7 @@
   position: relative;
   width: 100%;
   max-width: 1380px;
-  height: 720px;
+  height: 640px;
   margin: 0 auto;
 }
 
@@ -85,8 +88,8 @@
 
 .centerCard {
   position: relative;
-  width: 480px;
-  padding: 28px 32px 30px;
+  width: 440px;
+  padding: 22px 28px;
   border-radius: 22px;
   background:
     linear-gradient(180deg, rgba(255, 251, 245, 0.98) 0%, #fffaf4 100%);
@@ -132,51 +135,51 @@
 .centerDescription {
   width: auto;
   max-width: 340px;
-  margin: 10px auto 0;
+  margin: 8px auto 0;
   color: #6b7480;
   font-size: 0.9375rem;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .cardTopLeft {
-  top: 74px;
-  left: 28px;
+  top: 40px;
+  left: 12px;
 }
 
 .cardTopCenter {
-  top: 18px;
+  top: 0;
   left: 50%;
   margin-left: -150px;
 }
 
 .cardTopRight {
-  top: 74px;
-  right: 28px;
+  top: 40px;
+  right: 12px;
 }
 
 .cardBottomLeft {
-  bottom: 74px;
-  left: 28px;
+  bottom: 40px;
+  left: 12px;
 }
 
 .cardBottomCenter {
-  bottom: 18px;
+  bottom: 0;
   left: 50%;
   margin-left: -150px;
 }
 
 .cardBottomRight {
-  bottom: 74px;
-  right: 28px;
+  bottom: 40px;
+  right: 12px;
 }
 
 .line {
   position: absolute;
-  height: 2px;
+  height: 3px;
   transform-origin: 0 50%;
   border-radius: 999px;
-  background: rgba(47, 209, 171, 0.45);
-  box-shadow: 0 0 6px rgba(47, 209, 171, 0.3);
+  background: rgba(47, 209, 171, 0.5);
+  box-shadow: 0 0 8px rgba(47, 209, 171, 0.35);
   pointer-events: none;
   z-index: 1;
   clip-path: inset(0 100% 0 0);
@@ -188,8 +191,8 @@
   position: absolute;
   top: 50%;
   left: 0;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
@@ -237,6 +240,12 @@
 }
 
 @media screen and (max-width: 1100px) {
+  .section {
+    min-height: auto;
+    padding: 64px 0;
+    display: block;
+  }
+
   .grid {
     height: auto;
     min-height: auto;
