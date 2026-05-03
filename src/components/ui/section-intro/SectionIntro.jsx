@@ -21,26 +21,40 @@ function SectionIntro({
   scrollStart = "top 85%",
   animateMode = "reveal",
 }) {
-  const words = title.split(" ");
+  const lines = Array.isArray(title) ? title : [title];
+
+  const titleNodes = [];
+  let wordCounter = 0;
+
+  lines.forEach((line, lineIndex) => {
+    const wordsInLine = line.split(" ").filter(Boolean);
+    wordsInLine.forEach((word, indexInLine) => {
+      const isLastInLine = indexInLine === wordsInLine.length - 1;
+      const oneBasedIndex = wordCounter + 1;
+      titleNodes.push(
+        <span
+          key={`w-${lineIndex}-${indexInLine}`}
+          style={{
+            color: oneBasedIndex === highlightWord ? highlightColor : color,
+          }}
+        >
+          {word}
+          {!isLastInLine && " "}
+        </span>,
+      );
+      wordCounter += 1;
+    });
+    if (lineIndex !== lines.length - 1) {
+      titleNodes.push(<br key={`br-${lineIndex}`} />);
+    }
+  });
 
   const titleEl = createElement(
     titleAs,
     {
       className: `${styles.title} ${titleClassName}`.trim(),
     },
-    <>
-      {words.map((word, index) => (
-        <span
-          key={index}
-          style={{
-            color: index + 1 === highlightWord ? highlightColor : color,
-          }}
-        >
-          {word}
-          {index !== words.length - 1 && " "}
-        </span>
-      ))}
-    </>,
+    <>{titleNodes}</>,
   );
 
   const descriptionEl = (

@@ -2,6 +2,7 @@ import styles from "./hero.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import Button from "../../../ui/button/Button";
+import ArrowRight from "../../../ui/icons/ArrowRight";
 
 function Hero() {
   return (
@@ -11,7 +12,12 @@ function Hero() {
           <SectionIntro animateTitle />
 
           <div className={styles.actions}>
-            <Button text="Book a Consultation" variant="filled" width="222px" />
+            <Button
+              text="Book a Consultation"
+              variant="filled"
+              width="222px"
+              Icon={ArrowRight}
+            />
             <Button text="View Our Work" variant="transparent" width="147px" />
           </div>
         </div>

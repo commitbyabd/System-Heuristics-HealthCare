@@ -227,10 +227,6 @@ function FaqData() {
                 className={`${styles.sectionContentWrap} ${isActive ? styles.sectionContentWrapOpen : ""}`.trim()}
               >
                 <div className={styles.sectionContent}>
-                  <div className={styles.sectionTitleColumn}>
-                    <h3 className={styles.sectionTitleLarge}>{section.title}</h3>
-                  </div>
-
                   <div className={styles.questionList}>
                     {section.items.map((item) => {
                       const isOpen = openQuestionId === item.id;
