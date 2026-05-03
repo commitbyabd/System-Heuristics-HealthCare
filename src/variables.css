@@ -60,6 +60,7 @@ Variables:
   --padding-card: 16px 24px;
   --padding-layout: 32px 64px;
   --gap-card: 20px;
+  --nav-height: 80px;
 
   /* Colors */
   --color-primary: #00b3ff;

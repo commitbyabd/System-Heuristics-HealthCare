@@ -9,7 +9,9 @@
   z-index: 1000;
   padding: 8px 24px;
   width: 100%;
+  min-height: var(--nav-height);
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 

@@ -14,7 +14,7 @@
 }
 
 .inner {
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - var(--nav-height));
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
