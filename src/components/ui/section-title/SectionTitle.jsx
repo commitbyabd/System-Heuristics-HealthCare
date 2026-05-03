@@ -12,21 +12,37 @@ function SectionTitle({
   animateAccentColor = "#2FD1AB",
   animateFinalColor = "#FFFFFF",
 }) {
-  const words = title.split(" ");
+  const lines = Array.isArray(title) ? title : [title];
 
-  const titleEl = (
-    <h2 className={`${styles.sectionTitle} ${className}`.trim()}>
-      {words.map((word, index) => (
+  const titleNodes = [];
+  let wordCounter = 0;
+
+  lines.forEach((line, lineIndex) => {
+    const wordsInLine = line.split(" ").filter(Boolean);
+    wordsInLine.forEach((word, indexInLine) => {
+      const isLastInLine = indexInLine === wordsInLine.length - 1;
+      const oneBasedIndex = wordCounter + 1;
+      titleNodes.push(
         <span
-          key={index}
+          key={`w-${lineIndex}-${indexInLine}`}
           style={{
-            color: index + 1 === highlightWord ? highlightColor : color,
+            color: oneBasedIndex === highlightWord ? highlightColor : color,
           }}
         >
           {word}
-          {index !== words.length - 1 && " "}
-        </span>
-      ))}
+          {!isLastInLine && " "}
+        </span>,
+      );
+      wordCounter += 1;
+    });
+    if (lineIndex !== lines.length - 1) {
+      titleNodes.push(<br key={`br-${lineIndex}`} />);
+    }
+  });
+
+  const titleEl = (
+    <h2 className={`${styles.sectionTitle} ${className}`.trim()}>
+      {titleNodes}
     </h2>
   );
 

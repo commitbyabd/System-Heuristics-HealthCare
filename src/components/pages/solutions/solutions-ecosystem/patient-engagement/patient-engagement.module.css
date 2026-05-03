@@ -36,7 +36,6 @@
 
 .label {
   position: absolute;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,25 +43,29 @@
   color: #ffffff;
   pointer-events: none;
   user-select: none;
+  will-change: transform, opacity;
 }
 
 .number {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: var(--title-font);
+  font-size: 1.375rem;
+  font-weight: var(--title-weight);
   line-height: 1;
+  letter-spacing: 0.01em;
 }
 
 .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
 }
 
 .icon :global(svg) {
   width: 100%;
   height: 100%;
+  stroke-width: 1.6;
 }
 
 .pill {
@@ -70,21 +73,34 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 110px;
-  height: 110px;
+  width: 118px;
+  height: 118px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--color-light);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-family: var(--title-font);
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--color-text);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  font-weight: var(--title-weight);
+  line-height: 1.2;
+  color: var(--color-text-strong);
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.55),
+    0 0 0 7px rgba(47, 209, 171, 0.35),
+    0 8px 22px rgba(31, 41, 55, 0.1);
   pointer-events: none;
   z-index: 3;
+}
+
+.nibIntro {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform, opacity;
 }
 
 .nibRing {
@@ -98,7 +114,6 @@
   background: transparent;
   pointer-events: none;
   transition: transform 90ms linear;
-  z-index: 2;
 }
 
 .nibTriangle {
@@ -120,17 +135,22 @@
   }
 
   .pill {
-    width: 88px;
-    height: 88px;
-    font-size: 0.85rem;
+    width: 92px;
+    height: 92px;
+    font-size: 0.82rem;
   }
 
   .nibRing {
-    width: 106px;
-    height: 106px;
+    width: 108px;
+    height: 108px;
   }
 
   .number {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
   }
 }

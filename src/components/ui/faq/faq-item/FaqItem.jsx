@@ -1,13 +1,12 @@
-import { useEffect, useId, useRef, useState } from "react";
-import styles from "./faq-section-card.module.css";
+import { useEffect, useId, useRef } from "react";
+import styles from "./faq-item.module.css";
 
-export default function FaqSectionCard({ faq }) {
-  const boxRef = useRef(null);
-  const [open, setOpen] = useState(false);
+export default function FaqItem({ question, answer, isOpen, onToggle }) {
+  const itemRef = useRef(null);
   const answerId = useId();
 
   useEffect(() => {
-    const el = boxRef.current;
+    const el = itemRef.current;
     if (!el) return;
 
     let rafId = null;
@@ -41,28 +40,28 @@ export default function FaqSectionCard({ faq }) {
 
   return (
     <div
-      ref={boxRef}
-      className={`${styles.cardBox} ${open ? styles.open : ""}`.trim()}
+      ref={itemRef}
+      className={`${styles.item} ${isOpen ? styles.itemOpen : ""}`.trim()}
     >
       <button
-        className={styles.cardHeader}
-        onClick={() => setOpen((s) => !s)}
-        aria-expanded={open}
+        type="button"
+        className={styles.header}
+        onClick={onToggle}
+        aria-expanded={isOpen}
         aria-controls={answerId}
-        aria-label={faq.question}
       >
-        <span className={styles.question}>{faq.question}</span>
-        <span className={styles.icon} aria-hidden>
-          {open ? "−" : "+"}
+        <span className={styles.question}>{question}</span>
+        <span className={styles.icon} aria-hidden="true">
+          {isOpen ? "−" : "+"}
         </span>
       </button>
 
       <div
         id={answerId}
-        className={`${styles.answer} ${open ? styles.open : ""}`}
+        className={`${styles.answer} ${isOpen ? styles.answerOpen : ""}`.trim()}
         role="region"
       >
-        <p>{faq.answer}</p>
+        <p className={styles.answerText}>{answer}</p>
       </div>
 
       <span className={styles.line} aria-hidden="true">

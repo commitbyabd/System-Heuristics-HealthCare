@@ -7,25 +7,27 @@ import styles from "./solutions-ecosystem.module.css";
 
 function SolutionsEcosystem() {
   return (
-    <Container>
-      <div className={styles.header}>
-        <Chip text="Secure & Encrypted" />
-        <SectionTitle
-          title="Built for Healthcare Compliance & Security"
-          highlightWord={3}
-          color="#00213a"
-        />
-      </div>
+    <section className={styles.section}>
+      <Container>
+        <div className={styles.header}>
+          <Chip text="Secure & Encrypted" />
+          <SectionTitle
+            title={["Built for Healthcare", "Compliance & Security"]}
+            highlightWord={3}
+            color="var(--color-text-strong)"
+          />
+        </div>
 
-      <div className={styles.grid}>
-        <div className={styles.left}>
-          <Accordion />
+        <div className={styles.grid}>
+          <div className={styles.left}>
+            <Accordion />
+          </div>
+          <div className={styles.right}>
+            <PatientEngagement />
+          </div>
         </div>
-        <div className={styles.right}>
-          <PatientEngagement />
-        </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   );
 }
 
