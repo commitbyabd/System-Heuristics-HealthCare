@@ -31,7 +31,8 @@
 }
 
 .question {
-  font-weight: 600;
+  font-family: var(--title-font);
+  font-weight: var(--title-weight);
   font-size: 0.92rem;
   color: var(--color-text);
 }
@@ -63,7 +64,9 @@
 
 .answer {
   max-height: 0;
+  font-family: var(--content-font);
   font-size: 12.5px;
+  font-weight: var(--content-weight);
   opacity: 0;
   overflow: hidden;
   color: var(--color-text);

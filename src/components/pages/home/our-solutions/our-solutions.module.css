@@ -46,7 +46,7 @@
   font-family: var(--title-font);
   font-size: var(--title-size);
   line-height: 1.05;
-  font-weight: 600;
+  font-weight: var(--title-weight);
 }
 
 .subtitle {
@@ -55,6 +55,7 @@
   color: var(--color-text);
   font-family: var(--content-font);
   font-size: var(--content-size);
+  font-weight: var(--content-weight);
   line-height: 1.65;
 }
 
@@ -191,6 +192,7 @@
   font-family: var(--title-font);
   font-size: clamp(2rem, 2.6vw, 2.8rem);
   line-height: 1.14;
+  font-weight: var(--title-weight);
   transition:
     opacity 0.4s ease,
     transform 0.4s ease;
@@ -202,6 +204,7 @@
   color: var(--color-text-body);
   font-family: var(--content-font);
   font-size: var(--content-size);
+  font-weight: var(--content-weight);
   line-height: 1.7;
 }
 

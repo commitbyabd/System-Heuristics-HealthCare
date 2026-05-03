@@ -49,7 +49,7 @@
   margin: 0;
   font-family: var(--title-font);
   font-size: var(--font-md-xl);
-  font-weight: var(--font-bold);
+  font-weight: var(--title-weight);
   line-height: 1;
   letter-spacing: 0;
   color: #1f2937;
@@ -59,7 +59,7 @@
   margin: 0;
   font-family: var(--content-font);
   font-size: var(--content-size);
-  font-weight: 400;
+  font-weight: var(--content-weight);
   line-height: 1.5;
   letter-spacing: 0;
   text-align: justify;

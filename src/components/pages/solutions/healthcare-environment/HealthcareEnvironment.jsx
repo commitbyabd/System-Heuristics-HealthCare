@@ -127,24 +127,15 @@ function HealthcareEnvironment() {
             {steps.map((step, index) => {
               const isActive = index === activeIndex;
               return (
-                <button
+                <Button
                   key={step.id}
-                  type="button"
+                  text={step.label}
+                  variant={isActive ? "filled" : "transparent"}
+                  width="auto"
                   role="tab"
                   aria-selected={isActive}
-                  className={styles.tabBtn}
                   onClick={() => handleTabClick(index)}
-                >
-                  {isActive ? (
-                    <Button text={step.label} variant="filled" width="auto" />
-                  ) : (
-                    <Button
-                      text={step.label}
-                      variant="transparent"
-                      width="auto"
-                    />
-                  )}
-                </button>
+                />
               );
             })}
           </div>

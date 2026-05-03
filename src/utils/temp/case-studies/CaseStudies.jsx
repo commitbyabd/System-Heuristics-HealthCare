@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./case-studies.module.css";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
-import caseStudies from "../../../../data/case-study/CaseStudyData";
+import caseStudies from "../../../../data/pages/home/case-study/CaseStudyData";
 import Button from "../../../ui/button/Button";
 gsap.registerPlugin(ScrollTrigger);
 

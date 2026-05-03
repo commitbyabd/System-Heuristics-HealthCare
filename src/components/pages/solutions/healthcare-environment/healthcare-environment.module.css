@@ -34,7 +34,7 @@
   font-family: var(--title-font);
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   line-height: 1.1;
-  font-weight: 700;
+  font-weight: var(--title-weight);
   margin: 0;
 }
 
@@ -44,6 +44,7 @@
   color: #b9c2c8;
   font-family: var(--content-font);
   font-size: var(--content-size);
+  font-weight: var(--content-weight);
   line-height: 1.65;
 }
 
@@ -53,13 +54,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-}
-
-.tabBtn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: var(--hover-cursor);
 }
 
 .stage {
@@ -126,7 +120,7 @@
   margin: 0;
   font-family: var(--title-font);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: var(--title-weight);
   color: #2fd1ab;
   line-height: 1.2;
 }
@@ -136,6 +130,7 @@
   color: #c5cdd4;
   font-family: var(--content-font);
   font-size: var(--content-size);
+  font-weight: var(--content-weight);
   line-height: 1.65;
   max-width: 460px;
 }

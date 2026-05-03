@@ -44,7 +44,6 @@
   font-size: clamp(2.2rem, 3.8vw, 3.2rem);
   line-height: 1;
   letter-spacing: -0.035em;
-  font-weight: 600;
 }
 
 .description {
@@ -52,7 +51,6 @@
   color: #7b8390;
   font-size: 0.86rem;
   line-height: 1.5;
-  font-weight: 500;
 }
 
 .card {
@@ -124,7 +122,7 @@
   font-size: clamp(2.4rem, 3.6vw, 3.4rem);
   line-height: 1;
   letter-spacing: -0.03em;
-  font-weight: 600;
+  font-weight: var(--title-weight);
   color: #18233b;
   font-variant-numeric: tabular-nums;
 }

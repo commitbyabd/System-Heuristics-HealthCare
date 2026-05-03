@@ -41,7 +41,7 @@
   font-family: var(--title-font);
   font-size: clamp(1.2rem, 1.45vw, 1.55rem);
   line-height: 1.1;
-  font-weight: 500;
+  font-weight: var(--title-weight);
   letter-spacing: -0.02em;
 }
 
@@ -50,6 +50,7 @@
   max-width: 31ch;
   font-family: var(--content-font);
   font-size: 0.93rem;
+  font-weight: var(--content-weight);
   line-height: 1.46;
   color: rgba(231, 240, 247, 0.82);
 }

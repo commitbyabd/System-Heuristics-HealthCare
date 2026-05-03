@@ -47,6 +47,8 @@ Variables:
   --content-size: 16px;
   --title-font: "Frank Ruhl Libre", serif;
   --content-font: "Quicksand", sans-serif;
+  --title-weight: 600;
+  --content-weight: 500;
 
   /* Weights */
   --font-light: 400;
@@ -64,7 +66,6 @@ Variables:
   --color-primary-hover: #0092d0;
   --color-primary-light: #daedff;
   --color-primary-light-hover: #b3d9ff;
-  --color-text-strong: 0A1428;
   --color-text: #636360;
   --color-secondary: #8f9eae;
   --color-secondary-light: #737e8a;

@@ -216,7 +216,7 @@
   color: #ffffff;
   font-family: var(--title-font);
   font-size: clamp(1.15rem, 1.75vw, 1.45rem);
-  font-weight: 500;
+  font-weight: var(--title-weight);
   line-height: 1.02;
   letter-spacing: -0.02em;
 }
@@ -226,6 +226,7 @@
   color: rgba(240, 246, 253, 0.8);
   font-family: var(--content-font);
   font-size: clamp(0.76rem, 0.86vw, 0.84rem);
+  font-weight: var(--content-weight);
   line-height: 1.28;
   max-width: 560px;
 }

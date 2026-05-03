@@ -14,7 +14,7 @@
   margin: 0;
   font-family: var(--title-font);
   font-size: var(--title-size);
-  font-weight: 500;
+  font-weight: var(--title-weight);
   line-height: 1.05;
   letter-spacing: 0;
   color: #ffffff;
@@ -29,7 +29,7 @@
   max-width: 462px;
   font-family: var(--content-font);
   font-size: var(--content-size);
-  font-weight: 500;
+  font-weight: var(--content-weight);
   line-height: 1.5;
   color: #c3c3c3;
 }

@@ -45,15 +45,16 @@
   line-height: 1.02;
   letter-spacing: -0.04em;
   font-family: var(--title-font);
+  font-weight: var(--title-weight);
 }
 
 .description {
   margin: 10px auto 0;
   max-width: 500px;
   color: rgba(237, 244, 255, 0.8);
-  font-weight: 400;
+  font-weight: var(--content-weight);
   line-height: 1.42;
-  font-family: var(---content-font);
+  font-family: var(--content-font);
   font-size: 0.96rem;
 }
 

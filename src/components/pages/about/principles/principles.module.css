@@ -24,7 +24,7 @@
   margin: 0;
   font-family: var(--title-font);
   font-size: clamp(3rem, 5.2vw, 4.75rem);
-  font-weight: 500;
+  font-weight: var(--title-weight);
   line-height: 1.02;
   letter-spacing: -0.04em;
   color: #07142b;
@@ -35,7 +35,7 @@
   margin: 16px auto 0;
   font-family: var(--content-font);
   font-size: clamp(1rem, 1.25vw, 1.12rem);
-  font-weight: 400;
+  font-weight: var(--content-weight);
   line-height: 1.5;
   color: #70757f;
 }

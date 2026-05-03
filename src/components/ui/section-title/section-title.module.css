@@ -4,7 +4,7 @@
   text-align: center;
   font-family: var(--title-font);
   font-size: var(--title-size);
-  font-weight: 700;
+  font-weight: var(--title-weight);
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: #ffffff;

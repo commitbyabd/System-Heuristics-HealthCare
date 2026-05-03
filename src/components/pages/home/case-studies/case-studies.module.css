@@ -63,6 +63,7 @@
   color: var(--color-text-body);
   font-family: var(--content-font);
   font-size: var(--content-size);
+  font-weight: var(--content-weight);
   line-height: 1.65;
   max-width: 560px;
 }
@@ -193,13 +194,14 @@
   font-family: var(--title-font);
   font-size: clamp(1.5rem, 2vw, 2rem);
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: var(--title-weight);
 }
 
 .slideBlock {
   color: var(--color-text-muted);
   font-family: var(--content-font);
   font-size: var(--content-size);
+  font-weight: var(--content-weight);
   line-height: 1.65;
   margin: 0;
 }
@@ -207,7 +209,7 @@
 .slideBlockHeading {
   display: block;
   color: var(--color-teal);
-  font-weight: 700;
+  font-weight: var(--title-weight);
   margin-bottom: 2px;
 }
 

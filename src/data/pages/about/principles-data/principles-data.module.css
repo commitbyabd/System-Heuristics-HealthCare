@@ -35,17 +35,17 @@
   font-family: var(--title-font);
   font-size: clamp(2.1rem, 2.8vw, 3rem);
   line-height: 1.05;
-  font-weight: 500;
+  font-weight: var(--title-weight);
   color: var(--color-text-strong);
   letter-spacing: -0.03em;
 }
 
 .description {
   margin: 0;
-  font-family: var(--font-family-primary);
+  font-family: var(--content-font);
   font-size: clamp(0.95rem, 1.1vw, 1.08rem);
   line-height: 1.55;
-  font-weight: 400;
+  font-weight: var(--content-weight);
   color: #6f716d;
   text-align: justify;
   text-align-last: left;

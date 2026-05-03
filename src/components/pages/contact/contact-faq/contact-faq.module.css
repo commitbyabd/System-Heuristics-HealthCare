@@ -11,7 +11,6 @@
 
 .introTitle {
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.02em;
 }
@@ -60,7 +59,7 @@
   margin: 0;
   font-family: var(--title-font);
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: var(--title-weight);
   line-height: 1.2;
   color: #22313f;
 }

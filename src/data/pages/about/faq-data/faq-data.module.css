@@ -38,7 +38,7 @@
   font-family: var(--title-font);
   font-size: clamp(1.55rem, 1.95vw, 1.95rem);
   line-height: 1.08;
-  font-weight: 500;
+  font-weight: var(--title-weight);
   letter-spacing: -0.02em;
   color: #18233b;
 }
@@ -89,7 +89,7 @@
   font-family: var(--title-font);
   font-size: clamp(1.7rem, 2.2vw, 2.2rem);
   line-height: 1.1;
-  font-weight: 500;
+  font-weight: var(--title-weight);
   letter-spacing: -0.03em;
   color: #18233b;
 }
@@ -158,6 +158,7 @@
   max-width: 760px;
   font-family: var(--content-font);
   font-size: 0.9rem;
+  font-weight: var(--content-weight);
   line-height: 1.58;
   color: #7d8791;
 }

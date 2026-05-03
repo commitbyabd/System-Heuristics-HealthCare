@@ -81,7 +81,7 @@
   font-family: var(--title-font);
   font-size: clamp(1.1rem, 1.35vw, 1.35rem);
   line-height: 1.05;
-  font-weight: 500;
+  font-weight: var(--title-weight);
   letter-spacing: -0.02em;
 }
 
@@ -90,6 +90,7 @@
   color: rgba(226, 235, 244, 0.72);
   font-family: var(--content-font);
   font-size: 0.82rem;
+  font-weight: var(--content-weight);
   line-height: 1.35;
 }
 
@@ -125,6 +126,7 @@
   color: rgba(235, 242, 248, 0.8);
   font-family: var(--content-font);
   font-size: 0.88rem;
+  font-weight: var(--content-weight);
   line-height: 1.55;
 }
 

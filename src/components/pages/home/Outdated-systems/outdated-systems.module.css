@@ -110,7 +110,7 @@
   margin: 0;
   font-family: var(--title-font);
   font-size: clamp(2rem, 2.9vw, 2.75rem);
-  font-weight: 700;
+  font-weight: var(--title-weight);
   line-height: 1;
   letter-spacing: -0.03em;
   color: #ffffff;
@@ -121,6 +121,7 @@
   max-width: 230px;
   font-family: var(--content-font);
   font-size: var(--content-size);
+  font-weight: var(--content-weight);
   line-height: 1.45;
   color: rgba(237, 244, 242, 0.88);
   transform: translateY(16px);

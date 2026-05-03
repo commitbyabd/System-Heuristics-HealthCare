@@ -55,6 +55,8 @@
   font-size: clamp(2.8rem, 5.4vw, 4rem);
   line-height: 0.96;
   letter-spacing: -0.05em;
+  font-family: var(--title-font);
+  font-weight: var(--title-weight);
 }
 
 .description {
@@ -62,9 +64,10 @@
   max-width: 392px;
   justify-self: end;
   color: rgba(232, 239, 246, 0.84);
+  font-family: var(--content-font);
   font-size: 0.96rem;
   line-height: 1.5;
-  font-weight: 500;
+  font-weight: var(--content-weight);
 }
 
 .lineWrap {

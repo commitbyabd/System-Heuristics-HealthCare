@@ -45,6 +45,7 @@ description {
 .description {
   font-family: var(--content-font);
   font-size: var(--content-size);
+  font-weight: var(--content-weight);
 }
 
 /* =========================
