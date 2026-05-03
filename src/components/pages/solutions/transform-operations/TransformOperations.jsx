@@ -2,8 +2,7 @@ import styles from "./transform-operations.module.css";
 import Container from "../../../ui/container/Container";
 import LazyImage from "../../../ui/lazy-image/LazyImage";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
-import BackgroundFilledButton from "../../../ui/buttons/background-filled/BackgroundFilledButton";
-import BackgroundTransparentButton from "../../../ui/buttons/background-transparent/BackgroundTransparentButton";
+import Button from "../../../ui/button/Button";
 
 function TransformOperations() {
   return (
@@ -25,8 +24,8 @@ function TransformOperations() {
           />
 
           <div className={styles.actions}>
-            <BackgroundFilledButton text="Talk to an Expert" width="170px" />
-            <BackgroundTransparentButton text="Book Demo" width="120px" />
+            <Button text="Talk to an Expert" variant="filled" width="170px" />
+            <Button text="Book Demo" variant="transparent" width="120px" />
           </div>
         </Container>
       </div>

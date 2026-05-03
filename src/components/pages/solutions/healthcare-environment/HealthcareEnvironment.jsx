@@ -6,8 +6,7 @@ import Container from "../../../ui/container/Container";
 import Chip from "../../../ui/chip/Chip";
 import SectionTitle from "../../../ui/section-title/SectionTitle";
 import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
-import BackgroundFilledButton from "../../../ui/buttons/background-filled/BackgroundFilledButton";
-import BackgroundTransparentButton from "../../../ui/buttons/background-transparent/BackgroundTransparentButton";
+import Button from "../../../ui/button/Button";
 import { HealthcareEnvironmentData } from "../../../../data/pages/solutions/environment/HealthcareEnvironment";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -137,17 +136,12 @@ function HealthcareEnvironment() {
                   onClick={() => handleTabClick(index)}
                 >
                   {isActive ? (
-                    <BackgroundFilledButton
-                      text={step.label}
-                      width="auto"
-                      height="38px"
-                      Icon={null}
-                    />
+                    <Button text={step.label} variant="filled" width="auto" />
                   ) : (
-                    <BackgroundTransparentButton
+                    <Button
                       text={step.label}
+                      variant="transparent"
                       width="auto"
-                      height="38px"
                     />
                   )}
                 </button>
