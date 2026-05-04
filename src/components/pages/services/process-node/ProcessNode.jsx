@@ -12,8 +12,9 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 const DESKTOP_BREAKPOINT = 1100;
-const DASH_PATTERN = "4 8";
-const DASH_CYCLE = 12;
+const DASH_PATTERN = "6 4";
+const DASH_CYCLE = 10;
+const EDGE_INSET = 6;
 
 function ProcessNode() {
   const sectionRef = useRef(null);
@@ -21,8 +22,9 @@ function ProcessNode() {
   const cardRefs = useRef([]);
   const drawTlRef = useRef(null);
   const [paths, setPaths] = useState([]);
-  const [active, setActive] = useState(false);
+  const [inView, setInView] = useState(false);
   const [drawn, setDrawn] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -37,26 +39,31 @@ function ProcessNode() {
       }
 
       const trackRect = track.getBoundingClientRect();
-      const points = cards.map((el) => {
-        const rect = el.getBoundingClientRect();
+      const points = cards.map((card) => {
+        const rect = card.getBoundingClientRect();
         return {
-          x1: rect.left - trackRect.left + 22,
-          x2: rect.right - trackRect.left - 22,
-          cy: rect.top + rect.height / 2 - trackRect.top,
+          left: rect.left - trackRect.left,
+          right: rect.right - trackRect.left,
+          centerY: rect.top - trackRect.top + rect.height / 2,
         };
       });
 
       const segments = [];
       for (let i = 0; i < points.length - 1; i += 1) {
-        const a = points[i];
-        const b = points[i + 1];
-        const startX = a.x2;
-        const endX = b.x1;
-        const controlOffset = Math.max((endX - startX) * 0.38, 36);
-        segments.push(
-          `M ${startX.toFixed(1)} ${a.cy.toFixed(1)} C ${(startX + controlOffset).toFixed(1)} ${a.cy.toFixed(1)}, ${(endX - controlOffset).toFixed(1)} ${b.cy.toFixed(1)}, ${endX.toFixed(1)} ${b.cy.toFixed(1)}`,
-        );
+        const start = points[i];
+        const end = points[i + 1];
+        const startX = start.right - EDGE_INSET;
+        const endX = end.left + EDGE_INSET;
+        const startY = start.centerY;
+        const endY = end.centerY;
+        const dx = endX - startX;
+        const handle = Math.min(Math.max(dx * 0.45, 58), 124);
+
+        segments.push({
+          d: `M ${startX.toFixed(1)} ${startY.toFixed(1)} C ${(startX + handle).toFixed(1)} ${startY.toFixed(1)}, ${(endX - handle).toFixed(1)} ${endY.toFixed(1)}, ${endX.toFixed(1)} ${endY.toFixed(1)}`,
+        });
       }
+
       setPaths(segments);
     };
 
@@ -66,38 +73,42 @@ function ProcessNode() {
       typeof ResizeObserver !== "undefined"
         ? new ResizeObserver(computePaths)
         : null;
+
     ro?.observe(track);
-    cardRefs.current.forEach((c) => c && ro?.observe(c));
+    cardRefs.current.forEach((card) => {
+      if (card) {
+        ro?.observe(card);
+      }
+    });
     window.addEventListener("resize", computePaths);
 
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray("[data-process-card]", track);
       if (!cards.length) return;
 
-      gsap.from(cards, {
-        autoAlpha: 0,
-        y: 40,
-        scale: 0.97,
-        duration: 0.72,
-        ease: "power3.out",
-        stagger: 0.12,
+      gsap.set(cards, { autoAlpha: 0, y: 48, scale: 0.92 });
+
+      const reveal = gsap.timeline({
         scrollTrigger: {
           trigger: track,
-          start: "top 72%",
+          start: "top 75%",
           once: true,
         },
         onComplete: () => {
+          cards.forEach((card) => card.classList.add("is-revealed"));
+
           const pathEls = track.querySelectorAll("[data-line-path]");
           if (!pathEls.length) {
             setDrawn(true);
             return;
           }
-          const lengths = Array.from(pathEls).map((p) => p.getTotalLength());
+
+          const lengths = Array.from(pathEls).map((path) => path.getTotalLength());
 
           gsap.set(pathEls, {
             opacity: 1,
-            strokeDasharray: (i) => lengths[i],
-            strokeDashoffset: (i) => lengths[i],
+            strokeDasharray: (index) => lengths[index],
+            strokeDashoffset: (index) => lengths[index],
           });
 
           const tl = gsap.timeline({
@@ -110,16 +121,29 @@ function ProcessNode() {
             },
           });
 
-          pathEls.forEach((p, index) => {
-            tl.to(p, {
-              strokeDashoffset: 0,
-              duration: Math.max(lengths[index] / 320, 0.28),
-              ease: "none",
-            }, index === 0 ? 0 : ">-0.08");
+          pathEls.forEach((path, index) => {
+            tl.to(
+              path,
+              {
+                strokeDashoffset: 0,
+                duration: Math.max(lengths[index] / 360, 0.32),
+                ease: "power2.inOut",
+              },
+              index === 0 ? 0 : ">-0.12",
+            );
           });
 
           drawTlRef.current = tl;
         },
+      });
+
+      reveal.to(cards, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.85,
+        ease: "back.out(1.4)",
+        stagger: { each: 0.11, from: "start" },
       });
     }, section);
 
@@ -133,27 +157,48 @@ function ProcessNode() {
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section || typeof IntersectionObserver === "undefined")
+    if (!section || typeof IntersectionObserver === "undefined") {
       return undefined;
-    const io = new IntersectionObserver(
-      ([entry]) => setActive(entry.isIntersecting),
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
       { threshold: 0, rootMargin: "0px 0px -10% 0px" },
     );
-    io.observe(section);
-    return () => io.disconnect();
+
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
+
+  const handleKeyDown = (event, index) => {
+    const isForward =
+      event.key === "ArrowRight" || event.key === "ArrowDown";
+    const isBackward = event.key === "ArrowLeft" || event.key === "ArrowUp";
+
+    if (!isForward && !isBackward) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const nextIndex =
+      (index + (isForward ? 1 : -1) + processNodes.length) % processNodes.length;
+
+    setActiveIndex(nextIndex);
+    cardRefs.current[nextIndex]?.focus();
+  };
 
   return (
     <section
       ref={sectionRef}
       style={{ "--process-dash-cycle": `${DASH_CYCLE}px` }}
-      className={`bgGrid ${styles.section} ${active ? styles.inView : ""} ${drawn ? styles.drawn : ""}`.trim()}
+      className={`${styles.section} ${inView ? styles.inView : ""} ${drawn ? styles.drawn : ""}`.trim()}
     >
       <Container maxWidth={1600} className={styles.container}>
         <div className={styles.intro}>
           <SectionIntro
             title={["Our Delivery Process"]}
-            description="We follow a clear, collaborative process to turn ideas into secure, scalable healthcare products — with the right planning, execution, and long-term support at every stage."
+            description="We follow a clear, collaborative path from discovery to support so healthcare products launch with confidence, clarity, and long-term resilience."
             titleAs="h2"
             highlightWord={2}
             color="#ffffff"
@@ -176,12 +221,16 @@ function ProcessNode() {
             height="100%"
             aria-hidden="true"
           >
-            {paths.map((d, i) => (
+            {paths.map((segment, index) => (
               <path
-                key={i}
-                d={d}
+                key={processNodes[index].id}
+                d={segment.d}
                 data-line-path
-                className={styles.linePath}
+                className={`${styles.linePath} ${
+                  activeIndex === index || activeIndex === index + 1
+                    ? styles.linePathActive
+                    : ""
+                }`.trim()}
               />
             ))}
           </svg>
@@ -190,15 +239,25 @@ function ProcessNode() {
             {processNodes.map((node, index) => (
               <li
                 key={node.id}
-                ref={(el) => {
-                  cardRefs.current[index] = el;
-                }}
-                data-process-card
                 className={`${styles.cell} ${
                   index % 2 === 0 ? styles.cellLow : styles.cellHigh
                 }`}
               >
-                <ProcessNodeCard node={node} />
+                <ProcessNodeCard
+                  ref={(element) => {
+                    cardRefs.current[index] = element;
+                  }}
+                  node={node}
+                  index={index}
+                  isActive={activeIndex === index}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onFocus={() => setActiveIndex(index)}
+                  onClick={() => setActiveIndex(index)}
+                  onKeyDown={(event) => handleKeyDown(event, index)}
+                />
+                {index < processNodes.length - 1 ? (
+                  <span className={styles.mobileConnector} aria-hidden="true" />
+                ) : null}
               </li>
             ))}
           </ul>

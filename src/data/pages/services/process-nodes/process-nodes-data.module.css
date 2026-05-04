@@ -1,66 +1,141 @@
 .card {
   position: relative;
   width: 100%;
-  height: var(--process-card-height);
-  padding: 36px 24px 24px;
-  border-radius: 22px;
+  max-width: var(--process-card-width);
+  min-height: var(--process-card-height);
+  padding: 28px 18px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 14px;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow:
+    0 24px 46px rgba(3, 10, 22, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+  cursor: var(--hover-cursor);
+  outline: none;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(47, 209, 171, 0.18) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover,
+.card:focus-visible,
+.cardActive {
+  transform: translateY(-6px);
+  border-color: rgba(47, 209, 171, 0.55);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 28px 54px rgba(3, 10, 22, 0.34),
+    0 0 0 1px rgba(47, 209, 171, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.card:hover::before,
+.card:focus-visible::before,
+.cardActive::before {
+  opacity: 1;
 }
 
 .stepBadge {
   position: absolute;
-  top: -20px;
-  left: 24px;
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #279b7d;
+  box-shadow:
+    0 10px 20px rgba(26, 158, 122, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transform: scale(1);
+  opacity: 1;
+  transition:
+    transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.4s ease,
+    background-color 0.35s ease;
+}
+
+.stepBadgeInner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  line-height: 1;
   font-family: var(--content-font);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: #ffffff;
-  background: rgba(47, 209, 171, 0.18);
-  border: 1px solid rgba(47, 209, 171, 0.55);
-  box-shadow: 0 6px 14px rgba(47, 209, 171, 0.18);
+}
+
+.card:hover .stepBadge,
+.card:focus-visible .stepBadge,
+.cardActive .stepBadge {
+  background: #25bb94;
 }
 
 .label {
-  margin: 0;
-  font-family: var(--title-font);
-  font-size: clamp(1.3rem, 1.45vw, 1.75rem);
-  font-weight: 600;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  margin: 38px 0 0;
+  font-family: var(--font-family-primary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #ffffff;
 }
 
 .desc {
   margin: 0;
   font-family: var(--content-font);
-  font-size: 0.98rem;
-  line-height: 1.52;
-  color: rgba(231, 240, 247, 0.8);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #8892a4;
+}
+
+@media (max-width: 1100px) {
+  .card {
+    max-width: none;
+    min-height: 0;
+    padding: 26px 18px 18px;
+  }
 }
 
 @media (max-width: 768px) {
   .card {
-    min-height: 0;
-    padding: 28px 20px 20px;
+    padding: 24px 16px 16px;
   }
 
   .stepBadge {
-    top: -18px;
-    left: 18px;
-    width: 42px;
-    height: 42px;
+    top: 14px;
+    left: 14px;
   }
 
-  .desc {
-    font-size: 0.94rem;
+  .label {
+    margin-top: 36px;
   }
 }
