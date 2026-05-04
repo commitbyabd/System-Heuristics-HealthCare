@@ -9,7 +9,7 @@ import Home from "../pages/home/Home";
 import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import Solutions from "../pages/solutions/Solutions";
-
+import Services from "../pages/services/Services";
 function ProjectRoutes() {
   return (
     <Routes>
@@ -18,6 +18,7 @@ function ProjectRoutes() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/solutions" element={<Solutions />} />
+        <Route path="/services" element={<Services />} />
       </Route>
     </Routes>
   );
