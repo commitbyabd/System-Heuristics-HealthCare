@@ -24,7 +24,7 @@ function ProcessNode() {
   const [paths, setPaths] = useState([]);
   const [inView, setInView] = useState(false);
   const [drawn, setDrawn] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -170,24 +170,6 @@ function ProcessNode() {
     return () => observer.disconnect();
   }, []);
 
-  const handleKeyDown = (event, index) => {
-    const isForward =
-      event.key === "ArrowRight" || event.key === "ArrowDown";
-    const isBackward = event.key === "ArrowLeft" || event.key === "ArrowUp";
-
-    if (!isForward && !isBackward) {
-      return;
-    }
-
-    event.preventDefault();
-
-    const nextIndex =
-      (index + (isForward ? 1 : -1) + processNodes.length) % processNodes.length;
-
-    setActiveIndex(nextIndex);
-    cardRefs.current[nextIndex]?.focus();
-  };
-
   return (
     <section
       ref={sectionRef}
@@ -251,9 +233,7 @@ function ProcessNode() {
                   index={index}
                   isActive={activeIndex === index}
                   onMouseEnter={() => setActiveIndex(index)}
-                  onFocus={() => setActiveIndex(index)}
-                  onClick={() => setActiveIndex(index)}
-                  onKeyDown={(event) => handleKeyDown(event, index)}
+                  onMouseLeave={() => setActiveIndex(null)}
                 />
                 {index < processNodes.length - 1 ? (
                   <span className={styles.mobileConnector} aria-hidden="true" />

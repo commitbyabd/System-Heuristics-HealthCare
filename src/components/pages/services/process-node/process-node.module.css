@@ -1,14 +1,22 @@
 .section {
-  --process-card-height: 214px;
+  --process-card-height: 200px;
   --process-card-width: 204px;
-  --process-row-height: 320px;
+  --process-row-height: 285px;
   position: relative;
   width: 100%;
-  padding: 96px 0 112px;
+  padding: 72px 0 56px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 16% 20%, rgba(47, 209, 171, 0.16) 0%, transparent 26%),
-    radial-gradient(circle at 82% 24%, rgba(44, 154, 214, 0.14) 0%, transparent 24%),
+    radial-gradient(
+      circle at 16% 20%,
+      rgba(47, 209, 171, 0.16) 0%,
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 82% 24%,
+      rgba(44, 154, 214, 0.14) 0%,
+      transparent 24%
+    ),
     linear-gradient(135deg, #0a1628 0%, #0d2137 60%, #10283e 100%);
 }
 
@@ -26,7 +34,11 @@
   width: 340px;
   height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(47, 209, 171, 0.16) 0%, transparent 68%);
+  background: radial-gradient(
+    circle,
+    rgba(47, 209, 171, 0.16) 0%,
+    transparent 68%
+  );
   filter: blur(10px);
 }
 
@@ -35,7 +47,11 @@
   right: 0;
   bottom: 0;
   height: 180px;
-  background: linear-gradient(180deg, rgba(8, 18, 34, 0) 0%, rgba(7, 16, 30, 0.34) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 18, 34, 0) 0%,
+    rgba(7, 16, 30, 0.34) 100%
+  );
 }
 
 .container {

@@ -50,9 +50,7 @@ export const ProcessNodeCard = forwardRef(function ProcessNodeCard(
     index,
     isActive = false,
     onMouseEnter,
-    onFocus,
-    onKeyDown,
-    onClick,
+    onMouseLeave,
   },
   ref,
 ) {
@@ -69,9 +67,7 @@ export const ProcessNodeCard = forwardRef(function ProcessNodeCard(
       data-active={isActive}
       className={`${styles.card} ${isActive ? styles.cardActive : ""}`.trim()}
       onMouseEnter={onMouseEnter}
-      onFocus={onFocus}
-      onKeyDown={onKeyDown}
-      onClick={onClick}
+      onMouseLeave={onMouseLeave}
     >
       <span className={styles.stepBadge} aria-hidden="true">
         <span className={styles.stepBadgeInner}>{displayStep}</span>
