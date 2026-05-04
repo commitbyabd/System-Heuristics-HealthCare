@@ -11,7 +11,9 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CORNER_INSET = 26;
+const DESKTOP_BREAKPOINT = 1100;
+const DASH_PATTERN = "4 8";
+const DASH_CYCLE = 12;
 
 function ProcessNode() {
   const sectionRef = useRef(null);
@@ -29,19 +31,18 @@ function ProcessNode() {
 
     const computePaths = () => {
       const cards = cardRefs.current.filter(Boolean);
-      if (cards.length < 2) {
+      if (cards.length < 2 || window.innerWidth <= DESKTOP_BREAKPOINT) {
         setPaths([]);
         return;
       }
+
       const trackRect = track.getBoundingClientRect();
-      const points = cards.map((el, i) => {
+      const points = cards.map((el) => {
         const rect = el.getBoundingClientRect();
         return {
-          leftX: rect.left - trackRect.left,
-          rightX: rect.right - trackRect.left,
-          topY: rect.top - trackRect.top,
-          bottomY: rect.bottom - trackRect.top,
-          isHigh: i % 2 === 1,
+          x1: rect.left - trackRect.left + 22,
+          x2: rect.right - trackRect.left - 22,
+          cy: rect.top + rect.height / 2 - trackRect.top,
         };
       });
 
@@ -49,17 +50,11 @@ function ProcessNode() {
       for (let i = 0; i < points.length - 1; i += 1) {
         const a = points[i];
         const b = points[i + 1];
-        const startX = a.rightX;
-        const endX = b.leftX;
-        const startY = a.isHigh
-          ? a.bottomY - CORNER_INSET
-          : a.topY + CORNER_INSET;
-        const endY = b.isHigh
-          ? b.bottomY - CORNER_INSET
-          : b.topY + CORNER_INSET;
-        const midX = (startX + endX) / 2;
+        const startX = a.x2;
+        const endX = b.x1;
+        const controlOffset = Math.max((endX - startX) * 0.38, 36);
         segments.push(
-          `M ${startX.toFixed(1)} ${startY.toFixed(1)} C ${midX.toFixed(1)} ${startY.toFixed(1)}, ${midX.toFixed(1)} ${endY.toFixed(1)}, ${endX.toFixed(1)} ${endY.toFixed(1)}`,
+          `M ${startX.toFixed(1)} ${a.cy.toFixed(1)} C ${(startX + controlOffset).toFixed(1)} ${a.cy.toFixed(1)}, ${(endX - controlOffset).toFixed(1)} ${b.cy.toFixed(1)}, ${endX.toFixed(1)} ${b.cy.toFixed(1)}`,
         );
       }
       setPaths(segments);
@@ -81,13 +76,14 @@ function ProcessNode() {
 
       gsap.from(cards, {
         autoAlpha: 0,
-        y: 32,
-        duration: 0.7,
+        y: 40,
+        scale: 0.97,
+        duration: 0.72,
         ease: "power3.out",
         stagger: 0.12,
         scrollTrigger: {
           trigger: track,
-          start: "top 78%",
+          start: "top 72%",
           once: true,
         },
         onComplete: () => {
@@ -107,19 +103,19 @@ function ProcessNode() {
           const tl = gsap.timeline({
             onComplete: () => {
               gsap.set(pathEls, {
-                strokeDasharray: "3 7",
+                strokeDasharray: DASH_PATTERN,
                 strokeDashoffset: 0,
               });
               setDrawn(true);
             },
           });
 
-          pathEls.forEach((p) => {
+          pathEls.forEach((p, index) => {
             tl.to(p, {
               strokeDashoffset: 0,
-              duration: 0.4,
-              ease: "power2.out",
-            });
+              duration: Math.max(lengths[index] / 320, 0.28),
+              ease: "none",
+            }, index === 0 ? 0 : ">-0.08");
           });
 
           drawTlRef.current = tl;
@@ -150,9 +146,10 @@ function ProcessNode() {
   return (
     <section
       ref={sectionRef}
+      style={{ "--process-dash-cycle": `${DASH_CYCLE}px` }}
       className={`bgGrid ${styles.section} ${active ? styles.inView : ""} ${drawn ? styles.drawn : ""}`.trim()}
     >
-      <Container className={styles.container}>
+      <Container maxWidth={1600} className={styles.container}>
         <div className={styles.intro}>
           <SectionIntro
             title={["Our Delivery Process"]}
