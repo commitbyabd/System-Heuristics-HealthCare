@@ -1,31 +1,39 @@
 .hero {
   min-height: 100vh;
-  padding: 120px 48px 60px;
-
+  width: 100%;
   position: relative;
   overflow: hidden;
-  background:
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a1428;
+  background-image:
     radial-gradient(
-      ellipse at 50% 5%,
-      rgba(47, 209, 171, 0.18) 0%,
-      transparent 40%
+      ellipse at 55% 50%,
+      rgba(255, 255, 255, 0.12) 0%,
+      transparent 55%
     ),
-    linear-gradient(180deg, #0a1f2e 0%, #050d18 100%);
+    linear-gradient(90deg, #0a1428 0%, #329788 100%);
+  background-repeat: no-repeat;
+  background-size: auto, cover;
+  background-position: center, center;
 }
 
-.inner {
-  min-height: calc(100vh - var(--nav-height));
+.layout {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 48px;
+  margin-top: 65px;
+  padding-right: 0;
 }
 
 .content {
-  max-width: 769px;
+  max-width: 650px;
   width: 100%;
-  height: 100%;
-  max-height: 416px;
+  height: auto;
+  padding-top: 46px;
+  padding-bottom: 46px;
 }
 
 .actions {
@@ -39,28 +47,32 @@
 .image {
   width: 100%;
   max-width: 431px;
-  height: auto;
+  height: 532px;
   display: block;
   justify-self: end;
-  border-radius: 24px;
+  animation: slideInFromRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@media screen and (max-width: 992px) {
-  .hero {
-    padding-top: 104px;
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
-
-@media screen and (max-width: 768px) {
-  .hero {
-    padding: 96px 24px 48px;
-  }
-
-  .inner {
+@media screen and (max-width: 450px) {
+  .layout {
     grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
   }
 
   .image {
-    justify-self: start;
+    justify-self: center;
+    max-width: 100%;
+    height: auto;
   }
 }

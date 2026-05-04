@@ -11,6 +11,7 @@ import MapPin from "../../../ui/icons/MapPin";
 import Phone from "../../../ui/icons/Phone";
 import ChevronDown from "../../../ui/icons/ChevronDown";
 import ArrowRight from "../../../ui/icons/ArrowRight";
+import Button from "../../../ui/button/Button";
 
 const ICONS = {
   email: Mail,
@@ -133,14 +134,14 @@ function ContactForm() {
                 );
               })}
 
-              <button
+              <Button
                 type="submit"
+                text={submitText}
+                variant="filled"
+                Icon={ArrowRight}
                 className={styles.submit}
                 disabled={isSubmitting}
-              >
-                <span>{submitText}</span>
-                <ArrowRight size={20} color="#FFFFFF" />
-              </button>
+              />
             </Form>
           )}
         </Formik>

@@ -1,11 +1,12 @@
-// import Hero from "./hero/Hero";
-// import ContactForm from "./contact-form/ContactForm";
+import Hero from "./hero/Hero";
+import ContactForm from "./contact-form/ContactForm";
+import Faq from "./../about/faq/Faq";
 function ContactMain() {
   return (
     <section>
-      hi
-      {/* <Hero />
-      <ContactForm /> */}
+      <Hero />
+      <ContactForm />
+      <Faq />
     </section>
   );
 }
