@@ -1,0 +1,133 @@
+.card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  padding: 18px 24px;
+  border-radius: 16px;
+  background-color: #f1f4ee;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  background-color: #dde2d6;
+}
+
+.number {
+  font-family: var(--title-font);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0d1b2e;
+  line-height: 1;
+  padding-top: 4px;
+  padding-left: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: #0d1b2e;
+}
+
+.description {
+  margin: 0;
+  font-family: var(--content-font);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #5a6675;
+  max-width: 640px;
+}
+
+.cta {
+  display: inline-flex;
+  text-decoration: none;
+  margin-top: 4px;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover .cta,
+.card:focus-within .cta {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.viewButton {
+  border-radius: 100px;
+  background: transparent;
+  border: 1px solid var(--color-teal);
+  height: 34px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.viewButton span {
+  color: #0d1b2e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.viewButton svg {
+  color: #0d1b2e;
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 992px) {
+  .card {
+    grid-template-columns: 130px 1fr;
+    padding: 16px 18px;
+  }
+
+  .number {
+    padding-left: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: 70px 1fr;
+    gap: 14px;
+    padding: 18px 14px;
+  }
+
+  .number {
+    font-size: 1.2rem;
+    padding-left: 0;
+  }
+
+  .cta {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    grid-template-columns: 1fr;
+    padding: 20px 14px;
+  }
+
+  .number {
+    padding-top: 0;
+  }
+}
