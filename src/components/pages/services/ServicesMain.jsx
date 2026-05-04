@@ -3,6 +3,7 @@ import Hero from "./hero/Hero";
 import ModernServices from "./modern-services/ModernServices";
 import ProcessNode from "./process-node/ProcessNode";
 import Faq from "./faq/Faq";
+import Subscribe from "./subscribe/Subscribe";
 import Pipeline from "../about/pipeline/Pipeline";
 function ServicesMain() {
   return (
@@ -12,6 +13,7 @@ function ServicesMain() {
       <ProcessNode />
       <Pipeline />
       <Faq />
+      <Subscribe />
     </div>
   );
 }
