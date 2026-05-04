@@ -3,7 +3,7 @@ export const NavData = {
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Solutions", href: "/solutions" },
-    { label: "Resources", href: "/resources" },
+    { label: "Case Study", href: "/case-study" },
     { label: "AI", href: "/ai" },
     { label: "Contact Us", href: "/contact" },
   ],
