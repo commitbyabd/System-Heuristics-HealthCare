@@ -110,7 +110,7 @@ const Nav = () => {
         <Container className={`${styles.navContainer} bgGlassWGlow`}>
           <p className={styles.logo}>
             <a href="/">
-              <LazyImage src="/images/nav/sh-logo.svg" alt="Logo" />
+              <LazyImage src="/images/logo/sh-logo.svg" alt="Logo" />
               {Constants?.company?.name}
             </a>
           </p>

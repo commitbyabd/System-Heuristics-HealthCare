@@ -31,7 +31,7 @@ function Footer() {
           <div className={styles.left}>
             <div className={styles.logoGroup}>
               <a href="/" className={styles.logo}>
-                <LazyImage src="/images/nav/sh-logo.svg" alt="Logo" />
+                <LazyImage src="/images/logo/sh-logo.svg" alt="Logo" />
                 <span>{Constants?.company?.name}</span>
               </a>
             </div>

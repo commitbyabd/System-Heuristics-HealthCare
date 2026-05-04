@@ -10,7 +10,7 @@ function TransformOperations() {
       <div className={styles.card}>
         <Container className={styles.inner}>
           <LazyImage
-            src="/images/nav/sh-logo.svg"
+            src="/images/logo/sh-logo.svg"
             alt="Smart Healthcare logo"
             className={styles.logo}
           />
