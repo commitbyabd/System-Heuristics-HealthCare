@@ -52,7 +52,7 @@ export default function FaqItem({ question, answer, isOpen, onToggle }) {
       >
         <span className={styles.question}>{question}</span>
         <span className={styles.icon} aria-hidden="true">
-          {isOpen ? "−" : "+"}
+          {isOpen ? "-" : "+"}
         </span>
       </button>
 

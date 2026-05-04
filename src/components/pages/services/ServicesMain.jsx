@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "./hero/Hero";
 import ModernServices from "./modern-services/ModernServices";
 import ProcessNode from "./process-node/ProcessNode";
+import Faq from "./faq/Faq";
 import Pipeline from "../about/pipeline/Pipeline";
 function ServicesMain() {
   return (
@@ -10,6 +11,7 @@ function ServicesMain() {
       <ModernServices />
       <ProcessNode />
       <Pipeline />
+      <Faq />
     </div>
   );
 }
