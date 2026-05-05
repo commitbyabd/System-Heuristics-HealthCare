@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./choose-us.module.css";
 import Container from "../../../ui/container/Container";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
-import ChooseUsData from "../../../../data/pages/about/choose-us-data/ChooseUsData";
+import ChooseCard from "./_components/ChooseCard";
+import { chooseUsData } from "../../../../data/pages/about/choose-us-data/choose-us-data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -204,7 +205,17 @@ function ChooseUs() {
             </svg>
           </div>
 
-          <ChooseUsData />
+          <div className={styles.cardsGrid}>
+            {chooseUsData.map((item, index) => (
+              <ChooseCard
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                Icon={item.Icon}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
       </Container>
     </section>

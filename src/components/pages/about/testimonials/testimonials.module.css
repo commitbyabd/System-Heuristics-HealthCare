@@ -80,8 +80,10 @@
   margin-top: 38px;
 }
 
-.cardsStage {
-  gap: 28px;
+.cardsGrid {
+  position: relative;
+  width: 100%;
+  min-height: 356px;
 }
 
 .controls {
@@ -126,6 +128,13 @@
   .cardsWrap {
     margin-top: 32px;
   }
+
+  .cardsGrid {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -145,6 +154,12 @@
 
   .cardsWrap {
     margin-top: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cardsGrid {
+    gap: 16px;
   }
 }
 

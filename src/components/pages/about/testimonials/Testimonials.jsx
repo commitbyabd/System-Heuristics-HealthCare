@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./testimonials.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
-import TestimonialsData from "../../../../data/pages/about/testimonials-data/TestimonialsData";
+import TestimonialCard from "./_components/TestimonialCard";
 import { testimonialsData } from "../../../../data/pages/about/testimonials-data/testimonials-data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -116,11 +116,21 @@ function Testimonials() {
         </div>
 
         <div className={styles.cardsWrap}>
-          <TestimonialsData
-            items={visibleItems}
-            activeId={activeItem.id}
-            className={styles.cardsStage}
-          />
+          <div className={styles.cardsGrid}>
+            {visibleItems.map((item, index) => (
+              <TestimonialCard
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                role={item.role}
+                rating={item.rating}
+                quote={item.quote}
+                avatar={item.avatar}
+                slot={index}
+                active={item.id === activeItem.id}
+              />
+            ))}
+          </div>
         </div>
 
         <div className={styles.controls}>

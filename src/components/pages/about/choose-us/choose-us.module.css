@@ -101,6 +101,12 @@
   filter: drop-shadow(0 0 10px rgba(47, 209, 171, 0.95));
 }
 
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
 @media (max-width: 992px) {
   .section {
     min-height: auto;
@@ -116,6 +122,10 @@
     justify-self: start;
     margin-top: 0;
   }
+
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -130,6 +140,12 @@
 
   .lineWrap {
     margin: 8px 0 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -4,10 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./modern-services.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
-import {
-  modernServicesData,
-  ModernServiceCard,
-} from "../../../../data/pages/services/modern-services/ModernServicesCards";
+import ModernServiceCard from "./_components/ModernServiceCard";
+import { modernServicesData } from "../../../../data/pages/services/modern-services/ModernServicesCards";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,7 +62,12 @@ function ModernServices() {
         <ul className={styles.list}>
           {modernServicesData.map((service) => (
             <li key={service.id} data-modern-row className={styles.rowWrap}>
-              <ModernServiceCard service={service} />
+              <ModernServiceCard
+                number={service.number}
+                title={service.title}
+                description={service.description}
+                link={service.link}
+              />
             </li>
           ))}
         </ul>

@@ -1,8 +1,3 @@
-import { Link } from "react-router-dom";
-import styles from "./modern-services-cards.module.css";
-import Button from "../../../../components/ui/button/Button";
-import ArrowRight from "../../../../components/ui/icons/ArrowRight";
-
 export const modernServicesData = [
   {
     id: "custom-software",
@@ -37,36 +32,3 @@ export const modernServicesData = [
     link: "/services/web-mobile-applications",
   },
 ];
-
-export function ModernServiceCard({ service }) {
-  const { number, title, description, link } = service;
-
-  return (
-    <article className={styles.card}>
-      <span className={styles.number} aria-hidden="true">
-        {number}
-      </span>
-
-      <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.description}>{description}</p>
-
-        <Link
-          to={link}
-          className={styles.cta}
-          aria-label={`View service: ${title}`}
-        >
-          <Button
-            text="View Service"
-            variant="transparent"
-            Icon={ArrowRight}
-            className={styles.viewButton}
-            tabIndex={-1}
-          />
-        </Link>
-      </div>
-    </article>
-  );
-}
-
-export default ModernServiceCard;

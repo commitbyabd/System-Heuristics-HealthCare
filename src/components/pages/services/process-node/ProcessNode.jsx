@@ -4,10 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./process-node.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
-import {
-  processNodes,
-  ProcessNodeCard,
-} from "../../../../data/pages/services/process-nodes/ProcessNodesData";
+import ProcessNodeCard from "./_components/ProcessNodeCard";
+import { processNodes } from "../../../../data/pages/services/process-nodes/ProcessNodesData";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -228,7 +226,9 @@ function ProcessNode() {
                   ref={(element) => {
                     cardRefs.current[index] = element;
                   }}
-                  node={node}
+                  step={node.step}
+                  label={node.label}
+                  desc={node.desc}
                   index={index}
                   isActive={activeIndex === index}
                   onMouseEnter={() => setActiveIndex(index)}

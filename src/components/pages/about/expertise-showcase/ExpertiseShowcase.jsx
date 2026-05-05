@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./expertise-showcase.module.css";
 import Container from "../../../ui/container/Container";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
-import ExpertiseShowcaseData from "../../../../data/pages/about/expertise-showcase-data/ExpertiseShowcaseData";
+import ExpertiseCard from "./_components/ExpertiseCard";
+import { expertiseShowcaseData } from "../../../../data/pages/about/expertise-showcase-data/ExpertiseShowcaseData";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -129,7 +130,37 @@ function ExpertiseShowcase() {
           </GradientScrollAnimation>
         </div>
 
-        <ExpertiseShowcaseData />
+        <div className={styles.timelineLayout}>
+          <div className={styles.railColumn} aria-hidden="true">
+            <div className={styles.railTrack}>
+              <span className={styles.railFill} data-timeline-fill />
+              <span className={styles.railPulse} />
+            </div>
+
+            {expertiseShowcaseData.map((item, index) => (
+              <div
+                key={item.id}
+                className={styles.marker}
+                data-timeline-marker
+                style={{ "--marker-delay": `${index * 0.55}s` }}
+              >
+                <span className={styles.markerPulse} data-marker-pulse />
+                <span className={styles.markerCore}>{item.id}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.cardsColumn}>
+            {expertiseShowcaseData.map((item) => (
+              <ExpertiseCard
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                Icon={item.Icon}
+              />
+            ))}
+          </div>
+        </div>
       </Container>
     </section>
   );

@@ -44,6 +44,26 @@
   width: 100%;
 }
 
+.principlesSection {
+  width: min(100%, 1300px);
+  margin: 0 auto;
+  padding-inline: 32px;
+  box-sizing: border-box;
+}
+
+.cardsWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .cardsWrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 88px 0 112px;
@@ -51,6 +71,14 @@
 
   .intro {
     margin-bottom: 40px;
+  }
+
+  .principlesSection {
+    padding-inline: 24px;
+  }
+
+  .cardsWrapper {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -66,5 +94,9 @@
   .description {
     margin-top: 14px;
     font-size: 0.98rem;
+  }
+
+  .principlesSection {
+    padding-inline: 16px;
   }
 }

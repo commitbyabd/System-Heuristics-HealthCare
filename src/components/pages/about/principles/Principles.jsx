@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./principles.module.css";
 import Container from "../../../ui/container/Container";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
-import PrinciplesData from "../../../../data/pages/about/principles-data/PrinciplesData";
+import PrincipleCard from "./_components/PrincipleCard";
+import { principlesData } from "../../../../data/pages/about/principles-data/principles-data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,7 +78,18 @@ function Principles() {
       </Container>
 
       <div className={styles.cardsBand}>
-        <PrinciplesData />
+        <div className={styles.principlesSection}>
+          <div className={styles.cardsWrapper}>
+            {principlesData.map((item) => (
+              <PrincipleCard
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                animationFrom={item.animationFrom}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
