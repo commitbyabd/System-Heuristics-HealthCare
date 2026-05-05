@@ -10,7 +10,8 @@ import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import Solutions from "../pages/solutions/Solutions";
 import Services from "../pages/services/Services";
-import Ai from "../pages/AI/Ai";
+import Ai from "../pages/Ai/Ai";
+import CaseStudy from "../pages/case-study/CaseStudy";
 function ProjectRoutes() {
   return (
     <Routes>
@@ -21,6 +22,7 @@ function ProjectRoutes() {
         <Route path="/solutions" element={<Solutions />} />
         <Route path="/services" element={<Services />} />
         <Route path="/ai" element={<Ai />} />
+        <Route path="/case-study" element={<CaseStudy />} />
       </Route>
     </Routes>
   );
