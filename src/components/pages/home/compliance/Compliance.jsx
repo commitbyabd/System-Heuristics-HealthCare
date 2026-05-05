@@ -5,7 +5,8 @@ import styles from "./compliance.module.css";
 import Container from "../../../ui/container/Container";
 import Chip from "../../../ui/chip/Chip";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
-import ComplianceData from "../../../../data/pages/home/compliance/ComplianceData";
+import ComplianceCard from "./_components/ComplianceCard";
+import { complianceData } from "../../../../data/pages/home/compliance/ComplianceData";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,7 +79,23 @@ function Compliance() {
           />
         </div>
 
-        <ComplianceData />
+        <section className={styles.complianceSection}>
+          <div className={styles.cardsGrid}>
+            {complianceData.map((card) => (
+              <ComplianceCard
+                key={card.id}
+                tag={card.tag}
+                title={card.title}
+                highlightWord={card.highlightWord}
+                description={card.description}
+                buttonText={card.buttonText}
+                link={card.link}
+                icon={card.icon}
+                alt={card.alt}
+              />
+            ))}
+          </div>
+        </section>
       </Container>
     </section>
   );

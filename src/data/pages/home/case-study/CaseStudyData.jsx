@@ -1,4 +1,4 @@
-const caseStudies = [
+export const caseStudies = [
   {
     id: "atara",
     title: "ATARA - AI-Powered Triage & Rapid Assessment Platform",
@@ -48,5 +48,3 @@ const caseStudies = [
     videoDemo: "#",
   },
 ];
-
-export default caseStudies;

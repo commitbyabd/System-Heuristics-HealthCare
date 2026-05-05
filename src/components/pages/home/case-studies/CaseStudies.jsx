@@ -2,22 +2,10 @@ import { useState } from "react";
 import styles from "./case-studies.module.css";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
-import caseStudies from "../../../../data/pages/home/case-study/CaseStudyData";
 import Button from "../../../ui/button/Button";
+import CaseStudySlide from "./_components/CaseStudySlide";
+import { caseStudies } from "../../../../data/pages/home/case-study/CaseStudyData";
 import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
-
-function PlayIcon(props) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      {...props}
-    >
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  );
-}
 
 function ArrowIcon(props) {
   return (
@@ -129,47 +117,16 @@ function CaseStudies() {
             >
               <div className={styles.track}>
                 {caseStudies.map((study) => (
-                  <article key={study.id} className={styles.slide}>
-                    <div className={styles.slideMediaWrap}>
-                      <img
-                        src={study.image}
-                        alt={study.imageAlt}
-                        className={styles.slideImage}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className={styles.slideBody}>
-                      <h3 className={styles.slideTitle}>{study.title}</h3>
-                      <p className={styles.slideBlock}>
-                        <span className={styles.slideBlockHeading}>
-                          Problem :
-                        </span>
-                        {study.problem}
-                      </p>
-                      <p className={styles.slideBlock}>
-                        <span className={styles.slideBlockHeading}>
-                          Solution:
-                        </span>
-                        {study.solution}
-                      </p>
-                      <div className={styles.slideActions}>
-                        <a href={study.liveDemo}>
-                          <Button
-                            text="Live Demo"
-                            variant="filled"
-                            width="152px"
-                          />
-                        </a>
-                        <a
-                          href={study.videoDemo}
-                          className={styles.videoDemoBtn}
-                        >
-                          Video Demo
-                          <PlayIcon className={styles.videoDemoIcon} />
-                        </a>
-                      </div>
-                    </div>
-                  </article>
+                  <CaseStudySlide
+                    key={study.id}
+                    title={study.title}
+                    problem={study.problem}
+                    solution={study.solution}
+                    image={study.image}
+                    imageAlt={study.imageAlt}
+                    liveDemo={study.liveDemo}
+                    videoDemo={study.videoDemo}
+                  />
                 ))}
               </div>
             </div>
