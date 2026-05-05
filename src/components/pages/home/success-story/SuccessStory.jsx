@@ -13,6 +13,7 @@ function SuccessStory() {
           titleAs="h2"
           highlightWord={0}
           titleClassName={styles.title}
+          titleStyle={{ fontSize: "var(--heading-xl)" }}
           color="#1f2940"
           animateTitle
           animateMode="scroll"

@@ -13,6 +13,8 @@ function SectionIntro({
   titleClassName = "",
   descriptionClassName = "",
   style = {},
+  titleStyle = {},
+  descriptionStyle = {},
   color = "#FFFFFF",
   highlightColor = "#2FD1AB",
   animateTitle = false,
@@ -62,12 +64,16 @@ function SectionIntro({
     titleAs,
     {
       className: `${styles.title} ${titleClassName}`.trim(),
+      style: titleStyle,
     },
     <>{titleNodes}</>,
   );
 
   const descriptionEl = description ? (
-    <p className={`${styles.description} ${descriptionClassName}`.trim()}>
+    <p
+      className={`${styles.description} ${descriptionClassName}`.trim()}
+      style={descriptionStyle}
+    >
       {description}
     </p>
   ) : null;
