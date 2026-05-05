@@ -16,7 +16,11 @@
 }
 
 .text {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-xs);
+  font-weight: var(--font-medium);
+  line-height: var(--line-height-100);
+  letter-spacing: var(--letter-spacing-0);
+  text-align: var(--text-center);
+  color: var(--color-text-strong);
 }

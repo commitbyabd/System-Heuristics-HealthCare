@@ -5,56 +5,6 @@
   max-width: 760px;
 }
 
-.heroVariant {
-  --intro-title-font: var(--hero-title-font);
-  --intro-title-size: var(--hero-title-size);
-  --intro-title-size-md: var(--hero-title-size-md);
-  --intro-title-size-sm: var(--hero-title-size-sm);
-  --intro-title-weight: var(--hero-title-weight);
-  --intro-title-line-height: var(--hero-title-line-height);
-  --intro-title-letter-spacing: var(--hero-title-letter-spacing);
-  --intro-title-color: var(--hero-title-color);
-  --intro-title-vertical-align: var(--hero-title-vertical-align);
-  --intro-description-margin-top: var(--hero-description-margin-top);
-  --intro-description-max-width: var(--hero-description-max-width);
-  --intro-description-font: var(--hero-description-font);
-  --intro-description-size: var(--hero-description-size);
-  --intro-description-weight: var(--hero-description-weight);
-  --intro-description-line-height: var(--hero-description-line-height);
-  --intro-description-letter-spacing: var(--hero-description-letter-spacing);
-  --intro-description-color: var(--hero-description-color);
-}
-
-.sectionVariant {
-  --intro-title-font: var(--section-title-font);
-  --intro-title-size: var(--section-title-size);
-  --intro-title-size-md: var(--section-title-size-md);
-  --intro-title-size-sm: var(--section-title-size-sm);
-  --intro-title-weight: var(--section-title-weight);
-  --intro-title-line-height: var(--section-title-line-height);
-  --intro-title-letter-spacing: var(--section-title-letter-spacing);
-  --intro-title-color: var(--section-title-color);
-  --intro-title-vertical-align: var(--section-title-vertical-align);
-  --intro-description-margin-top: var(--section-description-margin-top);
-  --intro-description-max-width: var(--section-description-max-width);
-  --intro-description-font: var(--section-description-font);
-  --intro-description-size: var(--section-description-size);
-  --intro-description-weight: var(--section-description-weight);
-  --intro-description-line-height: var(--section-description-line-height);
-  --intro-description-letter-spacing: var(--section-description-letter-spacing);
-  --intro-description-color: var(--section-description-color);
-  align-items: center;
-  text-align: center;
-}
-
-.sectionVariant .title {
-  margin-inline: auto;
-}
-
-.sectionVariant .description {
-  margin-inline: auto;
-}
-
 .animWrapper {
   display: block;
   width: 100%;
@@ -62,13 +12,13 @@
 
 .title {
   margin: 0;
-  font-family: var(--intro-title-font);
-  font-size: var(--intro-title-size);
-  font-weight: var(--intro-title-weight);
-  line-height: var(--intro-title-line-height);
-  letter-spacing: var(--intro-title-letter-spacing);
-  color: var(--intro-title-color);
-  vertical-align: var(--intro-title-vertical-align);
+  font-family: var(--title-font);
+  font-size: var(--title-size);
+  font-weight: var(--title-weight);
+  line-height: 1.05;
+  letter-spacing: var(--letter-spacing-0);
+  color: var(--color-light);
+  vertical-align: baseline;
 }
 
 .title span {
@@ -76,24 +26,72 @@
 }
 
 .description {
-  margin: var(--intro-description-margin-top) 0 0 0;
-  max-width: var(--intro-description-max-width);
-  font-family: var(--intro-description-font);
-  font-size: var(--intro-description-size);
-  font-weight: var(--intro-description-weight);
-  line-height: var(--intro-description-line-height);
-  letter-spacing: var(--intro-description-letter-spacing);
-  color: var(--intro-description-color);
+  margin: 1.5rem 0 0 0;
+  max-width: 462px;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
+  font-weight: var(--content-weight);
+  line-height: 1.5;
+  letter-spacing: var(--letter-spacing-0);
+  color: var(--color-initial);
+}
+
+.heroVariant .title {
+  font-family: var(--font-family-tertiary);
+  font-size: var(--font-4xl);
+  font-weight: var(--font-regular);
+  line-height: var(--line-height-100);
+  letter-spacing: var(--letter-spacing-0);
+  color: var(--color-light);
+  vertical-align: middle;
+}
+
+.heroVariant .description {
+  margin-top: 1.5rem;
+  max-width: 462px;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-md);
+  font-weight: var(--font-regular);
+  line-height: var(--line-height-100);
+  letter-spacing: var(--letter-spacing-0);
+  color: var(--color-initial);
+}
+
+.sectionVariant {
+  align-items: center;
+  text-align: center;
+}
+
+.sectionVariant .title {
+  margin-inline: auto;
+  font-family: var(--font-family-tertiary);
+  font-size: var(--font-4xl);
+  font-weight: var(--font-medium);
+  line-height: var(--line-height-133);
+  letter-spacing: var(--letter-spacing-0);
+  color: inherit;
+  vertical-align: baseline;
+}
+
+.sectionVariant .description {
+  margin: 1.5rem auto 0;
+  max-width: 462px;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-md);
+  font-weight: var(--font-regular);
+  line-height: var(--line-height-100);
+  letter-spacing: var(--letter-spacing-0);
+  color: inherit;
 }
 
 @media screen and (max-width: 992px) {
-  .title {
-    font-size: var(--intro-title-size-md);
+  .heroText:not(.heroVariant):not(.sectionVariant) .title {
+    font-size: var(--heading-xl);
   }
 }
 
 @media screen and (max-width: 576px) {
-  .title {
-    font-size: var(--intro-title-size-sm);
+  .heroText:not(.heroVariant):not(.sectionVariant) .title {
+    font-size: var(--heading-lg);
   }
 }

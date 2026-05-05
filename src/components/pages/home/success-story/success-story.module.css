@@ -21,7 +21,7 @@
   margin: 0;
   max-width: 840px;
   font-family: var(--title-font);
-  font-size: 48px;
+  font-size: var(--heading-xl);
   font-weight: var(--title-weight);
   line-height: 1;
   text-align: center;
