@@ -4,9 +4,6 @@
   --case-nav-size: 56px;
   --case-nav-shift: 24px;
   position: relative;
-  background:
-    radial-gradient(circle at top center, rgba(47, 209, 171, 0.06), transparent 32%),
-    var(--color-surface-soft);
 }
 
 .stickyFrame {
@@ -95,7 +92,11 @@
 .track {
   display: flex;
   width: calc(100% * var(--total, 4));
-  transform: translate3d(calc(var(--active-index, 0) * -100% / var(--total, 4)), 0, 0);
+  transform: translate3d(
+    calc(var(--active-index, 0) * -100% / var(--total, 4)),
+    0,
+    0
+  );
   transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
@@ -127,7 +128,8 @@
 
 .navButtonLeft {
   left: 0;
-  transform: translate3d(calc(-1 * var(--case-nav-shift)), -50%, 0) rotate(180deg);
+  transform: translate3d(calc(-1 * var(--case-nav-shift)), -50%, 0)
+    rotate(180deg);
 }
 
 .navButtonRight {

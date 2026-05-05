@@ -11,11 +11,8 @@ function Hero() {
         <div className={styles.content}>
           <SectionIntro
             title={["Real-World Healthcare", "Technology Case Studies"]}
-            description="Explore how we help healthcare organizations design, build,
-and scale digital solutions — from A1-powered systems to
-fully integrated platforms. Each case study highlights the
-challenges, our approach, and the measurable outcomes."
-            highlightWord={5}
+            description="Explore how we help healthcare organizations design, build, and scale digital solutions — from AI-powered systems to fully integrated platforms. Each case study highlights the challenges, our approach, and the measurable outcomes."
+            highlightWord={4}
             className={styles.intro}
             titleClassName={styles.introTitle}
             descriptionClassName={styles.introDescription}

@@ -22,6 +22,13 @@ function SectionIntro({
   animateMode = "reveal",
 }) {
   const lines = Array.isArray(title) ? title : [title];
+  const highlightSet = new Set(
+    Array.isArray(highlightWord)
+      ? highlightWord
+      : highlightWord
+        ? [highlightWord]
+        : [],
+  );
 
   const titleNodes = [];
   let wordCounter = 0;
@@ -35,7 +42,7 @@ function SectionIntro({
         <span
           key={`w-${lineIndex}-${indexInLine}`}
           style={{
-            color: oneBasedIndex === highlightWord ? highlightColor : color,
+            color: highlightSet.has(oneBasedIndex) ? highlightColor : color,
           }}
         >
           {word}
@@ -72,11 +79,10 @@ function SectionIntro({
           colorAccent={animateAccentColor}
           colorFinal={animateFinalColor}
           highlightFinalColor={highlightColor}
-          highlightWords={
-            highlightWord
-              ? [{ elementIndex: 0, wordIndex: highlightWord - 1 }]
-              : []
-          }
+          highlightWords={Array.from(highlightSet).map((w) => ({
+            elementIndex: 0,
+            wordIndex: w - 1,
+          }))}
         >
           {titleEl}
           {descriptionEl}
@@ -92,11 +98,10 @@ function SectionIntro({
           finalDuration={0.15}
           triggerOnScroll={triggerOnScroll}
           scrollStart={scrollStart}
-          highlightWords={
-            highlightWord
-              ? [{ elementIndex: 0, wordIndex: highlightWord - 1 }]
-              : []
-          }
+          highlightWords={Array.from(highlightSet).map((w) => ({
+            elementIndex: 0,
+            wordIndex: w - 1,
+          }))}
         >
           {titleEl}
           {descriptionEl}

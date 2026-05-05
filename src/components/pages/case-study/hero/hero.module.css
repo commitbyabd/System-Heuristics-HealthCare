@@ -29,11 +29,15 @@
 }
 
 .content {
-  max-width: 650px;
+  max-width: 760px;
   width: 100%;
   height: auto;
   padding-top: 46px;
   padding-bottom: 46px;
+}
+
+.introTitle {
+  white-space: nowrap;
 }
 
 .actions {
