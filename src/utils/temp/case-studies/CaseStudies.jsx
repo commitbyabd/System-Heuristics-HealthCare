@@ -5,7 +5,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./case-studies.module.css";
-import SectionTitle from "../../../ui/section-title/SectionTitle";
+import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import caseStudies from "../../../../data/pages/home/case-study/CaseStudyData";
 import Button from "../../../ui/button/Button";
@@ -88,13 +88,16 @@ function CaseStudies() {
               <span className={styles.eyebrowDot} aria-hidden="true" />
               Proven healthcare outcomes
             </span>
-            <SectionTitle
+            <SectionIntro
+              variant="section"
               title="Case Studies"
+              titleAs="h2"
               highlightWord={2}
-              className={styles.title}
+              titleClassName={styles.title}
               color="#1f2940"
               highlightColor="#2FD1AB"
               animateTitle
+              animateMode="scroll"
               animateInitialColor="#737e8a"
               animateAccentColor="#2FD1AB"
               animateFinalColor="#1f2940"

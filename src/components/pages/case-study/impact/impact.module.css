@@ -16,18 +16,7 @@
 }
 
 .intro {
-  align-items: center;
-  text-align: center;
   width: 100%;
-}
-
-.title {
-  text-align: center;
-}
-
-.description {
-  margin: 12px auto 0;
-  text-align: center;
 }
 
 .cards {

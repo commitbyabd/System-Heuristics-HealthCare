@@ -121,24 +121,6 @@
 .centerIntro {
   position: relative;
   max-width: none;
-  align-items: center;
-  text-align: center;
-}
-
-.centerTitle {
-  margin: 0;
-  font-size: 1.75rem;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
-.centerDescription {
-  width: auto;
-  max-width: 340px;
-  margin: 8px auto 0;
-  color: #6b7480;
-  font-size: 0.9375rem;
-  line-height: 1.45;
 }
 
 .cardTopLeft {
@@ -298,7 +280,4 @@
     border-radius: 18px;
   }
 
-  .centerTitle {
-    font-size: 1.5rem;
-  }
 }

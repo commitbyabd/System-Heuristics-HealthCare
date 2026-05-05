@@ -10,6 +10,7 @@ function Hero() {
       <Container className={styles.layout}>
         <div className={styles.content}>
           <SectionIntro
+            variant="hero"
             title="AI That Makes
 Healthcare Smarter."
             description="We build practical A1 solutions for healthcare teams — from

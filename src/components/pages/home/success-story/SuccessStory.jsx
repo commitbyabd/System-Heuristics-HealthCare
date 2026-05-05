@@ -1,5 +1,5 @@
 import styles from "./success-story.module.css";
-import SectionTitle from "../../../ui/section-title/SectionTitle";
+import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import Button from "../../../ui/button/Button";
 
@@ -7,12 +7,15 @@ function SuccessStory() {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <SectionTitle
+        <SectionIntro
+          variant="section"
           title="Ready to create your success story?"
+          titleAs="h2"
           highlightWord={0}
-          className={styles.title}
+          titleClassName={styles.title}
           color="#1f2940"
           animateTitle
+          animateMode="scroll"
           animateInitialColor="#737e8a"
           animateAccentColor="#2FD1AB"
           animateFinalColor="#1f2940"

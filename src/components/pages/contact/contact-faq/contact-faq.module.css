@@ -4,23 +4,8 @@
 }
 
 .intro {
-  align-items: flex-start;
   max-width: 760px;
   margin-bottom: 28px;
-}
-
-.introTitle {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-}
-
-.introDescription {
-  margin-top: 12px;
-  max-width: 620px;
-  color: #7f8b96;
-  font-size: 14px;
-  line-height: 1.6;
 }
 
 .groups {
@@ -119,10 +104,6 @@
 
   .intro {
     margin-bottom: 22px;
-  }
-
-  .introDescription {
-    font-size: 13px;
   }
 
   .group {

@@ -12,13 +12,12 @@ function PurposeBuilt() {
           alt="System Heuristics"
         />
         <SectionIntro
+          variant="section"
           title={["Purpose-Built AI for Real", "Healthcare Workflows"]}
           description="AI in healthcare should do more than impress — it should solve meaningful problems. At System Heuristics Health, we design AI systems that fit into real clinical, operational, and patient-facing environments. Our focus is on building intelligent tools that are secure, scalable, and genuinely useful."
           titleAs="h2"
           highlightWord={5}
           className={styles.intro}
-          titleClassName={styles.title}
-          descriptionClassName={styles.description}
           animateTitle
           animateMode="scroll"
         />

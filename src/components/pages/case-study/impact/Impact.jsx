@@ -34,14 +34,13 @@ function Impact() {
     <section className={`${styles.section} bgGrid`}>
       <Container className={styles.inner}>
         <SectionIntro
+          variant="section"
           title="Delivering Measurable Impact"
           description="Real outcomes from healthcare technology that solves real problems."
           titleAs="h2"
           highlightWord={[2, 3]}
           color="#FFFFFF"
           className={styles.intro}
-          titleClassName={styles.title}
-          descriptionClassName={styles.description}
           animateTitle
           animateMode="scroll"
           animateFinalColor="#FFFFFF"

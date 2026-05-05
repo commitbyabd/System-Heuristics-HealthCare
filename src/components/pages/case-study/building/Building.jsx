@@ -21,14 +21,13 @@ function Building() {
           />
         </svg>
         <SectionIntro
+          variant="section"
           title={["Building Solutions That", "Work in Real Environments"]}
           description="Our case studies showcase how we approach real-world challenges, design practical solutions, and deliver systems that create measurable impact."
           titleAs="h2"
           highlightWord={[4, 5, 6]}
           color="#001830"
           className={styles.intro}
-          titleClassName={styles.title}
-          descriptionClassName={styles.description}
           animateTitle
           animateMode="scroll"
           animateFinalColor="#001830"

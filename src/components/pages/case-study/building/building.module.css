@@ -21,29 +21,8 @@
 }
 
 .intro {
-  align-items: center;
-  text-align: center;
   width: 100%;
   max-width: 760px;
-}
-
-.title {
-  font-size: 48px;
-  line-height: 1.15;
-  text-align: center;
-}
-
-.description {
-  font-size: 16px;
-  margin: 12px auto 0;
-  max-width: 540px;
-  text-align: center;
-}
-
-@media screen and (max-width: 768px) {
-  .title {
-    font-size: 28px;
-  }
 }
 
 @media screen and (max-width: 768px) {

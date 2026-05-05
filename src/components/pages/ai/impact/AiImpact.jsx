@@ -70,12 +70,12 @@ function AiImpact() {
       <Container className={styles.inner}>
         <div className={styles.header}>
           <SectionIntro
+            variant="section"
             title={aiImpactIntro.title}
             description={aiImpactIntro.description}
             titleAs="h2"
             highlightWord={aiImpactIntro.highlightWord}
             color="#001830"
-            className={styles.intro}
             animateTitle
             animateMode="scroll"
             animateFinalColor="#001830"

@@ -28,12 +28,11 @@ function Subscribe({
       <Container maxWidth={1120}>
         <div className={styles.panel}>
           <SectionIntro
+            variant="section"
             title={title}
             description={description}
             titleAs="h2"
             className={styles.intro}
-            titleClassName={styles.title}
-            descriptionClassName={styles.description}
             color="#ffffff"
             highlightColor="#ffffff"
           />

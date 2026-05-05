@@ -24,14 +24,13 @@ function Impact() {
       <Container className={styles.inner}>
         <div className={styles.header}>
           <SectionIntro
+            variant="section"
             title="Where AI Creates Impact"
             description="We help healthcare teams apply AI across patient care, administration, and decision support."
             titleAs="h2"
             highlightWord={3}
             color="#001830"
             className={styles.intro}
-            titleClassName={styles.title}
-            descriptionClassName={styles.description}
             animateTitle
             animateMode="scroll"
             animateFinalColor="#001830"

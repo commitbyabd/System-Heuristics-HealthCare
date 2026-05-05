@@ -79,13 +79,12 @@ function Testimonials() {
       <Container className={styles.container}>
         <div className={styles.introWrap}>
           <SectionIntro
+            variant="section"
             title="Testimonials"
             description="Real leaders share how they crushed dead-end leads and boosted sales with our game-changing AI solutions."
             titleAs="h2"
             highlightWord={1}
             className={styles.intro}
-            titleClassName={styles.title}
-            descriptionClassName={styles.description}
             animateTitle
             animateMode="scroll"
             animateInitialColor="#7f8d9f"

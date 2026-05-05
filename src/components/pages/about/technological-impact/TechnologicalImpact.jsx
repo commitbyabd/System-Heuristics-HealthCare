@@ -151,13 +151,12 @@ function TechnologicalImpact() {
         <div className={styles.grid}>
           <div className={styles.copy}>
             <SectionIntro
+              variant="section"
               title="Our Impact in Healthcare Technology"
               description="We measure our success by the impact we create—delivering reliable systems, intelligent solutions, and measurable results across healthcare organizations."
               titleAs="h2"
               highlightWord={4}
               className={styles.intro}
-              titleClassName={styles.title}
-              descriptionClassName={styles.description}
               color="#18233b"
               highlightColor="#2FD1AB"
               animateTitle

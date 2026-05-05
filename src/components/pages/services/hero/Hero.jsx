@@ -10,6 +10,7 @@ function Hero() {
       <Container className={styles.layout}>
         <div className={styles.content}>
           <SectionIntro
+            variant="hero"
             title="Our Services"
             description="We design, build, and scale healthcare products — from
 Custom software and A1 solutions to system integrations and

@@ -36,23 +36,6 @@
   gap: 24px;
 }
 
-.intro > div[data-copy-wrapper] > p {
-  margin-top: 0;
-}
-
-.title {
-  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
-  line-height: 1;
-  letter-spacing: -0.035em;
-}
-
-.description {
-  max-width: 360px;
-  color: #7b8390;
-  font-size: 0.86rem;
-  line-height: 1.5;
-}
-
 .card {
   position: relative;
   display: flex;
@@ -186,10 +169,6 @@
   .intro > div[data-copy-wrapper] {
     height: auto;
     gap: 14px;
-  }
-
-  .description {
-    max-width: 100%;
   }
 
   .pos0 {

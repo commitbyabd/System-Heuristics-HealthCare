@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./outdated-systems.module.css";
 import Chip from "../../../ui/chip/Chip";
-import SectionTitle from "../../../ui/section-title/SectionTitle";
+import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import Container from "../../../ui/container/Container";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -103,11 +103,14 @@ function OutdatedSystems() {
         <Container className={styles.inner}>
           <div className={styles.header}>
             <Chip text="Industry Research" className={styles.chip} />
-            <SectionTitle
+            <SectionIntro
+              variant="section"
               title="The Hidden Cost of Outdated Healthcare Systems"
+              titleAs="h2"
               highlightWord={5}
-              className={styles.title}
+              titleClassName={styles.title}
               animateTitle
+              animateMode="scroll"
               animateInitialColor="#737e8a"
               animateAccentColor="#2FD1AB"
             />

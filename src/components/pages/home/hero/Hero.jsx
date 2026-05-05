@@ -9,7 +9,13 @@ function Hero() {
     <section className={styles.hero}>
       <Container className={styles.layout}>
         <div className={styles.content}>
-          <SectionIntro animateTitle />
+          <SectionIntro
+            variant="hero"
+            title="Software That Heals How Healthcare Works"
+            description="We engineer intelligent, HIPAA-compliant healthcare platforms from AI diagnostics to enterprise hospital systems - built for the future of medicine."
+            highlightWord={3}
+            animateTitle
+          />
 
           <div className={styles.actions}>
             <Button

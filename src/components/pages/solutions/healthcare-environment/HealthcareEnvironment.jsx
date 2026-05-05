@@ -1,7 +1,7 @@
 import styles from "./healthcare-environment.module.css";
 import Container from "../../../ui/container/Container";
 import Chip from "../../../ui/chip/Chip";
-import SectionTitle from "../../../ui/section-title/SectionTitle";
+import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import Button from "../../../ui/button/Button";
 import { HealthcareEnvironmentData } from "../../../../data/pages/solutions/environment/HealthcareEnvironment";
@@ -21,13 +21,16 @@ function HealthcareEnvironment() {
       <Container className={styles.container}>
         <div className={styles.header}>
           <Chip text={section.chip} className={styles.chip} />
-          <SectionTitle
+          <SectionIntro
+            variant="section"
             title={section.title}
+            titleAs="h2"
             highlightWord={section.highlightWord}
-            className={styles.title}
+            titleClassName={styles.title}
             color="#ffffff"
             highlightColor="#2FD1AB"
             animateTitle
+            animateMode="scroll"
             animateInitialColor="#5b6b78"
             animateAccentColor="#2FD1AB"
             animateFinalColor="#ffffff"

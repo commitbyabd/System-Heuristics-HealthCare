@@ -179,6 +179,7 @@ function ProcessNode() {
       <Container maxWidth={1600} className={styles.container}>
         <div className={styles.intro}>
           <SectionIntro
+            variant="section"
             title={["Our Delivery Process"]}
             description="We follow a clear, collaborative path from discovery to support so healthcare products launch with confidence, clarity, and long-term resilience."
             titleAs="h2"
@@ -186,8 +187,6 @@ function ProcessNode() {
             color="#ffffff"
             highlightColor="#2FD1AB"
             className={styles.introWrap}
-            titleClassName={styles.introTitle}
-            descriptionClassName={styles.introDescription}
             animateTitle
             animateMode="scroll"
             animateInitialColor="#7f8d9f"

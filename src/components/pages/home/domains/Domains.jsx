@@ -431,12 +431,11 @@ function Domains() {
                 aria-hidden="true"
               />
               <SectionIntro
+                variant="section"
                 title="Healthcare Domains We Solve For"
                 description="From clinical workflows to compliance systems, we design solutions across critical areas of healthcare."
                 highlightWord={3}
                 className={styles.centerIntro}
-                titleClassName={styles.centerTitle}
-                descriptionClassName={styles.centerDescription}
                 color="#243246"
                 highlightColor="#2FD1AB"
               />

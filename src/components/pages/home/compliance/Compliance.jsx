@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./compliance.module.css";
 import Container from "../../../ui/container/Container";
 import Chip from "../../../ui/chip/Chip";
-import SectionTitle from "../../../ui/section-title/SectionTitle";
+import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import ComplianceData from "../../../../data/pages/home/compliance/ComplianceData";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -68,7 +68,14 @@ function Compliance() {
         <div className={styles.header}>
           <Chip />
 
-          <SectionTitle className={styles.title} animateTitle />
+          <SectionIntro
+            variant="section"
+            title="Built for Healthcare Compliance & Security"
+            titleAs="h2"
+            titleClassName={styles.title}
+            animateTitle
+            animateMode="scroll"
+          />
         </div>
 
         <ComplianceData />

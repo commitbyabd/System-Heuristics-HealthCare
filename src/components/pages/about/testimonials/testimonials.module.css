@@ -35,22 +35,6 @@
 
 .intro {
   max-width: 620px;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-size: clamp(3rem, 5vw, 4.3rem);
-  line-height: 0.96;
-  letter-spacing: -0.04em;
-}
-
-.description {
-  margin: 12px auto 0;
-  max-width: 430px;
-  color: rgba(234, 241, 247, 0.82);
-  font-size: 0.98rem;
-  line-height: 1.45;
 }
 
 .avatarStrip {
@@ -165,11 +149,4 @@
 }
 
 @media (max-width: 576px) {
-  .title {
-    font-size: clamp(2.5rem, 11vw, 3.4rem);
-  }
-
-  .description {
-    font-size: 0.92rem;
-  }
 }

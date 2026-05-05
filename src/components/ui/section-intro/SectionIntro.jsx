@@ -4,13 +4,15 @@ import GradientRevealAnimation from "../gradient-reveal-animation/GradientReveal
 import GradientScrollAnimation from "../gradient-scroll-animation/GradientScrollAnimation";
 
 function SectionIntro({
-  title = "Software That Heals How Healthcare Works",
-  description = "We engineer intelligent, HIPAA-compliant healthcare platforms from AI diagnostics to enterprise hospital systems - built for the future of medicine.",
+  title,
+  description = "",
   titleAs = "h1",
   highlightWord = 3,
+  variant = "default",
   className = "",
   titleClassName = "",
   descriptionClassName = "",
+  style = {},
   color = "#FFFFFF",
   highlightColor = "#2FD1AB",
   animateTitle = false,
@@ -64,14 +66,17 @@ function SectionIntro({
     <>{titleNodes}</>,
   );
 
-  const descriptionEl = (
+  const descriptionEl = description ? (
     <p className={`${styles.description} ${descriptionClassName}`.trim()}>
       {description}
     </p>
-  );
+  ) : null;
 
   return (
-    <div className={`${styles.heroText} ${className}`.trim()}>
+    <div
+      className={`${styles.heroText} ${variant === "hero" ? styles.heroVariant : ""} ${variant === "section" ? styles.sectionVariant : ""} ${className}`.trim()}
+      style={style}
+    >
       {animateTitle && animateMode === "scroll" ? (
         <GradientScrollAnimation
           className={styles.animWrapper}

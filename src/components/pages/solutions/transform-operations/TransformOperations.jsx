@@ -1,7 +1,7 @@
 import styles from "./transform-operations.module.css";
 import Container from "../../../ui/container/Container";
 import LazyImage from "../../../ui/lazy-image/LazyImage";
-import SectionTitle from "../../../ui/section-title/SectionTitle";
+import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import Button from "../../../ui/button/Button";
 
 function TransformOperations() {
@@ -15,10 +15,12 @@ function TransformOperations() {
             className={styles.logo}
           />
 
-          <SectionTitle
+          <SectionIntro
+            variant="section"
             title="Ready to transform your healthcare operations?"
+            titleAs="h2"
             highlightWord={5}
-            className={styles.title}
+            titleClassName={styles.title}
             color="#ffffff"
             highlightColor="#2FD1AB"
           />

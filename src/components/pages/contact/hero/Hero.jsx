@@ -10,6 +10,7 @@ function Hero() {
       <Container className={styles.layout}>
         <div className={styles.content}>
           <SectionIntro
+            variant="hero"
             title={["Let's Build the", "Future of Healthcare", "Togehter"]}
             description="Whether you're exploring A1 solutions, improving workflows,
 or scaling your healthcare platform — our team is here to

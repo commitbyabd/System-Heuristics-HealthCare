@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import styles from "./our-solutions.module.css";
 import Chip from "../../../ui/chip/Chip";
 import Container from "../../../ui/container/Container";
-import SectionTitle from "../../../ui/section-title/SectionTitle";
+import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
 import FileText from "../../../ui/icons/FileText";
 import Cpu from "../../../ui/icons/Cpu";
@@ -80,13 +80,16 @@ function OurSolutions() {
         <Container className={styles.container}>
           <div className={styles.header}>
             <Chip text="Our Services" className={styles.chip} />
-            <SectionTitle
+            <SectionIntro
+              variant="section"
               title="Our Healthcare Solutions"
+              titleAs="h2"
               highlightWord={2}
-              className={styles.title}
+              titleClassName={styles.title}
               color="#1f2940"
               highlightColor="#2FD1AB"
               animateTitle
+              animateMode="scroll"
               animateInitialColor="#737e8a"
               animateAccentColor="#2FD1AB"
               animateFinalColor="#1f2940"

@@ -45,6 +45,7 @@ function ModernServices() {
       <Container className={styles.container}>
         <div className={styles.intro}>
           <SectionIntro
+            variant="section"
             title={["Services Designed for", "Modern Healthcare"]}
             description=""
             titleAs="h2"
@@ -52,8 +53,6 @@ function ModernServices() {
             color="#0d1b2e"
             highlightColor="#2FD1AB"
             className={styles.introWrap}
-            titleClassName={styles.introTitle}
-            descriptionClassName={styles.introDescription}
             animateTitle
             animateMode="scroll"
             animateInitialColor="#c5cdd6"

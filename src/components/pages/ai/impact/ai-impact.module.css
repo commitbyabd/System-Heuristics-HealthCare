@@ -82,10 +82,6 @@
   text-align: center;
 }
 
-.intro {
-  align-items: center;
-}
-
 .items {
   width: 100%;
   display: flex;

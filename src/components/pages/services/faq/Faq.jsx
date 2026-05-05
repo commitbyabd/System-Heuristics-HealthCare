@@ -22,13 +22,12 @@ function Faq() {
     <section className={styles.section}>
       <Container maxWidth={1260} className={styles.container}>
         <SectionIntro
+          variant="section"
           title={intro.title}
           description={intro.description}
           titleAs="h2"
           highlightWord={intro.highlightWord}
           className={styles.intro}
-          titleClassName={styles.introTitle}
-          descriptionClassName={styles.introDescription}
           color="#18233b"
           highlightColor="#2FD1AB"
           animateTitle

@@ -20,12 +20,11 @@ function ContactFaq() {
     <section className={styles.section}>
       <Container maxWidth={1180}>
         <SectionIntro
+          variant="section"
           title={intro.title}
           description={intro.description}
           highlightWord={intro.highlightWord}
           className={styles.intro}
-          titleClassName={styles.introTitle}
-          descriptionClassName={styles.introDescription}
           color="#0A1F2E"
           highlightColor="#2FD1AB"
         />

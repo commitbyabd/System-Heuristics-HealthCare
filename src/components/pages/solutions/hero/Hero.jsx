@@ -10,6 +10,7 @@ function Hero() {
       <Container className={styles.layout}>
         <div className={styles.content}>
           <SectionIntro
+            variant="hero"
             title={[
               "AI-Powered",
               "Solutions for Modern",

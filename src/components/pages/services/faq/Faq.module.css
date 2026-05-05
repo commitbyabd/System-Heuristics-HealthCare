@@ -10,23 +10,7 @@
 }
 
 .intro {
-  align-items: flex-start;
   max-width: 860px;
-}
-
-.introTitle {
-  color: #18233b;
-  font-size: clamp(2.2rem, 4vw, 3.35rem);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-}
-
-.introDescription {
-  margin-top: 12px;
-  max-width: 680px;
-  color: #7b8390;
-  font-size: 0.94rem;
-  line-height: 1.55;
 }
 
 .panel {
@@ -82,13 +66,6 @@
     gap: 24px;
   }
 
-  .introTitle {
-    font-size: clamp(2rem, 8vw, 2.7rem);
-  }
-
-  .introDescription {
-    font-size: 0.9rem;
-  }
 }
 
 @media (max-width: 576px) {
