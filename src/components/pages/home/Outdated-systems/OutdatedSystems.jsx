@@ -23,7 +23,6 @@ const stats = [
     high: 30,
     suffix: "%",
     description: "of staff time consumed by manual documentation and workflows",
-    hasAccentLine: true,
   },
   {
     id: "annual-loss",
@@ -37,7 +36,7 @@ const stats = [
 
 function formatStat({ low, high, prefix = "", suffix = "" }, animatedValue) {
   if (high == null) {
-    return `${prefix}${animatedValue}${suffix}`;
+    return { main: `${prefix}${animatedValue}`, accent: suffix };
   }
 
   const animatedLow = Math.max(
@@ -45,7 +44,10 @@ function formatStat({ low, high, prefix = "", suffix = "" }, animatedValue) {
     Math.round((animatedValue / Math.max(low, high)) * low),
   );
 
-  return `${prefix}${animatedLow}-${animatedValue}${suffix}`;
+  return {
+    main: `${prefix}${animatedLow}`,
+    accent: `-${animatedValue}${suffix}`,
+  };
 }
 
 function OutdatedSystems() {
@@ -127,27 +129,17 @@ function OutdatedSystems() {
                 className={styles.statCard}
                 style={{ animationDelay: `${0.2 + index * 0.18}s` }}
               >
-                {stat.hasAccentLine ? (
-                  <svg
-                    className={styles.accentLine}
-                    viewBox="0 0 116 16"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M1 12C22.5 5.5 43.5 2.8 61.5 3.2C81.2 3.7 96.7 7.7 115 8.6"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                ) : (
-                  <span className={styles.divider} aria-hidden="true" />
-                )}
+                <span className={styles.divider} aria-hidden="true" />
 
-                <p className={styles.value}>
-                  {formatStat(stat, animatedValues[index])}
-                </p>
+                {(() => {
+                  const parts = formatStat(stat, animatedValues[index]);
+                  return (
+                    <p className={styles.value}>
+                      <span className={styles.valueMain}>{parts.main}</span>
+                      <span className={styles.valueAccent}>{parts.accent}</span>
+                    </p>
+                  );
+                })()}
 
                 <p
                   className={styles.description}

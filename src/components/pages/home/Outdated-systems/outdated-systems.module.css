@@ -58,7 +58,7 @@
 }
 
 .statsGrid {
-  margin-top: 52px;
+  margin-top: 76px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 36px;
@@ -69,7 +69,7 @@
   min-width: 0;
   opacity: 0;
   transform: translateY(24px);
-  width: min(100%, 230px);
+  width: min(100%, 300px);
 }
 
 .statCard:nth-child(1) {
@@ -88,42 +88,42 @@
   animation: stat-rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.divider,
-.accentLine {
-  margin-bottom: 14px;
-  display: block;
-  color: rgba(240, 251, 248, 0.96);
-}
-
 .divider {
-  width: 36px;
-  height: 1px;
+  margin-bottom: 18px;
+  display: block;
+  width: 100px;
+  height: 2px;
   background-color: rgba(240, 251, 248, 0.96);
-}
-
-.accentLine {
-  width: 112px;
-  height: 16px;
 }
 
 .value {
   margin: 0;
+  display: inline-flex;
+  align-items: baseline;
   font-family: var(--title-font);
-  font-size: clamp(2rem, 2.9vw, 2.75rem);
   font-weight: var(--title-weight);
   line-height: 1;
   letter-spacing: -0.03em;
-  color: #ffffff;
+}
+
+.valueMain {
+  font-size: var(--heading-xl);
+  color: var(--color-light);
+}
+
+.valueAccent {
+  font-size: var(--font-2xl);
+  color: var(--color-teal);
 }
 
 .description {
   margin: 10px 0 0;
-  max-width: 230px;
+  max-width: 300px;
   font-family: var(--content-font);
-  font-size: var(--content-size);
-  font-weight: var(--content-weight);
-  line-height: 1.45;
-  color: rgba(237, 244, 242, 0.88);
+  font-size: var(--font-standard);
+  font-weight: var(--font-regular);
+  line-height: var(--line-height-100);
+  color: #ffffff;
   transform: translateY(16px);
   opacity: 1;
 }
