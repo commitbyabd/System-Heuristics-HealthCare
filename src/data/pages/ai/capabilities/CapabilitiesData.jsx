@@ -1,9 +1,11 @@
-import Shield from "../../../../components/ui/icons/patient-engagement/Shield";
-import ChatBubble from "../../../../components/ui/icons/patient-engagement/ChatBubble";
-import Gear from "../../../../components/ui/icons/patient-engagement/Gear";
-import Stats from "../../../../components/ui/icons/patient-engagement/Stats";
-import Brain from "../../../../components/ui/icons/patient-engagement/Brain";
-import Clip from "../../../../components/ui/icons/patient-engagement/Clip";
+import {
+  Shield,
+  MessageCircle as ChatBubble,
+  Settings as Gear,
+  ChartColumn as Stats,
+  Brain,
+  Link as Clip,
+} from "lucide-react";
 
 export const capabilitiesData = [
   {

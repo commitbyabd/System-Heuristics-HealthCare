@@ -22,10 +22,8 @@ import { toggleMobileMenuGsap, setupNavbarScroll } from "./NavUtils";
 import { NavData } from "../../../data/components/nav/NavData";
 import { Constants } from "../../../utils/global/Constants";
 import LazyImage from "../lazy-image/LazyImage";
-import Menu from "../icons/Menu";
-import X from "../icons/X";
+import { Menu, X, Phone } from "lucide-react";
 import Button from "../button/Button";
-import Phone from "../icons/Phone";
 import Container from "../container/Container";
 
 const Nav = () => {

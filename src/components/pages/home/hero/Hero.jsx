@@ -2,7 +2,7 @@ import styles from "./hero.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import Button from "../../../ui/button/Button";
-import ArrowRight from "../../../ui/icons/ArrowRight";
+import { ArrowRight } from "lucide-react";
 
 function Hero() {
   return (

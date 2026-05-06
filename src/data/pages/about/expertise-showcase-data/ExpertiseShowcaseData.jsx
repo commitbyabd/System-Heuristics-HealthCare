@@ -1,5 +1,4 @@
-import Shield from "../../../../components/ui/icons/patient-engagement/Shield";
-import Stats from "../../../../components/ui/icons/patient-engagement/Stats";
+import { Shield, ChartColumn as Stats } from "lucide-react";
 
 export const expertiseShowcaseData = [
   {

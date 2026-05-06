@@ -1,7 +1,5 @@
 import styles from "./ContactInfoItem.module.css";
-import Mail from "../../../../ui/icons/Mail";
-import MapPin from "../../../../ui/icons/MapPin";
-import Phone from "../../../../ui/icons/Phone";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 const ICONS = {
   email: Mail,
@@ -15,7 +13,7 @@ function ContactInfoItem({ type, title, subtitle, value }) {
   return (
     <li className={styles.contactItem}>
       <span className={styles.iconWrap}>
-        {Icon && <Icon size={18} color="#2FD1AB" />}
+        {Icon && <Icon style={{ "--icon-size": "18px" }} color="#2FD1AB" />}
       </span>
       <div className={styles.contactText}>
         <p className={styles.contactTitle}>{title}</p>

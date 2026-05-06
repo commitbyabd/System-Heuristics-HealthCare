@@ -3,7 +3,7 @@ import styles from "./contact-faq.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import FaqComponent from "../../../ui/faq/FaqComponent";
-import ChevronDown from "../../../ui/icons/ChevronDown";
+import { ChevronDown } from "lucide-react";
 import { ContactFaqData } from "../../../../data/pages/contact/ContactFaq";
 
 function ContactFaq() {
@@ -48,7 +48,7 @@ function ContactFaq() {
                   <span className={styles.groupLabel}>{category.label}</span>
                   <ChevronDown
                     className={`${styles.groupIcon} ${isOpen ? styles.groupIconOpen : ""}`.trim()}
-                    size={18}
+                    style={{ "--icon-size": "18px" }}
                     color="#44515D"
                   />
                 </button>

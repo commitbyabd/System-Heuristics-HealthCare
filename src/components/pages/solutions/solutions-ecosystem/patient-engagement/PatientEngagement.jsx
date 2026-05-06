@@ -2,12 +2,14 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./patient-engagement.module.css";
-import Brain from "../../../../ui/icons/patient-engagement/Brain";
-import ChatBubble from "../../../../ui/icons/patient-engagement/ChatBubble";
-import Gear from "../../../../ui/icons/patient-engagement/Gear";
-import Stats from "../../../../ui/icons/patient-engagement/Stats";
-import Clip from "../../../../ui/icons/patient-engagement/Clip";
-import Shield from "../../../../ui/icons/patient-engagement/Shield";
+import {
+  Brain,
+  MessageCircle as ChatBubble,
+  Settings as Gear,
+  ChartColumn as Stats,
+  Link as Clip,
+  Shield,
+} from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 

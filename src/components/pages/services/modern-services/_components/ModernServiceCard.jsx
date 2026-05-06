@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./ModernServiceCard.module.css";
 import Button from "../../../../ui/button/Button";
-import ArrowRight from "../../../../ui/icons/ArrowRight";
+import { ArrowRight } from "lucide-react";
 
 function ModernServiceCard({ number, title, description, link }) {
   return (

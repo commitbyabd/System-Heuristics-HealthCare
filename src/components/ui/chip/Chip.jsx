@@ -1,5 +1,5 @@
 import styles from "./chip.module.css";
-import Diamond from "../icons/Diamond";
+import { Diamond } from "lucide-react";
 
 function Chip({ text = "Secure & Encrypted", className = "" }) {
   return (

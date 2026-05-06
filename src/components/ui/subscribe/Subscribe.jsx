@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./subscribe.module.css";
 import Container from "../container/Container";
 import SectionIntro from "../section-intro/SectionIntro";
-import Mail from "../icons/Mail";
+import { Mail } from "lucide-react";
 
 function Subscribe({
   title,
@@ -39,7 +39,11 @@ function Subscribe({
 
           <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.inputWrap} aria-label="Email address">
-              <Mail className={styles.icon} size={18} color="#ffffff" />
+              <Mail
+                className={styles.icon}
+                style={{ "--icon-size": "18px" }}
+                color="#ffffff"
+              />
               <input
                 className={styles.input}
                 type="email"

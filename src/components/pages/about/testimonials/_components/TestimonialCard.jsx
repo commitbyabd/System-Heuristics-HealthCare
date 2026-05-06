@@ -1,4 +1,4 @@
-import Star from "../../../../ui/icons/Star";
+import { Star } from "lucide-react";
 import styles from "./TestimonialCard.module.css";
 
 function TestimonialCard({
@@ -34,7 +34,7 @@ function TestimonialCard({
             <Star
               key={`${id}-star-${index + 1}`}
               className={styles.star}
-              size={15}
+              fill="#ffae00"
               color="#ffae00"
             />
           ))}

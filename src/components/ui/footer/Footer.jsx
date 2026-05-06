@@ -51,7 +51,13 @@ function Footer() {
                   ref={(el) => (socialsRef.current[idx] = el)}
                   aria-label="Social link"
                 >
-                  {Icon && <Icon className={styles.icon} size={16} />}
+                  {Icon && (
+                    <Icon
+                      className={styles.icon}
+                      size={16}
+                      style={{ "--icon-size": "16px" }}
+                    />
+                  )}
                 </a>
               ))}
             </div>
@@ -93,7 +99,13 @@ function Footer() {
             <ul className={styles.list}>
               {contactLinks.map(({ icon: Icon, text }, idx) => (
                 <li className={styles.contactItem} key={idx}>
-                  {Icon && <Icon className={styles.icon} size={16} />}
+                  {Icon && (
+                    <Icon
+                      className={styles.icon}
+                      size={16}
+                      style={{ "--icon-size": "16px" }}
+                    />
+                  )}
                   <span>{text || ""}</span>
                 </li>
               ))}

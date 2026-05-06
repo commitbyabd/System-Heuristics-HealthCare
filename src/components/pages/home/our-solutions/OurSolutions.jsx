@@ -4,10 +4,7 @@ import Chip from "../../../ui/chip/Chip";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
-import FileText from "../../../ui/icons/FileText";
-import Cpu from "../../../ui/icons/Cpu";
-import Users from "../../../ui/icons/Users";
-import Monitor from "../../../ui/icons/Monitor";
+import { FileText, Cpu, Users, Monitor } from "lucide-react";
 import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
 
 const steps = [

@@ -6,8 +6,7 @@ import {
   contactFormValidationSchema,
 } from "./validation";
 import Container from "../../../ui/container/Container";
-import ChevronDown from "../../../ui/icons/ChevronDown";
-import ArrowRight from "../../../ui/icons/ArrowRight";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import Button from "../../../ui/button/Button";
 import ContactInfoItem from "./_components/ContactInfoItem";
 
@@ -97,7 +96,7 @@ function ContactForm() {
                         </Field>
                         <ChevronDown
                           className={styles.selectIcon}
-                          size={18}
+                          style={{ "--icon-size": "18px" }}
                           color="#8F9EAE"
                         />
                       </div>

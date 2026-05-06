@@ -1,9 +1,7 @@
 import Facebook from "../../../components/ui/icons/Facebook";
 import LinkedIn from "../../../components/ui/icons/LinkedIn";
 import Instagram from "../../../components/ui/icons/Instagram";
-import Phone from "../../../components/ui/icons/Phone";
-import Mail from "../../../components/ui/icons/Mail";
-import MapPin from "../../../components/ui/icons/MapPin";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 const linkList = [
   { name: "Home", href: "/" },

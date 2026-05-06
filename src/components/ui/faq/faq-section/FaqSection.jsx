@@ -1,4 +1,4 @@
-import ChevronDown from "../../icons/ChevronDown";
+import { ChevronDown } from "lucide-react";
 import styles from "./faq-section.module.css";
 
 export default function FaqSection({ title, isOpen, onToggle, children }) {
@@ -15,7 +15,7 @@ export default function FaqSection({ title, isOpen, onToggle, children }) {
         <h3 className={styles.title}>{title}</h3>
         <ChevronDown
           className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`.trim()}
-          size={20}
+          style={{ "--icon-size": "20px" }}
           color="#18233b"
         />
       </button>
