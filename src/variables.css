@@ -75,7 +75,7 @@ Variables:
          color="..."      (lucide prop, overrides stroke directly)
          style={{ "--icon-size": "20px", "--icon-color": "#2FD1AB" }}
   ========================= */
-  --icon-size: 30px;
+  --icon-size: 22px;
   --icon-color: currentColor;
 
   /* Text alignment */

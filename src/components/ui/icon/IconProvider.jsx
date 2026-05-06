@@ -2,7 +2,7 @@ import { LucideProvider } from "lucide-react";
 
 function IconProvider({ children }) {
   return (
-    <LucideProvider className="icon" strokeWidth={2}>
+    <LucideProvider className="icon" size={22} strokeWidth={2}>
       {children}
     </LucideProvider>
   );
