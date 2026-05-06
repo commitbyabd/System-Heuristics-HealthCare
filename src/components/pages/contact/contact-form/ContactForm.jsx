@@ -96,7 +96,6 @@ function ContactForm() {
                         </Field>
                         <ChevronDown
                           className={styles.selectIcon}
-                          style={{ "--icon-size": "18px" }}
                           color="#8F9EAE"
                         />
                       </div>

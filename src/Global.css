@@ -142,21 +142,19 @@ h6 {
 }
 
 /* =========================
-   Icons
-   - Every lucide-react icon is automatically tagged with `.icon .lucide`
-     via the LucideProvider in App.jsx (sets stroke=currentColor by default).
-   - Centralized sizing: drives off `--icon-size`, falling back to `1em`
-     so icons scale with surrounding text by default.
-   - Per-instance override: pass `style={{ "--icon-size": "18px" }}` or
-     set `--icon-size` on a parent. CSS module classes that declare
-     explicit width/height continue to win (`:where()` keeps this rule
-     at zero specificity).
-   - Color: leave the `color` prop unset to inherit via currentColor —
-     theme/dark-mode shifts only need to change the surrounding text color.
+   Icons — global default
+   - Every lucide-react icon is auto-tagged with `.icon .lucide`
+     via the LucideProvider in App.jsx.
+   - Size + color are driven entirely by `--icon-size` and `--icon-color`,
+     defined in variables.css. Change those two variables in one place
+     to retheme every icon on the site.
+   - `:where()` keeps this rule at zero specificity so any per-instance
+     CSS class or inline style cleanly overrides it.
 ========================= */
 :where(.icon, .lucide) {
-  width: var(--icon-size, 1em);
-  height: var(--icon-size, 1em);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--icon-color);
   flex-shrink: 0;
 }
 

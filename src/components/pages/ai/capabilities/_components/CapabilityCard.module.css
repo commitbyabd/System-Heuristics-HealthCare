@@ -49,9 +49,6 @@
 
 .cardIcon {
   color: #001830;
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
 }
 
 .cardTitle {

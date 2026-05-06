@@ -9,10 +9,7 @@
 }
 
 .icon {
-  width: 16px;
-  height: 16px;
   color: #5fd3c4;
-  flex-shrink: 0;
 }
 
 .text {

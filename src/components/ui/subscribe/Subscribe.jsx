@@ -39,11 +39,7 @@ function Subscribe({
 
           <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.inputWrap} aria-label="Email address">
-              <Mail
-                className={styles.icon}
-                style={{ "--icon-size": "18px" }}
-                color="#ffffff"
-              />
+              <Mail className={styles.icon} color="#ffffff" />
               <input
                 className={styles.input}
                 type="email"

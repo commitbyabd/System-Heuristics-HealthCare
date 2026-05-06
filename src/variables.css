@@ -65,10 +65,18 @@ Variables:
   /* Letter spacing */
   --letter-spacing-0: 0%;
 
-  /* Icons */
+  /* =========================
+     Icons — single source of truth
+     - Change --icon-size to resize every icon site-wide
+     - Change --icon-color to recolor every icon site-wide
+       (defaults to currentColor so icons inherit surrounding text color)
+     - Per-instance override at the call site:
+         className="..."  (CSS module sets `color` or sizes via these vars)
+         color="..."      (lucide prop, overrides stroke directly)
+         style={{ "--icon-size": "20px", "--icon-color": "#2FD1AB" }}
+  ========================= */
   --icon-size: 30px;
-  --icon-width: 30px;
-  --icon-height: 30px;
+  --icon-color: currentColor;
 
   /* Text alignment */
   --text-left: left;

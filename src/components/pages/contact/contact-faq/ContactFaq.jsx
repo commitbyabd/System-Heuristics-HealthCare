@@ -48,7 +48,6 @@ function ContactFaq() {
                   <span className={styles.groupLabel}>{category.label}</span>
                   <ChevronDown
                     className={`${styles.groupIcon} ${isOpen ? styles.groupIconOpen : ""}`.trim()}
-                    style={{ "--icon-size": "18px" }}
                     color="#44515D"
                   />
                 </button>

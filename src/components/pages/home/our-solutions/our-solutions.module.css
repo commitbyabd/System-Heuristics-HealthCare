@@ -143,8 +143,6 @@
 }
 
 .railIcon {
-  width: 18px;
-  height: 18px;
   transition: stroke 0.3s ease;
 }
 
@@ -172,11 +170,6 @@
   border-color: var(--color-light);
   box-shadow: var(--shadow-soft);
   color: #49bea9;
-}
-
-.monitorIcon {
-  width: 18px;
-  height: 18px;
 }
 
 .copyBlock {

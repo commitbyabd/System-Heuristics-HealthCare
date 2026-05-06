@@ -15,7 +15,6 @@ export default function FaqSection({ title, isOpen, onToggle, children }) {
         <h3 className={styles.title}>{title}</h3>
         <ChevronDown
           className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`.trim()}
-          style={{ "--icon-size": "20px" }}
           color="#18233b"
         />
       </button>

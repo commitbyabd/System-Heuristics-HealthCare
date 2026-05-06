@@ -13,7 +13,7 @@ function ContactInfoItem({ type, title, subtitle, value }) {
   return (
     <li className={styles.contactItem}>
       <span className={styles.iconWrap}>
-        {Icon && <Icon style={{ "--icon-size": "18px" }} color="#2FD1AB" />}
+        {Icon && <Icon color="#2FD1AB" />}
       </span>
       <div className={styles.contactText}>
         <p className={styles.contactTitle}>{title}</p>
