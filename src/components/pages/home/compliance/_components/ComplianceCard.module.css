@@ -15,10 +15,10 @@
 
 .tag {
   margin: 0;
-  font-size: 0.5rem;
-  font-weight: 600;
-  line-height: 1.2;
-  color: #2fd1ab;
+  font-size: var(--font-xs);
+  font-weight: var(--font-bold);
+  line-height: var(--line-height-100);
+  color: var(--color-teal);
 }
 
 .titleRow {
