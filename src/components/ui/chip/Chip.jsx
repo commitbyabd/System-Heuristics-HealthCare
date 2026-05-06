@@ -1,10 +1,10 @@
 import styles from "./chip.module.css";
-import { Diamond } from "lucide-react";
+import { Gem } from "lucide-react";
 
-function Chip({ text = "Secure & Encrypted", className = "" }) {
+function Chip({ text = "Secure & Encrypted", className = "", Icon = Gem }) {
   return (
     <div className={`${styles.chip} ${className}`}>
-      <Diamond className={styles.icon} />
+      {Icon && <Icon className={styles.icon} />}
       <span className={styles.text}>{text}</span>
     </div>
   );
