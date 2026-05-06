@@ -45,7 +45,7 @@ function ComplianceCard({
 
       <Link to={link} className={styles.cardButton}>
         <span>{buttonText}</span>
-        <span className={styles.arrow}>&rarr;</span>
+        <span className={styles.arrow} aria-hidden="true" />
       </Link>
     </article>
   );

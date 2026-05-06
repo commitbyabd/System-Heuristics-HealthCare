@@ -27,7 +27,7 @@ export const complianceData = [
     id: 3,
     tag: "Regulatory Compliance",
     title: "HIPAA-Ready Architecture",
-    highlightWord: 1,
+    highlightWord: 2,
     description:
       "Built with healthcare compliance standards in mind, ensuring patient data is handled securely and responsibly at every touchpoint.",
     buttonText: "View Compliance Details",
@@ -39,7 +39,7 @@ export const complianceData = [
     id: 4,
     tag: "Enterprise Partnerships",
     title: "BAA & Compliance Support",
-    highlightWord: 3,
+    highlightWord: 4,
     description:
       "We support Business Associate Agreements and enterprise compliance workflows for organizations requiring regulated vendor partnerships.",
     buttonText: "Discuss Compliance Needs",
