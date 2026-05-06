@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ai-impact.module.css";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
+import AiImpactItem from "./_components/AiImpactItem";
 import {
   aiImpactIntro,
   aiImpactItems,
@@ -82,32 +83,17 @@ function AiImpact() {
           />
         </div>
 
-        <div
-          ref={itemsRef}
-          className={`${styles.items} ${visible ? styles.visible : ""}`}
-        >
+        <div ref={itemsRef} className={styles.items}>
           {aiImpactItems.map((item, index) => (
-            <article
+            <AiImpactItem
               key={item.id}
-              className={`${styles.item} ${
-                index % 2 === 0 ? styles.itemLeft : styles.itemRight
-              }`}
-              style={{ "--delay": `${index * 200}ms` }}
-            >
-              <span className={styles.itemNumber}>
-                [{String(item.id).padStart(1, "0")}]
-              </span>
-              <h3 className={styles.itemTitle}>
-                {Array.isArray(item.title)
-                  ? item.title.map((line, i) => (
-                      <span key={i} className={styles.itemTitleLine}>
-                        {line}
-                      </span>
-                    ))
-                  : item.title}
-              </h3>
-              <p className={styles.itemDescription}>{item.description}</p>
-            </article>
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              side={index % 2 === 0 ? "left" : "right"}
+              visible={visible}
+              delay={index * 200}
+            />
           ))}
         </div>
       </Container>

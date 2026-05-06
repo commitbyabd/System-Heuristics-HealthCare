@@ -4,6 +4,7 @@ import Chip from "../../../ui/chip/Chip";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import Button from "../../../ui/button/Button";
+import EnvironmentSlide from "./_components/EnvironmentSlide";
 import { HealthcareEnvironmentData } from "../../../../data/pages/solutions/environment/HealthcareEnvironment";
 import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
 
@@ -74,39 +75,17 @@ function HealthcareEnvironment() {
             }}
           >
             <div className={styles.track}>
-              {steps.map((step, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <article
-                    key={step.id}
-                    className={`${styles.slide} ${isActive ? styles.slideActive : ""}`.trim()}
-                    aria-hidden={!isActive}
-                  >
-                    <div className={styles.imageWrap}>
-                      <img
-                        src={step.image}
-                        alt={step.label}
-                        className={styles.image}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className={styles.copyBlock}>
-                      <div className={styles.copyRow}>
-                        <h3 className={styles.copyHeading}>Pain Point:</h3>
-                        <p className={styles.copyText}>{step.painPoint}</p>
-                      </div>
-                      <div className={styles.copyRow}>
-                        <h3 className={styles.copyHeading}>Solution:</h3>
-                        <p className={styles.copyText}>{step.solution}</p>
-                      </div>
-                      <div className={styles.copyRow}>
-                        <h3 className={styles.copyHeading}>Result:</h3>
-                        <p className={styles.copyText}>{step.result}</p>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
+              {steps.map((step, index) => (
+                <EnvironmentSlide
+                  key={step.id}
+                  image={step.image}
+                  label={step.label}
+                  painPoint={step.painPoint}
+                  solution={step.solution}
+                  result={step.result}
+                  isActive={index === activeIndex}
+                />
+              ))}
             </div>
           </div>
         </div>

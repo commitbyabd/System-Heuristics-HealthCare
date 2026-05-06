@@ -90,66 +90,6 @@
   max-width: 880px;
 }
 
-.item {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 240px;
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.8s ease-out,
-    transform 0.8s ease-out;
-  transition-delay: var(--delay, 0ms);
-}
-
-.items.visible .item {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.itemLeft {
-  align-self: flex-start;
-  margin-left: 8%;
-}
-
-.itemRight {
-  align-self: flex-end;
-  margin-right: 8%;
-}
-
-.itemNumber {
-  font-family: var(--content-font);
-  font-size: 12px;
-  font-weight: 500;
-  color: #2fd1ab;
-  letter-spacing: 0.05em;
-}
-
-.itemTitle {
-  margin: 0;
-  font-family: var(--title-font);
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.15;
-  color: #001830;
-  display: flex;
-  flex-direction: column;
-}
-
-.itemTitleLine {
-  display: block;
-}
-
-.itemDescription {
-  margin: 0;
-  font-family: var(--content-font);
-  font-size: 13px;
-  line-height: 1.5;
-  color: #636360;
-  max-width: 220px;
-}
-
 @media screen and (max-width: 768px) {
   .section {
     min-height: auto;
@@ -158,21 +98,6 @@
 
   .items {
     gap: 32px;
-  }
-
-  .item {
-    max-width: 100%;
-  }
-
-  .itemLeft,
-  .itemRight {
-    align-self: stretch;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .itemTitle {
-    font-size: 20px;
   }
 
   .arcs {

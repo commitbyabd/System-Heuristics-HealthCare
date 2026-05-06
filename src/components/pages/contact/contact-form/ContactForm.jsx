@@ -6,18 +6,10 @@ import {
   contactFormValidationSchema,
 } from "./validation";
 import Container from "../../../ui/container/Container";
-import Mail from "../../../ui/icons/Mail";
-import MapPin from "../../../ui/icons/MapPin";
-import Phone from "../../../ui/icons/Phone";
 import ChevronDown from "../../../ui/icons/ChevronDown";
 import ArrowRight from "../../../ui/icons/ArrowRight";
 import Button from "../../../ui/button/Button";
-
-const ICONS = {
-  email: Mail,
-  office: MapPin,
-  phone: Phone,
-};
+import ContactInfoItem from "./_components/ContactInfoItem";
 
 function ContactForm() {
   const { contactForm, contactSection } = ContactPageData;
@@ -50,21 +42,15 @@ function ContactForm() {
           <p className={styles.description}>{description}</p>
 
           <ul className={styles.contactList}>
-            {contactInfo.map((item) => {
-              const Icon = ICONS[item.type];
-              return (
-                <li key={item.type} className={styles.contactItem}>
-                  <span className={styles.iconWrap}>
-                    {Icon && <Icon size={18} color="#2FD1AB" />}
-                  </span>
-                  <div className={styles.contactText}>
-                    <p className={styles.contactTitle}>{item.title}</p>
-                    <p className={styles.contactSubtitle}>{item.subtitle}</p>
-                    <p className={styles.contactValue}>{item.value}</p>
-                  </div>
-                </li>
-              );
-            })}
+            {contactInfo.map((item) => (
+              <ContactInfoItem
+                key={item.type}
+                type={item.type}
+                title={item.title}
+                subtitle={item.subtitle}
+                value={item.value}
+              />
+            ))}
           </ul>
         </div>
 
