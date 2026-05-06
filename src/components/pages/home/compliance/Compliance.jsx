@@ -7,7 +7,7 @@ import Chip from "../../../ui/chip/Chip";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import ComplianceCard from "./_components/ComplianceCard";
 import { complianceData } from "../../../../data/pages/home/compliance/ComplianceData";
-
+import { ShieldPlus } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 function Compliance() {
@@ -67,7 +67,7 @@ function Compliance() {
     <section ref={sectionRef} className={styles.compliance}>
       <Container>
         <div className={styles.header}>
-          <Chip />
+          <Chip Icon={ShieldPlus} />
 
           <SectionIntro
             variant="section"

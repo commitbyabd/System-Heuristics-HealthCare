@@ -7,7 +7,7 @@ import Button from "../../../ui/button/Button";
 import EnvironmentSlide from "./_components/EnvironmentSlide";
 import { HealthcareEnvironmentData } from "../../../../data/pages/solutions/environment/HealthcareEnvironment";
 import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
-
+import { Hospital } from "lucide-react";
 function HealthcareEnvironment() {
   const { section, steps } = HealthcareEnvironmentData;
   const total = steps.length;
@@ -21,7 +21,11 @@ function HealthcareEnvironment() {
     <section ref={sectionRef} className={`${styles.section} bgGrid`}>
       <Container className={styles.container}>
         <div className={styles.header}>
-          <Chip text={section.chip} className={styles.chip} />
+          <Chip
+            text="Platform Versatility"
+            className={styles.chip}
+            Icon={Hospital}
+          />
           <SectionIntro
             variant="section"
             title={section.title}

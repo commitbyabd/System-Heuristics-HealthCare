@@ -6,7 +6,7 @@ import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
 import { FileText, Cpu, Users, Monitor } from "lucide-react";
 import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
-
+import { HeartHandshake } from "lucide-react";
 const steps = [
   {
     id: "ehr",
@@ -76,7 +76,11 @@ function OurSolutions() {
       <div className={styles.stickyFrame}>
         <Container className={styles.container}>
           <div className={styles.header}>
-            <Chip text="Our Services" className={styles.chip} />
+            <Chip
+              text="Our Services"
+              className={styles.chip}
+              Icon={HeartHandshake}
+            />
             <SectionIntro
               variant="section"
               title="Our Healthcare Solutions"
@@ -111,7 +115,11 @@ function OurSolutions() {
           <div className={styles.content}>
             <div className={styles.leftColumn}>
               <div className={styles.railWrap}>
-                <div className={styles.rail} role="tablist" aria-label="Solutions">
+                <div
+                  className={styles.rail}
+                  role="tablist"
+                  aria-label="Solutions"
+                >
                   <span
                     className={styles.railIndicator}
                     style={indicatorStyle}
@@ -148,7 +156,9 @@ function OurSolutions() {
                 >
                   <MonitorIcon
                     className={styles.monitorIcon}
-                    color={isMonitorActive ? "#49bea9" : "rgba(120, 132, 140, 0.75)"}
+                    color={
+                      isMonitorActive ? "#49bea9" : "rgba(120, 132, 140, 0.75)"
+                    }
                   />
                 </button>
               </div>

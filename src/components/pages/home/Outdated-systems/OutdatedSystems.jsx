@@ -5,7 +5,7 @@ import styles from "./outdated-systems.module.css";
 import Chip from "../../../ui/chip/Chip";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import Container from "../../../ui/container/Container";
-
+import { Microscope } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
@@ -102,7 +102,11 @@ function OutdatedSystems() {
       <div className={`${styles.panel} bgGrid`}>
         <Container className={styles.inner}>
           <div className={styles.header}>
-            <Chip text="Industry Research" className={styles.chip} />
+            <Chip
+              text="Industry Research"
+              className={styles.chip}
+              Icon={Microscope}
+            />
             <SectionIntro
               variant="section"
               title="The Hidden Cost of Outdated Healthcare Systems"
