@@ -1,4 +1,10 @@
-import { Shield, ChartColumn as Stats } from "lucide-react";
+import {
+  Shield,
+  Laptop,
+  BrainCircuit,
+  DatabaseZap,
+  ChartColumn as Stats,
+} from "lucide-react";
 
 export const expertiseShowcaseData = [
   {
@@ -6,21 +12,21 @@ export const expertiseShowcaseData = [
     title: "AI Specialists",
     description:
       "Our machine learning, deep learning, and analytics experts transform raw data into actionable insights, enabling smarter decision-making and sustained growth.",
-    Icon: Shield,
+    Icon: BrainCircuit,
   },
   {
     id: 2,
     title: "Software Developers",
     description:
       "Our engineering teams build scalable, high-performance applications tailored to your business needs, ensuring seamless integration and robust functionality.",
-    Icon: Stats,
+    Icon: Laptop,
   },
   {
     id: 3,
     title: "Data Strategists",
     description:
       "We turn fragmented healthcare data into practical roadmaps, helping teams prioritize the right systems, workflows, and growth opportunities.",
-    Icon: Shield,
+    Icon: DatabaseZap,
   },
   {
     id: 4,
