@@ -1,58 +1,24 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 import styles from "./outdated-systems.module.css";
 import Chip from "../../../ui/chip/Chip";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
 import Container from "../../../ui/container/Container";
+import OutdatedSystemsStatCard from "./_components/OutdatedSystemsStatCard";
+import {
+  outdatedSystemsContent,
+  outdatedSystemsStats,
+} from "../../../../data/pages/home/outdated-systems/OutdatedSystemsData";
 import { Microscope } from "lucide-react";
+
 gsap.registerPlugin(ScrollTrigger);
-
-const stats = [
-  {
-    id: "operational-loss",
-    low: 5,
-    high: 20,
-    suffix: "%",
-    description:
-      "of operational budgets lost to inefficient compliance processes",
-  },
-  {
-    id: "manual-work",
-    low: 10,
-    high: 30,
-    suffix: "%",
-    description: "of staff time consumed by manual documentation and workflows",
-  },
-  {
-    id: "annual-loss",
-    low: 100,
-    high: null,
-    prefix: "$",
-    suffix: "k+",
-    description: "annual losses due to compliance gaps and system failures",
-  },
-];
-
-function formatStat({ low, high, prefix = "", suffix = "" }, animatedValue) {
-  if (high == null) {
-    return { main: `${prefix}${animatedValue}`, accent: suffix };
-  }
-
-  const animatedLow = Math.max(
-    0,
-    Math.round((animatedValue / Math.max(low, high)) * low),
-  );
-
-  return {
-    main: `${prefix}${animatedLow}`,
-    accent: `-${animatedValue}${suffix}`,
-  };
-}
 
 function OutdatedSystems() {
   const sectionRef = useRef(null);
-  const [animatedValues, setAnimatedValues] = useState(stats.map(() => 0));
+  const [animatedValues, setAnimatedValues] = useState(
+    outdatedSystemsStats.map(() => 0),
+  );
   const [hasStarted, setHasStarted] = useState(false);
 
   useLayoutEffect(() => {
@@ -73,7 +39,7 @@ function OutdatedSystems() {
     if (!hasStarted) return;
 
     const duration = 1800;
-    const targets = stats.map((item) => item.high ?? item.low);
+    const targets = outdatedSystemsStats.map((item) => item.high ?? item.low);
     const startTime = performance.now();
     let frameId = 0;
 
@@ -97,23 +63,20 @@ function OutdatedSystems() {
   }, [hasStarted]);
 
   return (
-    <section
-      ref={sectionRef}
-      className={`${styles.section} ${hasStarted ? styles.sectionVisible : ""}`.trim()}
-    >
+    <section ref={sectionRef} className={styles.section}>
       <div className={`${styles.panel} bgGrid`}>
         <Container className={styles.inner}>
           <div className={styles.header}>
             <Chip
-              text="Industry Research"
+              text={outdatedSystemsContent.chipText}
               className={styles.chip}
               Icon={Microscope}
             />
             <SectionIntro
               variant="section"
-              title="The Hidden Cost of Outdated Healthcare Systems"
+              title={outdatedSystemsContent.title}
               titleAs="h2"
-              highlightWord={5}
+              highlightWord={outdatedSystemsContent.highlightWord}
               titleClassName={styles.title}
               animationVariant="light"
               animateTitle
@@ -122,31 +85,14 @@ function OutdatedSystems() {
           </div>
 
           <div className={styles.statsGrid}>
-            {stats.map((stat, index) => (
-              <article
+            {outdatedSystemsStats.map((stat, index) => (
+              <OutdatedSystemsStatCard
                 key={stat.id}
-                className={styles.statCard}
-                style={{ animationDelay: `${0.2 + index * 0.18}s` }}
-              >
-                <span className={styles.divider} aria-hidden="true" />
-
-                {(() => {
-                  const parts = formatStat(stat, animatedValues[index]);
-                  return (
-                    <p className={styles.value}>
-                      <span className={styles.valueMain}>{parts.main}</span>
-                      <span className={styles.valueAccent}>{parts.accent}</span>
-                    </p>
-                  );
-                })()}
-
-                <p
-                  className={styles.description}
-                  style={{ animationDelay: `${0.5 + index * 0.2}s` }}
-                >
-                  {stat.description}
-                </p>
-              </article>
+                stat={stat}
+                animatedValue={animatedValues[index]}
+                isVisible={hasStarted}
+                index={index}
+              />
             ))}
           </div>
         </Container>
