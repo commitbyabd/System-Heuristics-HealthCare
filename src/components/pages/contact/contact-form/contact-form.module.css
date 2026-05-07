@@ -142,7 +142,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   padding-right: 40px;
-  cursor: pointer;
+  cursor: var(--hover-cursor);
   color: #b8b8b3;
 }
 
@@ -176,7 +176,7 @@
   font-family: var(--content-font);
   font-size: 15px;
   font-weight: 700;
-  cursor: pointer;
+  cursor: var(--hover-cursor);
   transition: background 0.2s ease;
 }
 

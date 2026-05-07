@@ -184,7 +184,7 @@
   font-family: "Quick-Sand", sans-serif;
   font-size: 16px;
   font-weight: 700;
-  cursor: pointer;
+  cursor: var(--hover-cursor);
   white-space: nowrap;
   text-decoration: none;
   transition:

@@ -134,6 +134,6 @@ Variables:
   --shadow-soft: 0 10px 22px rgba(31, 41, 55, 0.12);
   --shadow-card: 0 24px 40px rgba(31, 41, 55, 0.12);
 
-  --cursor: url("/images/pages/cursor/cursor.png") 8 8, auto;
-  --hover-cursor: url("/images/pages/cursor/cursor-hover.png") 8 8, auto;
+  --cursor: url("/images/cursor/cursor.png") 8 8, auto;
+  --hover-cursor: url("/images/cursor/cursor-pointer.png") 8 8, auto;
 }

@@ -70,7 +70,7 @@
   color: var(--color-dark);
   font-size: var(--font-sm);
   font-weight: var(--font-bold);
-  cursor: pointer;
+  cursor: var(--hover-cursor);
   text-decoration: none;
   transition:
     background-color 0.2s ease,
