@@ -1,7 +1,7 @@
 /* ===================== Wrapper ===================== */
 .footerWrap {
   width: 100%;
-  color: #c9cfd4;
+  color: var(--color-light);
   position: relative;
   overflow: hidden;
 }
@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  color: #ffffff;
+  color: var(--color-light);
   transition: transform 0.3s;
 }
 
@@ -59,7 +59,7 @@
   max-width: 28rem;
   font-size: 14px;
   line-height: 1.65;
-  color: #9aa2aa;
+  color: var(--color-light);
   font-weight: 400;
   margin: 0;
 }
@@ -80,13 +80,13 @@
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.02);
-  color: #c9cfd4;
+  color: var(--color-light);
   text-decoration: none;
   transition: all 0.25s ease;
 }
 
 .social:hover {
-  color: #ffffff;
+  color: var(--color-light);
   border-color: rgba(47, 209, 171, 0.6);
   background: rgba(47, 209, 171, 0.08);
   transform: translateY(-2px);
@@ -103,7 +103,7 @@
 .title {
   font-size: 16px;
   font-weight: var(--font-medium);
-  color: #ffffff;
+  color: var(--color-light);
   margin: 0 0 4px;
   letter-spacing: 0.2px;
 }
@@ -119,7 +119,7 @@
 }
 
 .list a {
-  color: #9aa2aa;
+  color: var(--color-light);
   text-decoration: none;
   font-weight: 400;
   position: relative;
@@ -139,7 +139,7 @@
 }
 
 .list a:hover {
-  color: #ffffff;
+  color: var(--color-light);
 }
 
 .list a:hover::after {
@@ -151,14 +151,14 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #9aa2aa;
+  color: var(--color-light);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
 }
 
 .contactItem .icon {
-  color: #9aa2aa;
+  color: var(--color-light);
   flex-shrink: 0;
 }
 
@@ -183,7 +183,7 @@
 }
 
 .copy {
-  color: #8b9299;
+  color: var(--color-light);
   margin: 0;
 }
 
