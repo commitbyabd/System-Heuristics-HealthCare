@@ -14,6 +14,7 @@ export default function GradientRevealAnimation({
   variant = AnimationVariants.DARK,
   charDuration = 0.1,
   charStagger = 0.005,
+  accentHoldDuration,
   finalDuration = 0.05,
   className = "",
   triggerOnScroll = false,
@@ -24,6 +25,7 @@ export default function GradientRevealAnimation({
   const splitRefs = useRef([]);
   const { initial: colorInitial, accent: colorAccent, final: colorFinal } =
     getAnimationColorSet(variant);
+  const resolvedAccentHoldDuration = accentHoldDuration ?? 0.18;
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -80,6 +82,7 @@ export default function GradientRevealAnimation({
           onComplete: () => {
             if (keepAccent) return;
             gsap.to(char, {
+              delay: resolvedAccentHoldDuration,
               duration: finalDuration,
               ease: "none",
               color: colorFinal,
@@ -119,6 +122,7 @@ export default function GradientRevealAnimation({
     colorFinal,
     charDuration,
     charStagger,
+    resolvedAccentHoldDuration,
     finalDuration,
     triggerOnScroll,
     scrollStart,

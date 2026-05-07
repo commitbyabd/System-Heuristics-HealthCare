@@ -82,7 +82,6 @@ function Principles() {
                 key={item.id}
                 title={item.title}
                 description={item.description}
-                animationFrom={item.animationFrom}
               />
             ))}
           </div>
