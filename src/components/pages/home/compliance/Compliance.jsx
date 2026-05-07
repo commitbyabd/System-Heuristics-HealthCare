@@ -74,7 +74,7 @@ function Compliance() {
             title="Built for Healthcare Compliance & Security"
             titleAs="h2"
             titleClassName={styles.title}
-            animationVariant="dark"
+            animationVariant="light"
             animateTitle
             animateMode="scroll"
           />

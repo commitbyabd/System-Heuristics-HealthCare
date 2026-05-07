@@ -3,7 +3,7 @@ import styles from "./our-solutions.module.css";
 import Chip from "../../../ui/chip/Chip";
 import Container from "../../../ui/container/Container";
 import SectionIntro from "../../../ui/section-intro/SectionIntro";
-import GradientRevealAnimation from "../../../ui/gradient-reveal-animation/GradientRevealAnimation";
+import GradientScrollAnimation from "../../../ui/gradient-scroll-animation/GradientScrollAnimation";
 import { FileText, Cpu, Users, Monitor } from "lucide-react";
 import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
 import { HeartHandshake } from "lucide-react";
@@ -91,19 +91,15 @@ function OurSolutions() {
               animateTitle
               animateMode="scroll"
             />
-            <GradientRevealAnimation
+            <GradientScrollAnimation
               variant="dark"
-              triggerOnScroll
-              charDuration={0.5}
-              charStagger={0.035}
-              finalDuration={0.3}
             >
               <p className={styles.subtitle}>
                 Explore our key solutions designed to enhance patient care,
                 streamline operations, and drive smarter healthcare decisions
                 through technology.
               </p>
-            </GradientRevealAnimation>
+            </GradientScrollAnimation>
           </div>
 
           <div className={styles.content}>
