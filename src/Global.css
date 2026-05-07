@@ -272,7 +272,7 @@ h6 {
   background-image:
     linear-gradient(var(--bg-grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px),
-    linear-gradient(180deg, #0a1428 0%, #329788 100%);
+    linear-gradient(180deg, #0a1428 0%, #0a1428 20%, #206156 100%);
   background-size: var(--bg-grid-size), var(--bg-grid-size), auto;
   background-position:
     -1px -1px,
