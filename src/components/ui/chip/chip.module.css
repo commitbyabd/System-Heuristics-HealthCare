@@ -14,7 +14,7 @@
 
 .text {
   font-family: var(--font-family-primary);
-  font-size: var(--font-xs);
+  font-size: var(--font-sm);
   font-weight: var(--font-medium);
   line-height: var(--line-height-100);
   letter-spacing: var(--letter-spacing-0);

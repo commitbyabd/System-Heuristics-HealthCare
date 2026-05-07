@@ -23,20 +23,13 @@ function OurSolutions() {
     delay: 2000,
     threshold: 0.45,
   });
-  const pillCount = total - 1;
   const active = ourSolutionsSteps[activeStep];
   const indicatorStyle = useMemo(
-    () =>
-      activeStep < pillCount
-        ? {
-            transform: `translateY(calc(${activeStep} * var(--solutions-rail-step)))`,
-            opacity: 1,
-          }
-        : {
-            transform: `translateY(calc(${pillCount - 1} * var(--solutions-rail-step)))`,
-            opacity: 0,
-          },
-    [activeStep, pillCount],
+    () => ({
+      transform: `translateY(calc(${activeStep} * var(--solutions-rail-step)))`,
+      opacity: 1,
+    }),
+    [activeStep],
   );
 
   return (
@@ -67,7 +60,6 @@ function OurSolutions() {
           <OurSolutionsShowcase
             steps={ourSolutionsSteps}
             total={total}
-            pillCount={pillCount}
             activeStep={activeStep}
             active={active}
             indicatorStyle={indicatorStyle}
