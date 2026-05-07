@@ -115,10 +115,9 @@ function OutdatedSystems() {
               titleAs="h2"
               highlightWord={5}
               titleClassName={styles.title}
+              animationVariant="light"
               animateTitle
               animateMode="scroll"
-              animateInitialColor="#737e8a"
-              animateAccentColor="#2FD1AB"
             />
           </div>
 

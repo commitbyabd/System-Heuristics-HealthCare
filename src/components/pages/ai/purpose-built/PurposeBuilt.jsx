@@ -18,6 +18,7 @@ function PurposeBuilt() {
           titleAs="h2"
           highlightWord={5}
           className={styles.intro}
+          animationVariant="light"
           animateTitle
           animateMode="scroll"
         />

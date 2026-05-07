@@ -33,8 +33,7 @@ function Subscribe({
             description={description}
             titleAs="h2"
             className={styles.intro}
-            color="#ffffff"
-            highlightColor="#ffffff"
+            animationVariant="light"
           />
 
           <form className={styles.form} onSubmit={handleSubmit}>

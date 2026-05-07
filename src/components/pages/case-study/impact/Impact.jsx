@@ -39,11 +39,10 @@ function Impact() {
           description="Real outcomes from healthcare technology that solves real problems."
           titleAs="h2"
           highlightWord={[2, 3]}
-          color="#FFFFFF"
           className={styles.intro}
+          animationVariant="light"
           animateTitle
           animateMode="scroll"
-          animateFinalColor="#FFFFFF"
         />
 
         <div

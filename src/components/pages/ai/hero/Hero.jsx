@@ -21,6 +21,7 @@ nhance decision-making, and deliver better care."
             className={styles.intro}
             titleClassName={styles.introTitle}
             descriptionClassName={styles.introDescription}
+            animationVariant="light"
             animateTitle
           />
 

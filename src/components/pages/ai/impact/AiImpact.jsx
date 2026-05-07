@@ -76,10 +76,9 @@ function AiImpact() {
             description={aiImpactIntro.description}
             titleAs="h2"
             highlightWord={aiImpactIntro.highlightWord}
-            color="#001830"
+            animationVariant="dark"
             animateTitle
             animateMode="scroll"
-            animateFinalColor="#001830"
           />
         </div>
 

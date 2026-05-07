@@ -19,6 +19,7 @@ function Hero() {
             className={styles.intro}
             titleClassName={styles.introTitle}
             descriptionClassName={styles.introDescription}
+            animationVariant="light"
             animateTitle
           />
 

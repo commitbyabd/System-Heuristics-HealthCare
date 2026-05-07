@@ -119,6 +119,12 @@ Variables:
   --color-text-muted: #78848c;
   --color-border-soft: rgba(120, 132, 140, 0.35);
 
+  /* Animation colors */
+  --animation-color-initial: #c3c3c3;
+  --animation-color-accent: var(--color-teal);
+  --animation-color-final-light: #ffffff;
+  --animation-color-final-dark: #07142b;
+
   /* Borders and Shadows */
   --radius: 8px;
   --radius-lg: 14px;

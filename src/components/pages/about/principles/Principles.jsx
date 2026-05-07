@@ -61,10 +61,7 @@ function Principles() {
         <div className={styles.intro}>
           <GradientScrollAnimation
             className={styles.introCopy}
-            colorInitial="#c5c8cf"
-            colorAccent="#2FD1AB"
-            colorFinal="#07142b"
-            highlightFinalColor="#2FD1AB"
+            variant="dark"
             highlightWords={[{ elementIndex: 0, wordIndex: 1 }]}
           >
             <h2 className={styles.title}>Our Principles</h2>

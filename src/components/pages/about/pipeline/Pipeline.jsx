@@ -64,14 +64,12 @@ function Pipeline() {
           <div className={styles.content}>
             <GradientRevealAnimation
               className={styles.intro}
+              variant="dark"
               triggerOnScroll
               scrollStart="top 82%"
               charDuration={0.18}
               charStagger={0.01}
               finalDuration={0.1}
-              colorInitial="#98a3af"
-              colorAccent="#2FD1AB"
-              colorFinal="#123629"
               highlightWords={[{ elementIndex: 0, wordIndex: 1 }]}
             >
               <h2 className={styles.title}>Technologies Powering the Pipeline</h2>

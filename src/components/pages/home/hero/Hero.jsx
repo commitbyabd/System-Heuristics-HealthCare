@@ -14,6 +14,7 @@ function Hero() {
             title="Software That Heals How Healthcare Works"
             description="We engineer intelligent, HIPAA-compliant healthcare platforms - from AI diagnostics to enterprise hospital systems - built for the future of medicine."
             highlightWord={3}
+            animationVariant="light"
             animateTitle
           />
 

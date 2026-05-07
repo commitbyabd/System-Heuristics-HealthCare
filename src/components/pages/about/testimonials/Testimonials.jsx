@@ -83,14 +83,10 @@ function Testimonials() {
             title="Testimonials"
             description="Real leaders share how they crushed dead-end leads and boosted sales with our game-changing AI solutions."
             titleAs="h2"
-            highlightWord={1}
             className={styles.intro}
+            animationVariant="light"
             animateTitle
             animateMode="scroll"
-            animateInitialColor="#7f8d9f"
-            animateAccentColor="#2FD1AB"
-            animateFinalColor="#FFFFFF"
-            highlightColor="#FFFFFF"
           />
         </div>
 

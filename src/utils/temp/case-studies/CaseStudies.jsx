@@ -94,19 +94,11 @@ function CaseStudies() {
               titleAs="h2"
               highlightWord={2}
               titleClassName={styles.title}
-              color="#1f2940"
-              highlightColor="#2FD1AB"
+              animationVariant="dark"
               animateTitle
               animateMode="scroll"
-              animateInitialColor="#737e8a"
-              animateAccentColor="#2FD1AB"
-              animateFinalColor="#1f2940"
             />
-            <GradientScrollAnimation
-              colorInitial="#737e8a"
-              colorAccent="#2FD1AB"
-              colorFinal="#6a7484"
-            >
+            <GradientScrollAnimation variant="dark">
               <p className={styles.subtitle}>
                 Explore how we help healthcare organizations solve operational,
                 clinical, and patient-experience challenges through tailored

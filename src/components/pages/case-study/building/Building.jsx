@@ -26,11 +26,10 @@ function Building() {
           description="Our case studies showcase how we approach real-world challenges, design practical solutions, and deliver systems that create measurable impact."
           titleAs="h2"
           highlightWord={[4, 5, 6]}
-          color="#001830"
           className={styles.intro}
+          animationVariant="dark"
           animateTitle
           animateMode="scroll"
-          animateFinalColor="#001830"
         />
       </Container>
     </section>

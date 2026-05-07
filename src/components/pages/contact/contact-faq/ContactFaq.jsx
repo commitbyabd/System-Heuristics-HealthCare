@@ -25,8 +25,7 @@ function ContactFaq() {
           description={intro.description}
           highlightWord={intro.highlightWord}
           className={styles.intro}
-          color="#0A1F2E"
-          highlightColor="#2FD1AB"
+          animationVariant="dark"
         />
 
         <div className={styles.groups}>

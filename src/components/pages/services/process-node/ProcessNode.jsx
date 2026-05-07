@@ -182,14 +182,10 @@ function ProcessNode() {
             description="We follow a clear, collaborative path from discovery to support so healthcare products launch with confidence, clarity, and long-term resilience."
             titleAs="h2"
             highlightWord={2}
-            color="#ffffff"
-            highlightColor="#2FD1AB"
             className={styles.introWrap}
+            animationVariant="light"
             animateTitle
             animateMode="scroll"
-            animateInitialColor="#7f8d9f"
-            animateAccentColor="#2FD1AB"
-            animateFinalColor="#ffffff"
           />
         </div>
 

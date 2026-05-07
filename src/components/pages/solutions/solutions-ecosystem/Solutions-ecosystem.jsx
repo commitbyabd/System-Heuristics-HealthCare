@@ -21,13 +21,9 @@ function SolutionsEcosystem() {
             titleAs="h2"
             highlightWord={3}
             titleClassName={styles.title}
-            color="#1f2940"
-            highlightColor="#2FD1AB"
+            animationVariant="dark"
             animateTitle
             animateMode="scroll"
-            animateInitialColor="#737e8a"
-            animateAccentColor="#2FD1AB"
-            animateFinalColor="#1f2940"
           />
         </div>
 

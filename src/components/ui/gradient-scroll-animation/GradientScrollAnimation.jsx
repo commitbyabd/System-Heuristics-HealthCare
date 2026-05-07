@@ -3,17 +3,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import React, { useLayoutEffect, useRef } from "react";
 import "./gradient-scroll-animation.css";
-import { Colors } from "../../../utils/global/Colors";
+import {
+  AnimationVariants,
+  getAnimationColorSet,
+} from "../../../utils/global/Colors";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function GradientScrollAnimation({
   children,
-  colorInitial = Colors.secondaryLight(),
-  colorAccent = Colors.primary(),
-  colorFinal = Colors.text(),
+  variant = AnimationVariants.DARK,
   highlightWords = [],
-  highlightFinalColor = colorAccent,
   className = "",
 }) {
   const containerRef = useRef(null);
@@ -21,6 +21,9 @@ export default function GradientScrollAnimation({
   const lastScrollProgress = useRef(0);
   const colorTransitionTimers = useRef(new Map());
   const completedChars = useRef(new Set());
+  const { initial: colorInitial, accent: colorAccent, final: colorFinal } =
+    getAnimationColorSet(variant);
+  const highlightFinalColor = colorAccent;
 
   useLayoutEffect(() => {
     if (!containerRef.current) return undefined;

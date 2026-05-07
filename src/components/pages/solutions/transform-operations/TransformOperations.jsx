@@ -21,8 +21,7 @@ function TransformOperations() {
             titleAs="h2"
             highlightWord={5}
             titleClassName={styles.title}
-            color="#ffffff"
-            highlightColor="#2FD1AB"
+            animationVariant="light"
           />
 
           <div className={styles.actions}>

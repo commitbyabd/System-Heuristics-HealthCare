@@ -157,13 +157,9 @@ function TechnologicalImpact() {
               titleAs="h2"
               highlightWord={4}
               className={styles.intro}
-              color="#18233b"
-              highlightColor="#2FD1AB"
+              animationVariant="dark"
               animateTitle
               animateMode="scroll"
-              animateInitialColor="#7f8d9f"
-              animateAccentColor="#2FD1AB"
-              animateFinalColor="#18233b"
             />
           </div>
 

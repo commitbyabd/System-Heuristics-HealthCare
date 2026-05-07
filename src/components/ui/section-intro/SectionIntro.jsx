@@ -2,6 +2,10 @@ import { createElement } from "react";
 import styles from "./section-intro.module.css";
 import GradientRevealAnimation from "../gradient-reveal-animation/GradientRevealAnimation";
 import GradientScrollAnimation from "../gradient-scroll-animation/GradientScrollAnimation";
+import {
+  AnimationVariants,
+  getAnimationColorSet,
+} from "../../../utils/global/Colors";
 
 function SectionIntro({
   title,
@@ -15,17 +19,18 @@ function SectionIntro({
   style = {},
   titleStyle = {},
   descriptionStyle = {},
-  color = "#FFFFFF",
-  highlightColor = "#2FD1AB",
+  color,
+  highlightColor,
   animateTitle = false,
-  animateInitialColor = "#737e8a",
-  animateAccentColor = "#2FD1AB",
-  animateFinalColor = "#FFFFFF",
+  animationVariant = AnimationVariants.DARK,
   triggerOnScroll = false,
   scrollStart = "top 85%",
   animateMode = "reveal",
 }) {
   const lines = Array.isArray(title) ? title : [title];
+  const animationColors = getAnimationColorSet(animationVariant);
+  const baseTextColor = color ?? animationColors.final;
+  const accentTextColor = highlightColor ?? animationColors.accent;
   const highlightSet = new Set(
     Array.isArray(highlightWord)
       ? highlightWord
@@ -46,7 +51,9 @@ function SectionIntro({
         <span
           key={`w-${lineIndex}-${indexInLine}`}
           style={{
-            color: highlightSet.has(oneBasedIndex) ? highlightColor : color,
+            color: highlightSet.has(oneBasedIndex)
+              ? accentTextColor
+              : baseTextColor,
           }}
         >
           {word}
@@ -64,7 +71,7 @@ function SectionIntro({
     titleAs,
     {
       className: `${styles.title} ${titleClassName}`.trim(),
-      style: titleStyle,
+      style: { color: baseTextColor, ...titleStyle },
     },
     <>{titleNodes}</>,
   );
@@ -72,7 +79,7 @@ function SectionIntro({
   const descriptionEl = description ? (
     <p
       className={`${styles.description} ${descriptionClassName}`.trim()}
-      style={descriptionStyle}
+      style={{ color: baseTextColor, ...descriptionStyle }}
     >
       {description}
     </p>
@@ -86,10 +93,7 @@ function SectionIntro({
       {animateTitle && animateMode === "scroll" ? (
         <GradientScrollAnimation
           className={styles.animWrapper}
-          colorInitial={animateInitialColor}
-          colorAccent={animateAccentColor}
-          colorFinal={animateFinalColor}
-          highlightFinalColor={highlightColor}
+          variant={animationVariant}
           highlightWords={Array.from(highlightSet).map((w) => ({
             elementIndex: 0,
             wordIndex: w - 1,
@@ -101,9 +105,7 @@ function SectionIntro({
       ) : animateTitle ? (
         <GradientRevealAnimation
           className={styles.animWrapper}
-          colorInitial={animateInitialColor}
-          colorAccent={animateAccentColor}
-          colorFinal={animateFinalColor}
+          variant={animationVariant}
           charDuration={0.25}
           charStagger={0.018}
           finalDuration={0.15}

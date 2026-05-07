@@ -17,11 +17,10 @@ function Capabilities() {
             description="From automation to predictive intelligence, we help healthcare organizations apply AI where it creates measurable value."
             titleAs="h2"
             highlightWord={2}
-            color="#001830"
             className={styles.intro}
+            animationVariant="dark"
             animateTitle
             animateMode="scroll"
-            animateFinalColor="#001830"
           />
         </div>
 

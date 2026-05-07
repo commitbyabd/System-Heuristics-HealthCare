@@ -18,6 +18,7 @@ function Hero() {
             ]}
             description="From patient data to predictive insights — transform how your organization operates, diagnoses, and scales."
             highlightWord={4}
+            animationVariant="light"
             animateTitle
           />
 

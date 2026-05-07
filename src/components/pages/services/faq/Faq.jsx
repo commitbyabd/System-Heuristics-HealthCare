@@ -28,13 +28,9 @@ function Faq() {
           titleAs="h2"
           highlightWord={intro.highlightWord}
           className={styles.intro}
-          color="#18233b"
-          highlightColor="#2FD1AB"
+          animationVariant="dark"
           animateTitle
           animateMode="scroll"
-          animateInitialColor="#a2acb7"
-          animateAccentColor="#2FD1AB"
-          animateFinalColor="#18233b"
         />
 
         <div className={styles.panel}>

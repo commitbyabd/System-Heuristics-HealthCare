@@ -48,14 +48,10 @@ function ModernServices() {
             description=""
             titleAs="h2"
             highlightWord={4}
-            color="#0d1b2e"
-            highlightColor="#2FD1AB"
             className={styles.introWrap}
+            animationVariant="dark"
             animateTitle
             animateMode="scroll"
-            animateInitialColor="#c5cdd6"
-            animateAccentColor="#2FD1AB"
-            animateFinalColor="#0d1b2e"
           />
         </div>
 

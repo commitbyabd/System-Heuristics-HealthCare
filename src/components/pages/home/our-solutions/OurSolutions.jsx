@@ -87,19 +87,13 @@ function OurSolutions() {
               titleAs="h2"
               highlightWord={2}
               titleClassName={styles.title}
-              color="#1f2940"
-              highlightColor="#2FD1AB"
+              animationVariant="dark"
               animateTitle
               animateMode="scroll"
-              animateInitialColor="#737e8a"
-              animateAccentColor="#2FD1AB"
-              animateFinalColor="#1f2940"
             />
             <GradientRevealAnimation
+              variant="dark"
               triggerOnScroll
-              colorInitial="#737e8a"
-              colorAccent="#2FD1AB"
-              colorFinal="#6a7484"
               charDuration={0.5}
               charStagger={0.035}
               finalDuration={0.3}

@@ -32,19 +32,11 @@ function HealthcareEnvironment() {
             titleAs="h2"
             highlightWord={section.highlightWord}
             titleClassName={styles.title}
-            color="#ffffff"
-            highlightColor="#2FD1AB"
+            animationVariant="light"
             animateTitle
             animateMode="scroll"
-            animateInitialColor="#5b6b78"
-            animateAccentColor="#2FD1AB"
-            animateFinalColor="#ffffff"
           />
-          <GradientScrollAnimation
-            colorInitial="#5b6b78"
-            colorAccent="#2FD1AB"
-            colorFinal="#c5cdd4"
-          >
+          <GradientScrollAnimation variant="light">
             <p className={styles.subtitle}>{section.subtitle}</p>
           </GradientScrollAnimation>
         </div>

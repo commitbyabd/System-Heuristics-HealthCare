@@ -2,15 +2,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import React, { useRef, useEffect } from "react";
-import { Colors } from "../../../utils/global/Colors";
+import {
+  AnimationVariants,
+  getAnimationColorSet,
+} from "../../../utils/global/Colors";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export default function GradientRevealAnimation({
   children,
-  colorInitial = Colors.secondaryLight(),
-  colorAccent = Colors.primary(),
-  colorFinal = Colors.text(),
+  variant = AnimationVariants.DARK,
   charDuration = 0.1,
   charStagger = 0.005,
   finalDuration = 0.05,
@@ -21,6 +22,8 @@ export default function GradientRevealAnimation({
 }) {
   const containerRef = useRef(null);
   const splitRefs = useRef([]);
+  const { initial: colorInitial, accent: colorAccent, final: colorFinal } =
+    getAnimationColorSet(variant);
 
   useEffect(() => {
     if (!containerRef.current) return;

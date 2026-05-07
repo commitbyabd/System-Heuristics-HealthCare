@@ -25,3 +25,19 @@ export const Colors = {
   light: () => getCssVar("--color-light"),
   dark: () => getCssVar("--color-dark"),
 };
+
+export const AnimationVariants = {
+  LIGHT: "light",
+  DARK: "dark",
+};
+
+export const getAnimationColorSet = (
+  variant = AnimationVariants.DARK,
+) => ({
+  initial: "var(--animation-color-initial)",
+  accent: "var(--animation-color-accent)",
+  final:
+    variant === AnimationVariants.LIGHT
+      ? "var(--animation-color-final-light)"
+      : "var(--animation-color-final-dark)",
+});

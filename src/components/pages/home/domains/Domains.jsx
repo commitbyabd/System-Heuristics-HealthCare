@@ -436,8 +436,7 @@ function Domains() {
                 description="From clinical workflows to compliance systems, we design solutions across critical areas of healthcare."
                 highlightWord={3}
                 className={styles.centerIntro}
-                color="#243246"
-                highlightColor="#2FD1AB"
+                animationVariant="dark"
               />
             </div>
           </div>

@@ -175,10 +175,7 @@ function ChooseUs() {
         <div className={styles.surface} data-choose-board>
           <GradientScrollAnimation
             className={styles.intro}
-            colorInitial="#7f8d9f"
-            colorAccent="#2FD1AB"
-            colorFinal="#FFFFFF"
-            highlightFinalColor="#2FD1AB"
+            variant="light"
             highlightWords={[{ elementIndex: 0, wordIndex: 2 }]}
           >
             <h2 className={styles.title}>Why Choose Us</h2>
