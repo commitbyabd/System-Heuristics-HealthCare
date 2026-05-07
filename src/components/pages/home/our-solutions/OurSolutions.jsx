@@ -59,12 +59,8 @@ function OurSolutions() {
               animateTitle
               animateMode="scroll"
             />
-            <GradientScrollAnimation
-              variant="dark"
-            >
-              <p className={styles.subtitle}>
-                {ourSolutionsContent.subtitle}
-              </p>
+            <GradientScrollAnimation variant="dark">
+              <p className={styles.subtitle}>{ourSolutionsContent.subtitle}</p>
             </GradientScrollAnimation>
           </div>
 

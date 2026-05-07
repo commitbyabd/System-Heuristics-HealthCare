@@ -3,75 +3,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./domains.module.css";
 import Container from "../../../ui/container/Container";
-import SectionIntro from "../../../ui/section-intro/SectionIntro";
+import DomainCard from "./_components/DomainCard";
+import DomainsCenterCard from "./_components/DomainsCenterCard";
 import {
-  Brain,
-  FileText,
-  Lock,
-  Building2,
-  Globe,
-  BarChart3,
-} from "lucide-react";
+  domainCards,
+  domainsContent,
+} from "../../../../data/pages/home/domains/DomainsData";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const domainCards = [
-  {
-    id: "clinical",
-    title: "Clinical Intelligence Systems",
-    description: "AI-driven diagnostics, report analysis, and decision support",
-    Icon: Brain,
-    posClass: "cardTopLeft",
-    anchor: "topLeft",
-    entryRotate: -7,
-  },
-  {
-    id: "documentation",
-    title: "Medical Documentation",
-    description: "AI scribes, structured notes, and record systems",
-    Icon: FileText,
-    posClass: "cardTopCenter",
-    anchor: "topCenter",
-    entryRotate: -2,
-  },
-  {
-    id: "security",
-    title: "Compliance & Data Security",
-    description: "HIPAA-ready systems and audit-ready infrastructure",
-    Icon: Lock,
-    posClass: "cardTopRight",
-    anchor: "topRight",
-    entryRotate: 7,
-  },
-  {
-    id: "operations",
-    title: "Hospital & Clinic Operations",
-    description: "Workflow automation, scheduling, and patient management",
-    Icon: Building2,
-    posClass: "cardBottomLeft",
-    anchor: "bottomLeft",
-    entryRotate: 7,
-  },
-  {
-    id: "remote-care",
-    title: "Telemedicine & Remote Care",
-    description: "Digital consultation platforms and monitoring systems",
-    Icon: Globe,
-    posClass: "cardBottomCenter",
-    anchor: "bottomCenter",
-    entryRotate: 2,
-  },
-  {
-    id: "analytics",
-    title: "Healthcare Analytics",
-    description:
-      "Data-driven insights for better clinical and operational decisions",
-    Icon: BarChart3,
-    posClass: "cardBottomRight",
-    anchor: "bottomRight",
-    entryRotate: -7,
-  },
-];
 
 function Domains() {
   const sectionRef = useRef(null);
@@ -403,42 +342,27 @@ function Domains() {
       <Container className={styles.container} maxWidth={1480}>
         <div ref={gridRef} className={styles.grid}>
           {domainCards.map((card, index) => {
-            const IconComp = card.Icon;
             return (
-              <div
+              <DomainCard
                 key={card.id}
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
-                className={`${styles.domainCard} ${styles[card.posClass]}`}
-              >
-                <span className={styles.domainCardIconWrap}>
-                  <IconComp className={styles.domainCardIcon} />
-                </span>
-                <h3 className={styles.domainCardTitle}>{card.title}</h3>
-                <p className={styles.domainCardDescription}>
-                  {card.description}
-                </p>
-              </div>
+                className={styles[card.posClass]}
+                title={card.title}
+                description={card.description}
+                Icon={card.Icon}
+              />
             );
           })}
 
           <div className={styles.centerWrap}>
-            <div ref={centerCardRef} className={styles.centerCard}>
-              <span
-                ref={hubAuraRef}
-                className={styles.hubAura}
-                aria-hidden="true"
-              />
-              <SectionIntro
-                variant="section"
-                title="Healthcare Domains We Solve For"
-                description="From clinical workflows to compliance systems, we design solutions across critical areas of healthcare."
-                highlightWord={3}
-                className={styles.centerIntro}
-                animationVariant="dark"
-              />
-            </div>
+            <DomainsCenterCard
+              ref={centerCardRef}
+              auraRef={hubAuraRef}
+              title={domainsContent.title}
+              description={domainsContent.description}
+            />
           </div>
 
           {domainCards.map((card, index) => (
