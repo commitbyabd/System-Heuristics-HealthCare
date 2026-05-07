@@ -1,0 +1,267 @@
+.content {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: minmax(360px, 480px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  color: var(--color-text);
+}
+
+.leftColumn {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 28px;
+  color: var(--color-text);
+  align-items: center;
+}
+
+.railWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.rail {
+  position: relative;
+  width: 58px;
+  padding: 8px 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #7fe8d0 0%, #54cfb8 100%);
+  box-shadow: 0 18px 40px rgba(47, 209, 171, 0.28);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.railIndicator {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  border-radius: 50%;
+  background: var(--color-light);
+  box-shadow: var(--shadow-soft);
+  z-index: 0;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.railCell {
+  position: relative;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  transition:
+    color 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.railCell:focus-visible,
+.monitorNode:focus-visible {
+  outline: 2px solid var(--color-text-strong);
+  outline-offset: 3px;
+}
+
+.railCellActive {
+  color: #49bea9;
+}
+
+.railIcon {
+  transition: stroke 0.3s ease;
+}
+
+.monitorNode {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-soft);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(120, 132, 140, 0.75);
+  cursor: pointer;
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.monitorNodeActive {
+  background: var(--color-light);
+  border-color: var(--color-light);
+  box-shadow: var(--shadow-soft);
+  color: #49bea9;
+}
+
+.copyBlock {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.solutionTitle {
+  margin: 0;
+  color: var(--color-text-strong);
+  font-family: var(--title-font);
+  font-size: clamp(2rem, 2.6vw, 2.8rem);
+  line-height: 1.14;
+  font-weight: var(--title-weight);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.solutionDescription {
+  margin: 14px 0 0;
+  max-width: 320px;
+  color: var(--color-text-body);
+  font-family: var(--content-font);
+  font-size: var(--content-size);
+  font-weight: var(--content-weight);
+  line-height: 1.7;
+}
+
+.learnMore {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #2fcfaf;
+  font-family: var(--content-font);
+  font-size: var(--content-size);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.learnArrow {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.previewWrap {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardStack {
+  position: relative;
+  width: min(100%, 720px);
+  aspect-ratio: 720 / 450;
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-light);
+  transform-origin: center center;
+  filter: drop-shadow(0 24px 34px rgba(31, 41, 55, 0.12));
+  transition:
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.55s ease;
+  will-change: transform, opacity;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top left;
+}
+
+@media screen and (max-width: 1100px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .leftColumn {
+    grid-template-columns: 72px 1fr;
+    max-width: 560px;
+  }
+
+  .previewWrap {
+    min-height: 420px;
+  }
+
+  .cardStack {
+    height: 380px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    margin-top: 20px;
+  }
+
+  .leftColumn {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .railWrap {
+    --solutions-rail-step: 0px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+  }
+
+  .rail {
+    width: auto;
+    padding: 8px 12px;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .railIndicator {
+    display: none;
+  }
+
+  .railCellActive {
+    background: #ffffff;
+    border-radius: 50%;
+  }
+
+  .copyBlock {
+    min-height: auto;
+  }
+
+  .solutionDescription {
+    max-width: none;
+  }
+
+  .previewWrap {
+    min-height: 260px;
+  }
+
+  .cardStack {
+    height: 260px;
+  }
+}
