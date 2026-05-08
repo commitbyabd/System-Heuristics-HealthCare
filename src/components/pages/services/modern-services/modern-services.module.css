@@ -1,6 +1,7 @@
 .section {
   width: 100%;
   min-height: 100vh;
+  box-sizing: border-box;
   background-color: #ffffff;
   padding: 72px 0 80px;
   display: flex;
@@ -14,13 +15,9 @@
   gap: 36px;
 }
 
-.intro {
-  display: flex;
-  justify-content: center;
-}
-
-.introWrap {
-  max-width: 820px;
+.title.title {
+  font-size: 56px;
+  line-height: var(--line-height-133);
 }
 
 .list {

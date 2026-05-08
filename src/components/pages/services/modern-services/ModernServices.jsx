@@ -41,19 +41,17 @@ function ModernServices() {
   return (
     <section ref={sectionRef} className={styles.section}>
       <Container className={styles.container}>
-        <div className={styles.intro}>
-          <SectionIntro
-            variant="section"
-            title={["Services Designed for", "Modern Healthcare"]}
-            description=""
-            titleAs="h2"
-            highlightWord={4}
-            className={styles.introWrap}
-            animationVariant="dark"
-            animateTitle
-            animateMode="scroll"
-          />
-        </div>
+        <SectionIntro
+          variant="section"
+          title={["Services Designed for", "Modern Healthcare"]}
+          description=""
+          titleAs="h2"
+          highlightWord={4}
+          titleClassName={styles.title}
+          animationVariant="dark"
+          animateTitle
+          animateMode="scroll"
+        />
 
         <ul className={styles.list}>
           {modernServicesData.map((service) => (

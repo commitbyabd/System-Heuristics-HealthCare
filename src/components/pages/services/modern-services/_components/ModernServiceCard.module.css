@@ -26,10 +26,12 @@
 }
 
 .content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+  padding-right: 164px;
 }
 
 .title {
@@ -52,9 +54,11 @@
 }
 
 .cta {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: inline-flex;
   text-decoration: none;
-  margin-top: 4px;
   opacity: 0;
   transform: translateY(4px);
   pointer-events: none;
@@ -115,6 +119,7 @@
   }
 
   .cta {
+    position: static;
     opacity: 1;
     transform: none;
     pointer-events: auto;
@@ -129,5 +134,9 @@
 
   .number {
     padding-top: 0;
+  }
+
+  .content {
+    padding-right: 0;
   }
 }
