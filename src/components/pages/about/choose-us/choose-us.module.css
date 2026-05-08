@@ -76,6 +76,10 @@
   margin: 10px 0 14px;
 }
 
+.lineClip {
+  width: 100%;
+}
+
 .lineSvg {
   display: block;
   width: 100%;
@@ -83,22 +87,24 @@
   overflow: visible;
 }
 
-.linePath {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.95);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  filter: drop-shadow(0 8px 18px rgba(255, 255, 255, 0.08));
+.pulseSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
 }
 
-.orbGlow {
-  fill: rgba(47, 209, 171, 0.42);
+.pulseGlow {
+  fill: var(--color-teal);
+  opacity: 0.35;
   filter: blur(6px);
 }
 
-.orbCore {
-  fill: #2fd1ab;
-  filter: drop-shadow(0 0 10px rgba(47, 209, 171, 0.95));
+.pulseCore {
+  fill: var(--color-teal);
+  filter: drop-shadow(0 0 8px var(--color-teal));
 }
 
 .cardsGrid {

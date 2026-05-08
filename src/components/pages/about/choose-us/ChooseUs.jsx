@@ -11,34 +11,26 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ChooseUs() {
   const sectionRef = useRef(null);
-  const linePathRef = useRef(null);
-  const orbGlowRef = useRef(null);
-  const orbCoreRef = useRef(null);
+  const lineWrapRef = useRef(null);
+  const pulseTrackRef = useRef(null);
+  const pulseGlowRef = useRef(null);
+  const pulseCoreRef = useRef(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
-    const linePath = linePathRef.current;
-    const orbGlow = orbGlowRef.current;
-    const orbCore = orbCoreRef.current;
+    const lineWrap = lineWrapRef.current;
+    const pulseTrack = pulseTrackRef.current;
+    const pulseGlow = pulseGlowRef.current;
+    const pulseCore = pulseCoreRef.current;
 
-    if (!section || !linePath || !orbGlow || !orbCore) return undefined;
-
-    const updateOrbPosition = (distance) => {
-      const point = linePath.getPointAtLength(distance);
-
-      orbGlow.setAttribute("cx", `${point.x}`);
-      orbGlow.setAttribute("cy", `${point.y}`);
-      orbCore.setAttribute("cx", `${point.x}`);
-      orbCore.setAttribute("cy", `${point.y}`);
-    };
+    if (!section || !lineWrap || !pulseTrack || !pulseGlow || !pulseCore) {
+      return undefined;
+    }
 
     const ctx = gsap.context(() => {
       const board = section.querySelector("[data-choose-board]");
       const cards = gsap.utils.toArray("[data-choose-card]", section);
-      const lineLength = linePath.getTotalLength();
-      const lineAnimation = gsap.timeline({ paused: true });
-      const orbState = { distance: 0 };
-      let travelAnimation;
+      const trackLength = pulseTrack.getTotalLength();
 
       const setCardsToStack = () => {
         if (!board || !cards.length) return;
@@ -64,103 +56,95 @@ function ChooseUs() {
         });
       };
 
-      gsap.set(linePath, {
-        strokeDasharray: lineLength,
-        strokeDashoffset: lineLength,
+      const movePulseTo = (distance) => {
+        const point = pulseTrack.getPointAtLength(distance);
+        pulseGlow.setAttribute("cx", `${point.x}`);
+        pulseGlow.setAttribute("cy", `${point.y}`);
+        pulseCore.setAttribute("cx", `${point.x}`);
+        pulseCore.setAttribute("cy", `${point.y}`);
+      };
+
+      gsap.set(lineWrap, {
+        clipPath: "inset(0 100% 0 0)",
+        webkitClipPath: "inset(0 100% 0 0)",
       });
-      gsap.set([orbGlow, orbCore], { autoAlpha: 0 });
-      updateOrbPosition(0);
+      gsap.set([pulseGlow, pulseCore], { autoAlpha: 0 });
+      movePulseTo(0);
       setCardsToStack();
 
-      lineAnimation.to(linePath, {
-        strokeDashoffset: 0,
-        duration: 1.55,
-        ease: "power2.out",
-      });
+      const lineAnimation = gsap.timeline({ paused: true });
+      lineAnimation
+        .to(lineWrap, {
+          clipPath: "inset(0 0% 0 0)",
+          webkitClipPath: "inset(0 0% 0 0)",
+          duration: 3,
+          ease: "power2.out",
+        })
+        .to(
+          [pulseGlow, pulseCore],
+          { autoAlpha: 1, duration: 0.25, ease: "power1.out" },
+          ">-0.1",
+        );
 
-      lineAnimation.to(
-        [orbGlow, orbCore],
-        {
-          autoAlpha: 1,
-          duration: 0.18,
-          ease: "power1.out",
-        },
-        0.22,
-      );
-
-      if (cards.length) {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top 74%",
-            once: true,
-            invalidateOnRefresh: true,
-            onRefreshInit: setCardsToStack,
-          },
-        }).to(cards, {
-          x: 0,
-          y: 0,
-          scale: 1,
-          rotate: 0,
-          opacity: 1,
-          duration: 1.05,
-          ease: "power3.out",
-          stagger: {
-            each: 0.08,
-            from: "center",
-          },
-        });
-      }
-
-      travelAnimation = gsap.to(orbState, {
-        distance: lineLength,
-        duration: 5.4,
+      const travelStart = trackLength * 0.03;
+      const travelEnd = trackLength * 0.97;
+      const pulseTravel = { distance: travelStart };
+      movePulseTo(travelStart);
+      gsap.to(pulseTravel, {
+        distance: travelEnd,
+        duration: 4.8,
         ease: "none",
         repeat: -1,
-        paused: true,
-        onUpdate: () => updateOrbPosition(orbState.distance),
         onRepeat: () => {
-          orbState.distance = 0;
-          updateOrbPosition(0);
+          pulseTravel.distance = travelStart;
         },
+        onUpdate: () => movePulseTo(pulseTravel.distance),
       });
+
+      gsap.to(pulseCore, {
+        attr: { r: 7 },
+        duration: 0.9,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+      gsap.to(pulseGlow, {
+        attr: { r: 22 },
+        opacity: 0.55,
+        duration: 0.9,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
+      if (cards.length) {
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top 74%",
+              once: true,
+              invalidateOnRefresh: true,
+              onRefreshInit: setCardsToStack,
+            },
+          })
+          .to(cards, {
+            x: 0,
+            y: 0,
+            scale: 1,
+            rotate: 0,
+            opacity: 1,
+            duration: 1.05,
+            ease: "power3.out",
+            stagger: { each: 0.08, from: "center" },
+          });
+      }
 
       ScrollTrigger.create({
         trigger: section,
         start: "top 80%",
-        end: "bottom 20%",
-        onEnter: () => {
-          if (lineAnimation.progress() < 1) {
-            lineAnimation.play();
-          }
-
-          gsap.set([orbGlow, orbCore], { autoAlpha: 1 });
-          travelAnimation.play();
-        },
-        onEnterBack: () => {
-          if (lineAnimation.progress() < 1) {
-            lineAnimation.play();
-          }
-
-          gsap.set([orbGlow, orbCore], { autoAlpha: 1 });
-          travelAnimation.play();
-        },
-        onLeave: () => {
-          if (lineAnimation.progress() < 1) {
-            lineAnimation.pause();
-          }
-
-          travelAnimation.pause();
-          gsap.set([orbGlow, orbCore], { autoAlpha: 0 });
-        },
-        onLeaveBack: () => {
-          if (lineAnimation.progress() < 1) {
-            lineAnimation.pause();
-          }
-
-          travelAnimation.pause();
-          gsap.set([orbGlow, orbCore], { autoAlpha: 0 });
-        },
+        once: true,
+        onEnter: () => lineAnimation.play(),
       });
     }, section);
 
@@ -187,18 +171,31 @@ function ChooseUs() {
           </GradientScrollAnimation>
 
           <div className={styles.lineWrap} aria-hidden="true">
+            <div ref={lineWrapRef} className={styles.lineClip}>
+              <svg
+                className={styles.lineSvg}
+                viewBox="0 0 1400 120"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 0,120 C 400,18 1000,18 1400,120 C 1000,21 400,21 0,120 Z"
+                  fill="rgba(255,255,255,0.92)"
+                />
+              </svg>
+            </div>
             <svg
-              className={styles.lineSvg}
-              viewBox="0 0 1000 120"
+              className={styles.pulseSvg}
+              viewBox="0 0 1400 120"
               preserveAspectRatio="none"
             >
               <path
-                ref={linePathRef}
-                className={styles.linePath}
-                d="M12 84 C 230 36, 770 36, 988 84"
+                ref={pulseTrackRef}
+                d="M 0,120 C 400,18 1000,18 1400,120"
+                fill="none"
+                stroke="none"
               />
-              <circle ref={orbGlowRef} className={styles.orbGlow} r="12" />
-              <circle ref={orbCoreRef} className={styles.orbCore} r="4" />
+              <circle ref={pulseGlowRef} className={styles.pulseGlow} r="14" />
+              <circle ref={pulseCoreRef} className={styles.pulseCore} r="4" />
             </svg>
           </div>
 
