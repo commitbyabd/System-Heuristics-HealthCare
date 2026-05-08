@@ -33,12 +33,6 @@ export const ABOUT_FAQ_SECTIONS = [
         answer:
           "You can scale workspaces based on your operational needs. Most teams start with a single workspace and expand as departments, clinics, or initiatives grow.",
       },
-      {
-        id: "integrations",
-        question: "Can your solutions integrate with our existing systems?",
-        answer:
-          "Yes. We build with interoperability in mind and can connect with internal dashboards, operational tools, and approved third-party systems where needed.",
-      },
     ],
   },
   {
@@ -47,7 +41,8 @@ export const ABOUT_FAQ_SECTIONS = [
     items: [
       {
         id: "hipaa-support",
-        question: "Do your healthcare solutions support HIPAA-compliant workflows?",
+        question:
+          "Do your healthcare solutions support HIPAA-compliant workflows?",
         answer:
           "Yes. Our systems are designed with secure data handling, access controls, and privacy-aware workflows that support HIPAA-aligned operational requirements.",
       },
@@ -113,7 +108,8 @@ export const ABOUT_FAQ_SECTIONS = [
       },
       {
         id: "existing-product-upgrade",
-        question: "Can you improve an existing healthcare product instead of rebuilding it?",
+        question:
+          "Can you improve an existing healthcare product instead of rebuilding it?",
         answer:
           "Definitely. Many engagements start by improving workflows, redesigning key modules, modernizing architecture, or layering AI capabilities onto an existing system.",
       },

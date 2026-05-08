@@ -1,5 +1,6 @@
 .card {
-  border-bottom: 1.5px solid rgba(47, 209, 171, 0.72);
+  border-bottom: 2px solid rgba(47, 209, 171, 0.72);
+  padding-bottom: 18px;
 }
 
 .header {
