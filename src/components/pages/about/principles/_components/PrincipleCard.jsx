@@ -11,6 +11,7 @@ function PrincipleCard({ title, description }) {
       <GradientRevealAnimation
         variant="dark"
         triggerOnScroll
+        triggerOnce
         scrollStart="top 88%"
         charDuration={0.14}
         charStagger={0.005}
@@ -23,6 +24,7 @@ function PrincipleCard({ title, description }) {
         className={styles.copyReveal}
         variant="dark"
         triggerOnScroll
+        triggerOnce
         scrollStart="top 88%"
         charDuration={0.14}
         charStagger={0.005}

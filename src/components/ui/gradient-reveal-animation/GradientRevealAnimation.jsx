@@ -18,6 +18,7 @@ export default function GradientRevealAnimation({
   finalDuration = 0.05,
   className = "",
   triggerOnScroll = false,
+  triggerOnce = false,
   scrollStart = "top 85%",
   highlightWords = [],
 }) {
@@ -100,8 +101,9 @@ export default function GradientRevealAnimation({
       scrollTrigger = ScrollTrigger.create({
         trigger: containerRef.current,
         start: scrollStart,
+        once: triggerOnce,
         onEnter: animateChars,
-        onEnterBack: animateChars,
+        onEnterBack: triggerOnce ? undefined : animateChars,
       });
     } else {
       animateChars();
@@ -125,6 +127,7 @@ export default function GradientRevealAnimation({
     resolvedAccentHoldDuration,
     finalDuration,
     triggerOnScroll,
+    triggerOnce,
     scrollStart,
     JSON.stringify(highlightWords),
   ]);
