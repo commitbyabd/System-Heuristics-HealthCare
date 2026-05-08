@@ -10,7 +10,7 @@ export const HealthcareEnvironmentData = {
     {
       id: "hospitals",
       label: "Hospitals",
-      image: "/images/solutions/environment/telehealth-platforms.png",
+      image: "/images/solutions/environment/telehealth-platforms.avif",
       painPoint:
         "Inefficient care coordination, slow data retrieval, and fragmented systems hinder patient care and increase operational costs.",
       solution:
@@ -21,7 +21,7 @@ export const HealthcareEnvironmentData = {
     {
       id: "labs",
       label: "Labs",
-      image: "/images/solutions/environment/telehealth-platforms.png",
+      image: "/images/solutions/environment/telehealth-platforms.avif",
       painPoint:
         "Manual lab results entry, delayed reporting, and errors due to outdated systems slow down diagnostic accuracy and patient treatment timelines.",
       solution:
@@ -32,7 +32,7 @@ export const HealthcareEnvironmentData = {
     {
       id: "telehealth",
       label: "Telehealth Platforms",
-      image: "/images/solutions/environment/telehealth-platforms.png",
+      image: "/images/solutions/environment/telehealth-platforms.avif",
       painPoint:
         "Fragmented systems, delayed decision-making, and high patient loads strain operational efficiency.",
       solution:
@@ -43,7 +43,7 @@ export const HealthcareEnvironmentData = {
     {
       id: "clinics",
       label: "Clinics",
-      image: "/images/solutions/environment/telehealth-platforms.png",
+      image: "/images/solutions/environment/telehealth-platforms.avif",
       painPoint:
         "Fragmented patient data, inefficiencies in patient scheduling, and manual charting lead to delays in treatment and reduced patient satisfaction.",
       solution:
@@ -54,7 +54,7 @@ export const HealthcareEnvironmentData = {
     {
       id: "startups",
       label: "Health Startups",
-      image: "/images/solutions/environment/telehealth-platforms.png",
+      image: "/images/solutions/environment/telehealth-platforms.avif",
       painPoint:
         "Limited access to scalable technology solutions that can manage rapidly growing patient data and operations in a cost-effective way.",
       solution:

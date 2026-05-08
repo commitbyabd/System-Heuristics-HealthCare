@@ -17,7 +17,7 @@ export const ourSolutionsSteps = [
     title: "Comprehensive EHR Management System",
     description:
       "Efficiently manage electronic health records across clinics and hospitals.",
-    image: "/images/home/solution-card.svg",
+    image: "/images/home/solution-card.avif",
   },
   {
     id: "operations",
@@ -25,7 +25,7 @@ export const ourSolutionsSteps = [
     title: "Operational Intelligence Layer",
     description:
       "Unify day-to-day healthcare operations with dashboards, automation, and real-time reporting for every team.",
-    image: "/images/home/solution-card.svg",
+    image: "/images/home/solution-card.avif",
   },
   {
     id: "patient",
@@ -41,6 +41,6 @@ export const ourSolutionsSteps = [
     title: "Compliance And Risk Command Center",
     description:
       "Surface compliance blind spots early and give teams the visibility they need to act before issues escalate.",
-    image: "/images/home/solution-card.svg",
+    image: "/images/home/solution-card.avif",
   },
 ];
