@@ -40,7 +40,7 @@ function Hero() {
 
         <img
           className={styles.image}
-          src="/images/about/about-hero.png"
+          src="/images/about/about-hero.avif"
           alt="hero-doc"
         />
       </Container>

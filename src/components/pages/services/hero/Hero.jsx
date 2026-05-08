@@ -42,7 +42,7 @@ experiences. and build future-ready systems."
 
         <img
           className={styles.image}
-          src="/images/services/services-hero.png"
+          src="/images/services/services-hero.avif"
           alt="hero-doc"
         />
       </Container>

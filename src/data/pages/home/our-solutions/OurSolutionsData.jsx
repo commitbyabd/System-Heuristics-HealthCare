@@ -33,7 +33,7 @@ export const ourSolutionsSteps = [
     title: "Patient Experience Optimization Suite",
     description:
       "Streamline onboarding, scheduling, and patient communications with systems designed for modern care journeys.",
-    image: "/images/home/patient-experience.png",
+    image: "/images/home/patient-experience.avif",
   },
   {
     id: "compliance",

@@ -42,7 +42,7 @@ nhance decision-making, and deliver better care."
 
         <img
           className={styles.image}
-          src="/images/ai/ai-hero.png"
+          src="/images/ai/ai-hero.avif"
           alt="hero-doc"
         />
       </Container>

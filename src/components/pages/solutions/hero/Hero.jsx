@@ -11,11 +11,7 @@ function Hero() {
         <div className={styles.content}>
           <SectionIntro
             variant="hero"
-            title={[
-              "AI-Powered",
-              "Solutions for Modern",
-              "Healthcare Systems",
-            ]}
+            title={["AI-Powered", "Solutions for Modern", "Healthcare Systems"]}
             description="From patient data to predictive insights — transform how your organization operates, diagnoses, and scales."
             highlightWord={4}
             animationVariant="light"
@@ -35,7 +31,7 @@ function Hero() {
 
         <img
           className={styles.image}
-          src="/images/solutions/solutions-hero.png"
+          src="/images/solutions/solutions-hero.avif"
           alt="hero-doc"
         />
       </Container>

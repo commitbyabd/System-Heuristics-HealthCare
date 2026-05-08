@@ -40,7 +40,7 @@ help."
 
         <img
           className={styles.image}
-          src="/images/contact/contact-hero.png"
+          src="/images/contact/contact-hero.avif"
           alt="hero-doc"
         />
       </Container>
