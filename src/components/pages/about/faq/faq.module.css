@@ -1,11 +1,102 @@
 .section {
-  padding: 56px 0 64px;
+  padding: 56px 0 72px;
   background: #ffffff;
 }
 
 .intro {
   max-width: 760px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.intro .introTitle {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 88.14px;
+  letter-spacing: 0.85px;
+}
+
+.intro .introDescription {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  margin-top: 0;
+  margin-left: 0;
+  max-width: none;
+}
+
+.sectionList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.panel {
+  border-radius: 16px;
+  background: #f8f6f1;
+  overflow: hidden;
+}
+
+.panelOpen {
+  padding: 18px 14px;
+}
+
+.panelBody {
+  display: grid;
+  grid-template-columns: minmax(190px, 250px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.titleColumn {
+  padding-top: 10px;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: #0a1428;
+  font-family: var(--title-font);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 58.24px;
+  letter-spacing: 0.56px;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionToggle {
+  width: 100%;
+  padding: 22px 24px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  text-align: left;
+  cursor: var(--hover-cursor);
+}
+
+.sectionToggleTitle {
+  color: #18233b;
+  font-family: var(--title-font);
+  font-size: clamp(1.6rem, 2vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.sectionToggleIcon {
+  width: 24px;
+  height: 24px;
+  color: #18233b;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -16,11 +107,39 @@
   .intro {
     margin-bottom: 20px;
   }
+
+  .panelOpen {
+    padding: 18px 16px;
+  }
+
+  .sectionToggle {
+    padding: 20px 16px;
+  }
+
+  .sectionToggleTitle {
+    font-size: clamp(1.35rem, 6vw, 1.85rem);
+  }
+
+  .panelBody {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .titleColumn {
+    padding-top: 0;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+  }
+
+  .cardList {
+    gap: 18px;
+  }
 }
 
 @media (max-width: 576px) {
   .section {
     padding: 44px 0;
   }
-
 }
