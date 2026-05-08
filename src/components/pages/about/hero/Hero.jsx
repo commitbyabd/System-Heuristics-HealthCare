@@ -12,7 +12,7 @@ function Hero() {
           <SectionIntro
             variant="hero"
             title="About Us"
-            description="Whether you're exploring A1 solutions, improving workflows,
+            description="Whether you're exploring AI solutions, improving workflows,
             or scaling your healthcare platform — our team is here to
             help."
             highlightWord={2}
