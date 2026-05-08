@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./testimonials.module.css";
@@ -19,15 +19,6 @@ function Testimonials() {
   const [isInView, setIsInView] = useState(false);
   const [isAutoRotationStopped, setIsAutoRotationStopped] = useState(false);
   const total = testimonialsData.length;
-  const activeItem = testimonialsData[activeIndex];
-
-  const visibleItems = useMemo(() => {
-    const previous = testimonialsData[mod(activeIndex - 1, total)];
-    const current = testimonialsData[activeIndex];
-    const next = testimonialsData[mod(activeIndex + 1, total)];
-
-    return [previous, current, next];
-  }, [activeIndex, total]);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -70,6 +61,34 @@ function Testimonials() {
     setActiveIndex((current) => mod(current + direction, total));
   };
 
+  const getRelativeIndex = (index) => {
+    const raw = index - activeIndex;
+    const wrapped = ((raw + total + Math.floor(total / 2)) % total) - Math.floor(total / 2);
+
+    if (wrapped > 2) return 3;
+    if (wrapped < -2) return -3;
+    return wrapped;
+  };
+
+  const getCardState = (index) => {
+    const relativeIndex = getRelativeIndex(index);
+
+    switch (relativeIndex) {
+      case 0:
+        return "center";
+      case -1:
+        return "left";
+      case 1:
+        return "right";
+      case -2:
+        return "farLeft";
+      case 2:
+        return "farRight";
+      default:
+        return relativeIndex < 0 ? "hiddenLeft" : "hiddenRight";
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -100,7 +119,10 @@ function Testimonials() {
               }`.trim()}
               aria-label={`Show testimonial from ${item.name}`}
               aria-pressed={index === activeIndex}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                setIsAutoRotationStopped(true);
+                setActiveIndex(index);
+              }}
             >
               <img
                 className={styles.avatarImage}
@@ -113,7 +135,7 @@ function Testimonials() {
 
         <div className={styles.cardsWrap}>
           <div className={styles.cardsGrid}>
-            {visibleItems.map((item, index) => (
+            {testimonialsData.map((item, index) => (
               <TestimonialCard
                 key={item.id}
                 id={item.id}
@@ -122,8 +144,7 @@ function Testimonials() {
                 rating={item.rating}
                 quote={item.quote}
                 avatar={item.avatar}
-                slot={index}
-                active={item.id === activeItem.id}
+                stateName={getCardState(index)}
               />
             ))}
           </div>

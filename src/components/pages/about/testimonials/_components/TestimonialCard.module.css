@@ -1,53 +1,82 @@
 .card {
   position: absolute;
-  top: 0;
-  min-height: 272px;
-  width: min(100%, 33.2%);
-  padding: 22px 20px 18px;
+  top: 18px;
+  left: 50%;
+  min-height: 274px;
+  width: min(100%, 392px);
+  padding: 22px 22px 20px;
   border-radius: 18px;
   color: #ffffff;
   transition:
-    transform 0.62s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.62s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.62s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform, opacity, filter;
+    transform 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter, z-index;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
-.cardLeft {
-  left: 0;
-}
-
-.cardCenter {
-  left: 50%;
-}
-
-.cardRight {
-  right: 0;
-}
-
-.cardActive {
-  z-index: 3;
-  transform: translate3d(-50%, 0, 0) scale(1);
+.center {
+  z-index: 4;
   opacity: 1;
+  transform: translate3d(-50%, 0, 0) scale(1);
   box-shadow:
-    0 26px 42px rgba(4, 17, 28, 0.38),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 30px 60px rgba(4, 17, 28, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   filter: blur(0);
 }
 
-.cardSide {
+.left {
+  z-index: 3;
+  opacity: 0.72;
+  transform: translate3d(calc(-50% - 392px), 34px, 0) scale(0.9);
+  box-shadow:
+    0 18px 34px rgba(4, 17, 28, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  filter: blur(2px) saturate(0.8) brightness(0.9);
+}
+
+.right {
+  z-index: 3;
+  opacity: 0.72;
+  transform: translate3d(calc(-50% + 392px), 34px, 0) scale(0.9);
+  box-shadow:
+    0 18px 34px rgba(4, 17, 28, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  filter: blur(2px) saturate(0.8) brightness(0.9);
+}
+
+.farLeft {
   z-index: 1;
-  opacity: 0.56;
-  filter: blur(1.4px) saturate(0.72) brightness(0.8);
+  opacity: 0;
+  transform: translate3d(calc(-50% - 520px), 54px, 0) scale(0.84);
+  filter: blur(3.2px) saturate(0.72) brightness(0.78);
+  pointer-events: none;
 }
 
-.cardLeft.cardSide {
-  transform: translate3d(0, 26px, 0) scale(0.9);
+.farRight {
+  z-index: 1;
+  opacity: 0;
+  transform: translate3d(calc(-50% + 520px), 54px, 0) scale(0.84);
+  filter: blur(3.2px) saturate(0.72) brightness(0.78);
+  pointer-events: none;
 }
 
-.cardRight.cardSide {
-  transform: translate3d(0, 26px, 0) scale(0.9);
+.hiddenLeft {
+  z-index: 0;
+  opacity: 0;
+  transform: translate3d(calc(-50% - 610px), 68px, 0) scale(0.8);
+  filter: blur(3.8px) saturate(0.68) brightness(0.74);
+  pointer-events: none;
+}
+
+.hiddenRight {
+  z-index: 0;
+  opacity: 0;
+  transform: translate3d(calc(-50% + 610px), 68px, 0) scale(0.8);
+  filter: blur(3.8px) saturate(0.68) brightness(0.74);
+  pointer-events: none;
 }
 
 .profileRow {
@@ -127,21 +156,31 @@
     position: relative;
     top: auto;
     left: auto;
-    right: auto;
     width: 100%;
+    max-width: none;
+    transform: none;
+    border-radius: 18px;
+    backface-visibility: visible;
+  }
+
+  .center {
     transform: none;
     opacity: 1;
     filter: none;
   }
 
-  .cardActive {
+  .left,
+  .right {
     transform: none;
+    opacity: 0.92;
+    filter: none;
   }
 
-  .cardSide {
-    transform: none;
-    opacity: 1;
-    filter: none;
+  .farLeft,
+  .farRight,
+  .hiddenLeft,
+  .hiddenRight {
+    display: none;
   }
 }
 

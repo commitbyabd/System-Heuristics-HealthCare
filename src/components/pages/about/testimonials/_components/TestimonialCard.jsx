@@ -8,16 +8,12 @@ function TestimonialCard({
   rating,
   quote,
   avatar,
-  slot,
-  active,
+  stateName,
 }) {
-  const slotClasses = [styles.cardLeft, styles.cardCenter, styles.cardRight];
-
   return (
     <article
-      className={`bgDarkBlur ${styles.card} ${
-        active ? styles.cardActive : styles.cardSide
-      } ${slotClasses[slot] || ""}`.trim()}
+      className={`bgDarkBlur ${styles.card} ${styles[stateName] || ""}`.trim()}
+      data-state={stateName}
     >
       <div className={styles.profileRow}>
         <img className={styles.avatar} src={avatar} alt={name} />

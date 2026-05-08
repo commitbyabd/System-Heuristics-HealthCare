@@ -78,12 +78,16 @@
 
 .cardsWrap {
   margin-top: 38px;
+  overflow: visible;
 }
 
 .cardsGrid {
   position: relative;
   width: 100%;
-  min-height: 356px;
+  max-width: 1260px;
+  min-height: 390px;
+  margin: 0 auto;
+  overflow: visible;
 }
 
 .controls {
@@ -131,6 +135,7 @@
 
   .cardsGrid {
     min-height: auto;
+    max-width: none;
     display: grid;
     grid-template-columns: 1fr;
     gap: 18px;
