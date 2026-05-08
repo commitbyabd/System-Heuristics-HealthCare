@@ -84,7 +84,7 @@
 }
 
 .sectionToggleTitle {
-  color: #18233b;
+  color: #0a1428;
   font-family: var(--title-font);
   font-size: clamp(1.6rem, 2vw, 2.4rem);
   font-weight: 600;
@@ -95,7 +95,7 @@
 .sectionToggleIcon {
   width: 24px;
   height: 24px;
-  color: #18233b;
+  color: #0a1428;
   flex-shrink: 0;
 }
 
