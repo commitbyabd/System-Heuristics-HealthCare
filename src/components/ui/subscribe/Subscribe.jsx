@@ -24,15 +24,20 @@ function Subscribe({
   };
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} bgNewsletter`}>
       <Container maxWidth={1120}>
-        <div className={styles.panel}>
+        <div className={`${styles.panel} bgDarkBlur`}>
           <SectionIntro
             variant="section"
             title={title}
             description={description}
             titleAs="h2"
+            highlightWord={0}
+            color="#ffffff"
+            highlightColor="#ffffff"
             className={styles.intro}
+            titleClassName={styles.introTitle}
+            descriptionClassName={styles.introDescription}
             animationVariant="light"
           />
 

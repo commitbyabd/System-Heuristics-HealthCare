@@ -2,31 +2,6 @@
   position: relative;
   overflow: hidden;
   padding: 34px 0 48px;
-  background:
-    radial-gradient(
-      circle at 12% 0%,
-      rgba(67, 223, 208, 0.22) 0%,
-      rgba(67, 223, 208, 0) 32%
-    ),
-    radial-gradient(
-      circle at 88% 12%,
-      rgba(67, 223, 208, 0.28) 0%,
-      rgba(67, 223, 208, 0) 24%
-    ),
-    linear-gradient(180deg, #218c8f 0%, #102238 54%, #09162b 100%);
-}
-
-.section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 148px 112px;
-  background-position: -1px -1px;
-  opacity: 0.26;
-  pointer-events: none;
 }
 
 .panel {
@@ -35,26 +10,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 18px;
+  width: 100%;
+  max-width: 1000px;
+  height: 370px;
+  margin: 0 auto;
   padding: 56px 32px 52px;
-  border: 1px solid rgba(244, 248, 252, 0.74);
+  border: 1px solid #ffffff;
   border-radius: 16px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(11, 29, 48, 0.18) 0%,
-      rgba(8, 21, 37, 0.32) 100%
-    );
-  box-shadow:
-    0 30px 60px rgba(3, 12, 26, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .panel::before {
@@ -75,6 +39,24 @@
 
 .intro {
   max-width: 720px;
+}
+
+.intro .introTitle {
+  font-family: var(--title-font);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 123%;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.intro .introDescription {
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 200%;
+  letter-spacing: 0;
+  text-align: center;
 }
 
 .form {
@@ -118,7 +100,7 @@
 }
 
 .input::placeholder {
-  color: rgba(241, 247, 250, 0.72);
+  color: #ffffff;
 }
 
 .button {
@@ -151,12 +133,13 @@
   z-index: 1;
   max-width: 420px;
   margin: 0 auto;
-  font-family: var(--content-font);
-  font-size: 0.84rem;
-  font-weight: var(--content-weight);
-  line-height: 1.5;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0;
   text-align: center;
-  color: rgba(241, 247, 250, 0.82);
+  color: #ffffff;
 }
 
 .helperWrap {
