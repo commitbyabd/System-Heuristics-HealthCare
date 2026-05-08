@@ -44,9 +44,12 @@ function CaseStudySlide({
           {solution}
         </p>
         <div className={styles.slideActions}>
-          <a href={liveDemo}>
-            <Button text="Live Demo" variant="filled" width="152px" />
-          </a>
+          <Button
+            text="Live Demo"
+            variant="filled"
+            width="152px"
+            href={liveDemo}
+          />
           <a href={videoDemo} className={styles.videoDemoBtn}>
             Video Demo
             <PlayIcon className={styles.videoDemoIcon} />

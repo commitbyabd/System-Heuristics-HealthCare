@@ -201,18 +201,10 @@ function Domains() {
         scrollTrigger: {
           trigger: section,
           start: "top 74%",
-          toggleActions: "play none none reset",
+          once: true,
           onEnter: () => {
             positionLines();
             pulse.pause(0);
-          },
-          onEnterBack: () => {
-            positionLines();
-            pulse.pause(0);
-          },
-          onLeaveBack: () => {
-            pulse.pause(0);
-            gsap.set(hubAura, { autoAlpha: 0.14, scale: 0.92 });
           },
         },
       });
@@ -294,13 +286,8 @@ function Domains() {
         scrollTrigger: {
           trigger: section,
           start: "top 78%",
-          toggleActions: "play none none reset",
+          once: true,
           onEnter: () => pulse.pause(0),
-          onEnterBack: () => pulse.pause(0),
-          onLeaveBack: () => {
-            pulse.pause(0);
-            gsap.set(hubAura, { autoAlpha: 0.14, scale: 0.92 });
-          },
         },
       });
 
