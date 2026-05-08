@@ -99,11 +99,11 @@
 .solutionDescription {
   margin: 14px 0 0;
   max-width: 320px;
-  color: var(--color-text-body);
+  color: var(--color-text);
   font-family: var(--content-font);
   font-size: var(--content-size);
   font-weight: var(--content-weight);
-  line-height: 1.7;
+  line-height: var(--line-height-100);
 }
 
 .learnMore {
