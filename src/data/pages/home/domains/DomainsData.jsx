@@ -8,9 +8,14 @@ import {
 } from "lucide-react";
 
 export const domainsContent = {
-  title: "Connected Healthcare Domains",
+  title: (
+    <>
+      Healthcare Domains We <span data-domains-title-accent>Solve For</span>
+    </>
+  ),
+
   description:
-    "Clinical, operational, and compliance systems unified for modern care delivery.",
+    "From clinical workflows to compliance systems, we design solutions across critical areas of healthcare.",
 };
 
 export const domainCards = [
