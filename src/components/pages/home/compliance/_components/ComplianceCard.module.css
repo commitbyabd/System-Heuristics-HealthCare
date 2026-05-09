@@ -52,7 +52,10 @@
   font-weight: var(--content-weight);
   line-height: 1.5;
   letter-spacing: 0;
+  /* the bottom 3 properties i added to improve text justification and hyphenation for better readability, especially on narrower screens. */
   text-align: justify;
+  text-justify: inter-character;
+  hyphens: auto;
   color: var(--color-text);
   flex-grow: 1;
 }
