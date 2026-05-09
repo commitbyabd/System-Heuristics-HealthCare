@@ -110,7 +110,7 @@ function CaseStudies() {
               }}
             >
               <div className={styles.track}>
-                {caseStudies.map((study) => (
+                {caseStudies.map((study, index) => (
                   <CaseStudySlide
                     key={study.id}
                     title={study.title}
@@ -120,6 +120,7 @@ function CaseStudies() {
                     imageAlt={study.imageAlt}
                     liveDemo={study.liveDemo}
                     videoDemo={study.videoDemo}
+                    isActive={index === activeIndex}
                   />
                 ))}
               </div>

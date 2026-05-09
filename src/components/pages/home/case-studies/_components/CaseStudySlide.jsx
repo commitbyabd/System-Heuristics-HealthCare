@@ -22,9 +22,12 @@ function CaseStudySlide({
   imageAlt,
   liveDemo,
   videoDemo,
+  isActive = false,
 }) {
   return (
-    <article className={styles.slide}>
+    <article
+      className={`${styles.slide} ${isActive ? styles.slideActive : ""}`.trim()}
+    >
       <div className={styles.slideMediaWrap}>
         <img
           src={image}

@@ -8,6 +8,12 @@
   min-height: 340px;
   padding: 0 8px;
   box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.95s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.slideActive {
+  opacity: 1;
 }
 
 .slideMediaWrap {
