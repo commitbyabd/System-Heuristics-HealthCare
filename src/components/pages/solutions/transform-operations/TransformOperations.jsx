@@ -7,7 +7,7 @@ import Button from "../../../ui/button/Button";
 function TransformOperations() {
   return (
     <section className={styles.section}>
-      <div className={styles.card}>
+      <div className={`${styles.card} bgNewsletter`}>
         <Container className={styles.inner}>
           <LazyImage
             src="/images/logo/sh-logo.svg"
