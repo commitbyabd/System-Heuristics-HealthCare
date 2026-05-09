@@ -6,7 +6,7 @@ const DomainCard = forwardRef(function DomainCard(
   ref,
 ) {
   return (
-    <div ref={ref} className={`${styles.card} ${className}`.trim()}>
+    <div ref={ref} className={`bgDarkBlur ${styles.card} ${className}`.trim()}>
       <span className={styles.iconWrap}>
         <Icon className={styles.icon} />
       </span>

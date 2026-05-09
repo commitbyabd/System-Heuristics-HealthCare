@@ -250,15 +250,10 @@ h6 {
 
 /* =========================
    Utility: Shared Dark Blur (for cards, sections, etc.)
-   If you change it you can change it from here except for the one in the domains cards css that one is in its css
-   it is not using this bg class it has its own css which is similar dont forget to change it please   */
+   If you change it you can change it from here. */
 .bgDarkBlur {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.22) 0%,
-    rgba(255, 255, 255, 0.13) 100%
-  );
-  border: 1px solid rgba(214, 247, 241, 0.24);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
   box-shadow:
