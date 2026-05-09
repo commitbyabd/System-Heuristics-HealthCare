@@ -44,11 +44,17 @@
 }
 
 .title {
+  position: relative;
   margin: 0 auto;
   max-width: 900px;
+  padding-bottom: 18px;
   font-family: var(--title-font);
   font-size: var(--title-size);
   line-height: 1.15;
+  background-image: url("/images/home/healthcare-line.svg");
+  background-repeat: no-repeat;
+  background-position: 28% calc(100% - 4px);
+  background-size: 320px auto;
 }
 
 @media screen and (max-width: 992px) {

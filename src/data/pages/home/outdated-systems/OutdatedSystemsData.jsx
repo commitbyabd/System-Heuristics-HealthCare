@@ -1,6 +1,6 @@
 export const outdatedSystemsContent = {
   chipText: "Industry Research",
-  title: "The Hidden Cost of Outdated Healthcare Systems",
+  title: ["The Hidden Cost of Outdated", "Healthcare Systems"],
   highlightWord: 5,
 };
 
