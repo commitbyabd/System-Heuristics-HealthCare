@@ -1,9 +1,10 @@
 .section {
   position: relative;
-  min-height: 100vh;
+  height: 105vh;
+  min-height: 105vh;
   display: flex;
   align-items: center;
-  padding: 56px 0 64px;
+  padding: 64px 0;
   color: #ffffff;
   isolation: isolate;
   overflow: hidden;
@@ -93,18 +94,18 @@
 .controls {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 22px;
+  gap: 14px;
+  margin-top: -50px;
 }
 
 .controlButton {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
-  font-size: 1.15rem;
+  font-size: 1.5rem;
   line-height: 1;
   display: inline-flex;
   align-items: center;

@@ -7,3 +7,8 @@ Make a css class in globals.css which will have the backfround of the white blur
 Consistency — every other "fits viewport" section in this project uses 100vh (Domains, OurSolutions, Hero). Mixing units in one section would be the odd one out, and you mentioned earlier you'd centralize the unit choice at the end of the project. Easier to flip a single var than chase one outlier.
 There should be nothing set as default in the section intro componenet currently there is the text for the home hero
 Fix the svg icons from lucide that you made
+
+Shoaib Hasnat :
+To run the website : go to the terminal
+Type npm run dev
+it will give you a link

@@ -12,6 +12,7 @@ const linkList = [
   { name: "FAQ", href: "/faq" },
   { name: "Resources", href: "/resources" },
   { name: "AI", href: "/ai" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 export const FooterData = {

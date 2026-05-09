@@ -1,0 +1,35 @@
+.section {
+  padding: 56px 0 80px;
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageTitle {
+  margin: 0 0 8px;
+  font-family: var(--title-font);
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 0 64px;
+  }
+
+  .cardList {
+    gap: 16px;
+  }
+}

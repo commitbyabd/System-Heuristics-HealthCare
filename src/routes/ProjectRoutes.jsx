@@ -12,6 +12,7 @@ import Solutions from "../pages/solutions/Solutions";
 import Services from "../pages/services/Services";
 import Ai from "../pages/Ai/Ai";
 import CaseStudy from "../pages/case-study/CaseStudy";
+import PrivacyPolicy from "../pages/privacy-policy/PrivacyPolicy";
 function ProjectRoutes() {
   return (
     <Routes>
@@ -23,6 +24,7 @@ function ProjectRoutes() {
         <Route path="/services" element={<Services />} />
         <Route path="/ai" element={<Ai />} />
         <Route path="/case-study" element={<CaseStudy />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Route>
     </Routes>
   );
