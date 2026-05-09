@@ -233,11 +233,11 @@ function Domains() {
             y: 0,
             scale: 1,
             rotate: 0,
-            duration: 0.8,
+            duration: 0.65,
             ease: "back.out(1.7)",
-            stagger: 0.08,
+            stagger: 0.05,
           },
-          "-=0.34",
+          "-=0.5",
         )
         .call(() => pulse.play(), null, ">-0.12");
 
@@ -305,11 +305,11 @@ function Domains() {
             y: 0,
             scale: 1,
             rotate: 0,
-            duration: 0.72,
+            duration: 0.6,
             ease: "back.out(1.6)",
-            stagger: 0.08,
+            stagger: 0.05,
           },
-          "-=0.2",
+          "-=0.35",
         )
         .call(() => pulse.play(), null, ">-0.1");
 

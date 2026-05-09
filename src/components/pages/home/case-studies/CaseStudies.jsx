@@ -76,6 +76,7 @@ function CaseStudies() {
                 text="Checkout Our Portfolio"
                 variant="filled"
                 width="222px"
+                href="/case-study"
               />
             </div>
           </div>
