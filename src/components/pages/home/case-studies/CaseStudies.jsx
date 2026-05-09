@@ -6,7 +6,8 @@ import Button from "../../../ui/button/Button";
 import CaseStudySlide from "./_components/CaseStudySlide";
 import { caseStudies } from "../../../../data/pages/home/case-study/CaseStudyData";
 import useAutoplaySlider from "../../../../hooks/useAutoplaySlider";
-
+import Chip from "../../../ui/chip/Chip";
+import { ShieldCheck } from "lucide-react";
 function ArrowIcon(props) {
   return (
     <svg
@@ -48,10 +49,11 @@ function CaseStudies() {
       <div className={styles.stickyFrame}>
         <div className={styles.container}>
           <div className={styles.header}>
-            <span className={styles.eyebrow}>
-              <span className={styles.eyebrowDot} aria-hidden="true" />
-              Proven healthcare outcomes
-            </span>
+            <Chip
+              text="Proven Healthcare Outcomes"
+              className={styles.chip}
+              Icon={ShieldCheck}
+            />
             <SectionIntro
               variant="section"
               title="Case Studies"

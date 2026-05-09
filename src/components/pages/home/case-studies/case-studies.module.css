@@ -29,22 +29,6 @@
   max-width: 720px;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  color: var(--color-teal);
-  font-weight: 600;
-}
-
-.eyebrowDot {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  background: linear-gradient(135deg, #7fe8d0, #2fd1ab);
-}
-
 .title {
   margin-top: 10px;
   font-family: var(--title-font);
